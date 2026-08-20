@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,20 +21,93 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
-    <script>document.documentElement.classList.add("js");</script>
+
+    <script>
+      // Applied before first paint so the chosen language never flashes.
+      document.documentElement.classList.add("js");
+      (function () {
+        try {
+          var q = new URLSearchParams(location.search).get("lang");
+          var saved = q || localStorage.getItem("sscrs-lang");
+          if (saved === "ar") {
+            document.documentElement.lang = "ar";
+            document.documentElement.dir = "rtl";
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
 
-    <a class="skip-link" href="#main">Skip to main content</a>
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
+
+    <!-- ============================================================
+         THE SOCIETY SEAL, as vector.
+
+         The ring, its rules and all of its lettering are true vector,
+         so they stay crisp at every size on the page. The emblem in
+         the middle — the colon, palm and swords — is the artwork from
+         the supplied file, clipped to the inner circle.
+
+         Defined once here and referenced with <use> wherever the seal
+         appears. It is inline rather than an external .svg file so
+         that it inherits the page's webfonts.
+         ============================================================ -->
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+      <defs>
+        <linearGradient id="sealRing" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#FFFFFF" />
+          <stop offset="45%"  stop-color="#EEF2F7" />
+          <stop offset="100%" stop-color="#DCE4EE" />
+        </linearGradient>
+        <clipPath id="sealCoreClip">
+          <circle cx="256" cy="256" r="160" />
+        </clipPath>
+
+        <!-- Baseline arcs for the ring lettering -->
+        <path id="sealArcTop"    d="M 49,256 A 207,207 0 0 1 463,256" fill="none" />
+        <path id="sealArcBottom" d="M 58,256 A 198,198 0 0 0 454,256" fill="none" />
+
+        <symbol id="sscrs-seal" viewBox="0 0 512 512">
+          <circle cx="256" cy="256" r="250" fill="url(#sealRing)" />
+          <circle cx="256" cy="256" r="250" fill="none" stroke="#C3CFDD" stroke-width="2" />
+          <circle cx="256" cy="256" r="242" fill="none" stroke="#4E9E37" stroke-width="2.5" />
+          <circle cx="256" cy="256" r="166" fill="none" stroke="#4E9E37" stroke-width="2.5" />
+          <circle cx="256" cy="256" r="161" fill="none" stroke="#C3CFDD" stroke-width="2" />
+
+          <image href="seal-core.png" x="96" y="96" width="320" height="320"
+                 clip-path="url(#sealCoreClip)" />
+
+          <g fill="#3C7A2A" font-weight="700">
+            <text font-family="Noto Kufi Arabic, Segoe UI, Tahoma, sans-serif"
+                  font-size="23" direction="rtl">
+              <textPath href="#sealArcTop" startOffset="50%" text-anchor="middle"
+                >الجمعية السعودية لجراحة القولون والمستقيم</textPath>
+            </text>
+            <text font-family="Inter, Helvetica, Arial, sans-serif"
+                  font-size="20.5" letter-spacing="0.6">
+              <textPath href="#sealArcBottom" startOffset="50%" text-anchor="middle"
+                >SAUDI SOCIETY OF COLON &amp; RECTAL SURGERY</textPath>
+            </text>
+            <text x="52" y="266" text-anchor="middle"
+                  font-family="Inter, Helvetica, Arial, sans-serif" font-size="26">2009</text>
+            <text x="460" y="266" text-anchor="middle"
+                  font-family="Inter, Helvetica, Arial, sans-serif" font-size="26">1430</text>
+          </g>
+        </symbol>
+      </defs>
+    </svg>
 
     <!-- UTILITY BAR -->
     <div class="utility-bar">
       <div class="page-wrap utility-inner">
-        <span class="utility-ar" lang="ar">الجمعية السعودية لجراحة القولون والمستقيم</span>
+        <span class="utility-tagline" data-i18n="utility.tagline">Advancing colorectal surgical excellence across the Kingdom</span>
         <div class="utility-links">
           <a href="mailto:info@sscrs.org">info@sscrs.org</a>
-          <a href="#membership">Member Login</a>
-          <a class="lang-switch" href="#" lang="ar">العربية</a>
+          <a href="#membership" data-i18n="utility.login">Member Login</a>
+          <button class="lang-switch" type="button" data-lang-toggle>
+            <span data-lang-label>العربية</span>
+          </button>
         </div>
       </div>
     </div>
@@ -42,21 +115,20 @@
     <!-- IDENTITY BAR — the seal lockup -->
     <div class="identity-bar">
       <div class="page-wrap identity-inner">
-        <a class="lockup" href="#top" aria-label="SSCRS home">
-          <img class="lockup-seal" src="sscrs-seal.png" width="70" height="70"
-               alt="Seal of the Saudi Society of Colon &amp; Rectal Surgery" />
+        <a class="lockup" href="#top" aria-label="SSCRS" data-i18n-aria="a11y.home">
+          <svg class="lockup-seal" viewBox="0 0 512 512" aria-hidden="true"><use href="#sscrs-seal" /></svg>
           <span class="lockup-text">
             <span class="lockup-ar" lang="ar">الجمعية السعودية لجراحة القولون والمستقيم</span>
             <span class="lockup-en">Saudi Society of Colon &amp; Rectal Surgery</span>
-            <span class="lockup-est">Established 2009 &middot; 1430H</span>
+            <span class="lockup-est" data-i18n="brand.est">Established 2009 &middot; 1430H</span>
           </span>
         </a>
         <div class="identity-actions">
           <span class="forum-flag">
-            <span>Annual Forum</span>
-            <span>Riyadh &middot; April 2026</span>
+            <span data-i18n="forum.label">Annual Forum</span>
+            <span data-i18n="forum.when">Riyadh &middot; April 2026</span>
           </span>
-          <a class="btn btn-primary" href="#membership">Join the Society</a>
+          <a class="btn btn-primary" href="#membership" data-i18n="cta.join">Join the Society</a>
         </div>
       </div>
     </div>
@@ -64,21 +136,22 @@
     <!-- NAVIGATION -->
     <div class="nav-row" data-nav-row>
       <div class="page-wrap nav-inner">
-        <a class="nav-mini" href="#top" aria-label="SSCRS home">
-          <img src="sscrs-seal.png" width="32" height="32" alt="" />
+        <a class="nav-mini" href="#top" aria-label="SSCRS" data-i18n-aria="a11y.home">
+          <svg viewBox="0 0 512 512" aria-hidden="true"><use href="#sscrs-seal" /></svg>
           <strong>SSCRS</strong>
         </a>
         <nav class="nav-shell" aria-label="Primary">
-          <a href="#about">About</a>
-          <a href="#numbers">The Society</a>
-          <a href="#vision">Vision &amp; Mission</a>
-          <a href="#board">Board</a>
-          <a href="#membership">Membership</a>
-          <a href="#news">News</a>
-          <a href="#partners">Partners</a>
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#numbers" data-i18n="nav.society">The Society</a>
+          <a href="#vision" data-i18n="nav.vision">Vision &amp; Mission</a>
+          <a href="#board" data-i18n="nav.board">Board</a>
+          <a href="#membership" data-i18n="nav.membership">Membership</a>
+          <a href="#news" data-i18n="nav.news">News</a>
+          <a href="#partners" data-i18n="nav.partners">Partners</a>
         </nav>
         <button class="menu-toggle" type="button" data-menu-toggle
-                aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+                aria-label="Open navigation" data-i18n-aria="a11y.openNav"
+                aria-expanded="false" aria-controls="mobile-nav">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -87,18 +160,22 @@
     <!-- MOBILE NAVIGATION -->
     <div class="mobile-nav" id="mobile-nav" data-mobile-nav aria-hidden="true">
       <div class="mobile-nav-head">
-        <img src="sscrs-seal.png" width="46" height="46" alt="SSCRS seal" />
-        <button class="mobile-nav-close" type="button" data-menu-close aria-label="Close navigation">&times;</button>
+        <svg style="width:46px;height:46px" viewBox="0 0 512 512" aria-hidden="true"><use href="#sscrs-seal" /></svg>
+        <button class="mobile-nav-close" type="button" data-menu-close
+                aria-label="Close navigation" data-i18n-aria="a11y.closeNav">&times;</button>
       </div>
       <nav aria-label="Mobile">
-        <a href="#about" data-nav-link>About</a>
-        <a href="#numbers" data-nav-link>The Society</a>
-        <a href="#vision" data-nav-link>Vision &amp; Mission</a>
-        <a href="#board" data-nav-link>Board</a>
-        <a href="#membership" data-nav-link>Membership</a>
-        <a href="#news" data-nav-link>News</a>
-        <a href="#partners" data-nav-link>Partners</a>
-        <a href="#membership" class="mobile-join-btn" data-nav-link>Join the Society</a>
+        <a href="#about" data-nav-link data-i18n="nav.about">About</a>
+        <a href="#numbers" data-nav-link data-i18n="nav.society">The Society</a>
+        <a href="#vision" data-nav-link data-i18n="nav.vision">Vision &amp; Mission</a>
+        <a href="#board" data-nav-link data-i18n="nav.board">Board</a>
+        <a href="#membership" data-nav-link data-i18n="nav.membership">Membership</a>
+        <a href="#news" data-nav-link data-i18n="nav.news">News</a>
+        <a href="#partners" data-nav-link data-i18n="nav.partners">Partners</a>
+        <a href="#membership" class="mobile-join-btn" data-nav-link data-i18n="cta.join">Join the Society</a>
+        <button class="mobile-lang" type="button" data-lang-toggle>
+          <span data-lang-label>العربية</span>
+        </button>
       </nav>
     </div>
 
@@ -107,19 +184,20 @@
       <!-- HERO — identity statement -->
       <section class="hero" id="top">
         <div class="page-wrap hero-inner">
-          <img class="hero-seal" src="sscrs-seal.png" width="168" height="168"
-               alt="Seal of the Saudi Society of Colon &amp; Rectal Surgery" />
+          <svg class="hero-seal" viewBox="0 0 512 512" role="img"
+               aria-label="Seal of the Saudi Society of Colon and Rectal Surgery"
+               data-i18n-aria="a11y.seal"><use href="#sscrs-seal" /></svg>
           <p class="hero-ar" lang="ar">الجمعية السعودية لجراحة القولون والمستقيم</p>
           <h1 class="hero-en">Saudi Society of Colon &amp; Rectal Surgery</h1>
-          <p class="hero-est">Established 2009 &middot; 1430H</p>
-          <p class="hero-lead">
+          <p class="hero-est" data-i18n="brand.est">Established 2009 &middot; 1430H</p>
+          <p class="hero-lead" data-i18n="hero.lead">
             A national professional society uniting colorectal surgeons, trainees, and
             researchers across the Kingdom — advancing surgical standards, education,
             and public awareness of colorectal health.
           </p>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="#membership">Become a Member</a>
-            <a class="btn btn-outline" href="#about">About the Society</a>
+            <a class="btn btn-primary" href="#membership" data-i18n="cta.become">Become a Member</a>
+            <a class="btn btn-outline" href="#about" data-i18n="cta.about">About the Society</a>
           </div>
         </div>
       </section>
@@ -128,23 +206,23 @@
       <div class="glance">
         <div class="page-wrap glance-grid">
           <div class="glance-item">
-            <strong>Annual Forum 2026</strong>
-            <span>Riyadh &middot; 15&ndash;17 April</span>
-            <a href="#news">Registration open</a>
+            <strong data-i18n="glance.forum.t">Annual Forum 2026</strong>
+            <span data-i18n="glance.forum.d">Riyadh &middot; 15&ndash;17 April</span>
+            <a href="#news" data-i18n="glance.forum.a">Registration open</a>
           </div>
           <div class="glance-item">
-            <strong>Membership</strong>
-            <span>Four categories for physicians, trainees, and partners</span>
-            <a href="#membership">View categories</a>
+            <strong data-i18n="glance.mem.t">Membership</strong>
+            <span data-i18n="glance.mem.d">Four categories for physicians, trainees, and partners</span>
+            <a href="#membership" data-i18n="glance.mem.a">View categories</a>
           </div>
           <div class="glance-item">
-            <strong>Screening Guidelines</strong>
-            <span>National guidance with the Ministry of Health</span>
-            <a href="#news">Read the update</a>
+            <strong data-i18n="glance.guide.t">Screening Guidelines</strong>
+            <span data-i18n="glance.guide.d">National guidance with the Ministry of Health</span>
+            <a href="#news" data-i18n="glance.guide.a">Read the update</a>
           </div>
           <div class="glance-item">
-            <strong>Contact</strong>
-            <span>Riyadh, Kingdom of Saudi Arabia</span>
+            <strong data-i18n="glance.contact.t">Contact</strong>
+            <span data-i18n="glance.contact.d">Riyadh, Kingdom of Saudi Arabia</span>
             <a href="mailto:info@sscrs.org">info@sscrs.org</a>
           </div>
         </div>
@@ -154,26 +232,27 @@
       <section class="section section-line" id="about">
         <div class="page-wrap about-grid">
           <div class="about-plate reveal">
-            <img src="sscrs-seal.png" width="148" height="148"
-                 alt="The society seal: the Saudi palm and swords within a colon, encircled by the society name" />
+            <svg viewBox="0 0 512 512" role="img"
+                 aria-label="Seal of the Saudi Society of Colon and Rectal Surgery"
+                 data-i18n-aria="a11y.seal"><use href="#sscrs-seal" /></svg>
             <p class="plate-ar" lang="ar">الجمعية السعودية لجراحة القولون والمستقيم</p>
             <p class="plate-en">Saudi Society of<br />Colon &amp; Rectal Surgery</p>
             <div class="plate-divider"></div>
             <div class="plate-years">
-              <div><b>2009</b><span>Gregorian</span></div>
-              <div><b>1430</b><span>Hijri</span></div>
+              <div><b data-i18n="plate.g.v">2009</b><span data-i18n="plate.g.l">Gregorian</span></div>
+              <div><b data-i18n="plate.h.v">1430</b><span data-i18n="plate.h.l">Hijri</span></div>
             </div>
           </div>
           <div class="about-body reveal">
-            <p class="eyebrow">About the Society</p>
-            <h2>A national home for colorectal surgical excellence</h2>
-            <p>Founded by decree of the Saudi Commission for Health Specialties, SSCRS was established to organize scientific work, strengthen professional fellowship, and elevate public awareness of colorectal health across Saudi Arabia.</p>
-            <p>We serve as the premier platform connecting specialists, trainees, researchers, and healthcare partners — fostering a community dedicated to the highest standards of patient care.</p>
+            <p class="eyebrow" data-i18n="about.eyebrow">About the Society</p>
+            <h2 data-i18n="about.h">A national home for colorectal surgical excellence</h2>
+            <p data-i18n="about.p1">Founded by decree of the Saudi Commission for Health Specialties, SSCRS was established to organize scientific work, strengthen professional fellowship, and elevate public awareness of colorectal health across Saudi Arabia.</p>
+            <p data-i18n="about.p2">We serve as the premier platform connecting specialists, trainees, researchers, and healthcare partners — fostering a community dedicated to the highest standards of patient care.</p>
             <div class="about-pillars">
-              <div class="pillar"><span class="pillar-dot"></span><span>Clinical Excellence</span></div>
-              <div class="pillar"><span class="pillar-dot"></span><span>Education &amp; Training</span></div>
-              <div class="pillar"><span class="pillar-dot"></span><span>Research &amp; Innovation</span></div>
-              <div class="pillar"><span class="pillar-dot"></span><span>Community Awareness</span></div>
+              <div class="pillar"><span class="pillar-dot"></span><span data-i18n="about.pillar1">Clinical Excellence</span></div>
+              <div class="pillar"><span class="pillar-dot"></span><span data-i18n="about.pillar2">Education &amp; Training</span></div>
+              <div class="pillar"><span class="pillar-dot"></span><span data-i18n="about.pillar3">Research &amp; Innovation</span></div>
+              <div class="pillar"><span class="pillar-dot"></span><span data-i18n="about.pillar4">Community Awareness</span></div>
             </div>
           </div>
         </div>
@@ -183,65 +262,65 @@
       <section class="numbers-section" id="numbers">
         <div class="page-wrap">
           <div class="section-head reveal">
-            <p class="eyebrow">The Society in Numbers</p>
-            <h2>Measured impact, proven trust</h2>
+            <p class="eyebrow" data-i18n="num.eyebrow">The Society in Numbers</p>
+            <h2 data-i18n="num.h">Measured impact, proven trust</h2>
           </div>
           <div class="numbers-grid reveal">
             <div class="num-card">
-              <div class="num-val">2009</div>
-              <div class="num-label">Year Established</div>
+              <div class="num-val" data-i18n="num.v1">2009</div>
+              <div class="num-label" data-i18n="num.l1">Year Established</div>
             </div>
             <div class="num-card">
-              <div class="num-val">500<sup>+</sup></div>
-              <div class="num-label">Active Members</div>
+              <div class="num-val" data-i18n-html="num.v2">500<sup>+</sup></div>
+              <div class="num-label" data-i18n="num.l2">Active Members</div>
             </div>
             <div class="num-card">
-              <div class="num-val">4</div>
-              <div class="num-label">Activity Tracks</div>
+              <div class="num-val" data-i18n="num.v3">4</div>
+              <div class="num-label" data-i18n="num.l3">Activity Tracks</div>
             </div>
             <div class="num-card">
-              <div class="num-val">8</div>
-              <div class="num-label">Board Pathways</div>
+              <div class="num-val" data-i18n="num.v4">8</div>
+              <div class="num-label" data-i18n="num.l4">Board Pathways</div>
             </div>
             <div class="num-card">
-              <div class="num-val">1</div>
-              <div class="num-label">Annual Forum</div>
+              <div class="num-val" data-i18n="num.v5">1</div>
+              <div class="num-label" data-i18n="num.l5">Annual Forum</div>
             </div>
             <div class="num-card">
-              <div class="num-val">15<sup>+</sup></div>
-              <div class="num-label">Years of Service</div>
+              <div class="num-val" data-i18n-html="num.v6">15<sup>+</sup></div>
+              <div class="num-label" data-i18n="num.l6">Years of Service</div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- VISION, MISSION & GOALS -->
-      <section class="section section-line" id="vision">
+      <section class="section section-line section-green" id="vision">
         <div class="page-wrap">
           <div class="section-head reveal">
-            <p class="eyebrow">Our Direction</p>
-            <h2>Vision, Mission &amp; Goals</h2>
+            <p class="eyebrow" data-i18n="vmg.eyebrow">Our Direction</p>
+            <h2 data-i18n="vmg.h">Vision, Mission &amp; Goals</h2>
           </div>
           <div class="vmg-layout reveal">
             <div class="vmg-card">
-              <span class="vmg-tag">Vision</span>
-              <h3>The trusted national reference</h3>
-              <p>To be the premier national authority for colorectal surgical excellence in Saudi Arabia — setting the standard for practice, education, and research.</p>
+              <span class="vmg-tag" data-i18n="vmg.vision.tag">Vision</span>
+              <h3 data-i18n="vmg.vision.h">The trusted national reference</h3>
+              <p data-i18n="vmg.vision.p">To be the premier national authority for colorectal surgical excellence in Saudi Arabia — setting the standard for practice, education, and research.</p>
             </div>
             <div class="vmg-card">
-              <span class="vmg-tag">Mission</span>
-              <h3>Empower &amp; protect</h3>
-              <p>To support surgical education, promote public awareness, facilitate research exchange, and foster professional collaboration across the Kingdom.</p>
+              <span class="vmg-tag" data-i18n="vmg.mission.tag">Mission</span>
+              <h3 data-i18n="vmg.mission.h">Empower &amp; protect</h3>
+              <p data-i18n="vmg.mission.p">To support surgical education, promote public awareness, facilitate research exchange, and foster professional collaboration across the Kingdom.</p>
             </div>
             <div class="vmg-card">
-              <span class="vmg-tag">Goals</span>
-              <h3>Our commitments</h3>
+              <span class="vmg-tag" data-i18n="vmg.goals.tag">Goals</span>
+              <h3 data-i18n="vmg.goals.h">Our commitments</h3>
               <ul class="goals-list">
-                <li>Organize and support scientific conferences and workshops</li>
-                <li>Strengthen ties between Saudi specialists and international societies</li>
-                <li>Raise community awareness about colorectal disease prevention</li>
-                <li>Support research and clinical innovation in colorectal surgery</li>
-                <li>Provide continuing medical education for members at all levels</li>
+                <li data-i18n="vmg.goal1">Organize and support scientific conferences and workshops</li>
+                <li data-i18n="vmg.goal2">Strengthen ties between Saudi specialists and international societies</li>
+                <li data-i18n="vmg.goal3">Raise community awareness about colorectal disease prevention</li>
+                <li data-i18n="vmg.goal4">Support research and clinical innovation in colorectal surgery</li>
+                <li data-i18n="vmg.goal5">Provide continuing medical education for members at all levels</li>
               </ul>
             </div>
           </div>
@@ -249,61 +328,61 @@
       </section>
 
       <!-- BOARD MEMBERS -->
-      <section class="section section-line section-tint" id="board">
+      <section class="section section-line section-navy" id="board">
         <div class="page-wrap">
           <div class="section-head reveal">
-            <p class="eyebrow">Leadership</p>
-            <h2>Board Members</h2>
-            <p class="section-sub">The society is guided by distinguished surgeons and healthcare leaders from across Saudi Arabia.</p>
+            <p class="eyebrow" data-i18n="board.eyebrow">Leadership</p>
+            <h2 data-i18n="board.h">Board Members</h2>
+            <p class="section-sub" data-i18n="board.sub">The society is guided by distinguished surgeons and healthcare leaders from across Saudi Arabia.</p>
           </div>
           <div class="board-grid reveal">
             <div class="board-card is-president">
               <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4>Dr. [President]</h4>
-              <p class="board-role">President</p>
-              <p class="board-city">Riyadh</p>
+              <h4 data-i18n="board.n1">Dr. [President]</h4>
+              <p class="board-role" data-i18n="board.r1">President</p>
+              <p class="board-city" data-i18n="city.riyadh">Riyadh</p>
             </div>
             <div class="board-card">
               <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4>Dr. [Vice President]</h4>
-              <p class="board-role">Vice President</p>
-              <p class="board-city">Jeddah</p>
+              <h4 data-i18n="board.n2">Dr. [Vice President]</h4>
+              <p class="board-role" data-i18n="board.r2">Vice President</p>
+              <p class="board-city" data-i18n="city.jeddah">Jeddah</p>
             </div>
             <div class="board-card">
               <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4>Dr. [Secretary]</h4>
-              <p class="board-role">Secretary General</p>
-              <p class="board-city">Riyadh</p>
+              <h4 data-i18n="board.n3">Dr. [Secretary]</h4>
+              <p class="board-role" data-i18n="board.r3">Secretary General</p>
+              <p class="board-city" data-i18n="city.riyadh">Riyadh</p>
             </div>
             <div class="board-card">
               <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4>Dr. [Treasurer]</h4>
-              <p class="board-role">Treasurer</p>
-              <p class="board-city">Dammam</p>
+              <h4 data-i18n="board.n4">Dr. [Treasurer]</h4>
+              <p class="board-role" data-i18n="board.r4">Treasurer</p>
+              <p class="board-city" data-i18n="city.dammam">Dammam</p>
             </div>
             <div class="board-card">
               <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4>Dr. [Board Member]</h4>
-              <p class="board-role">Board Member</p>
-              <p class="board-city">Makkah</p>
+              <h4 data-i18n="board.n5">Dr. [Board Member]</h4>
+              <p class="board-role" data-i18n="board.r5">Board Member</p>
+              <p class="board-city" data-i18n="city.makkah">Makkah</p>
             </div>
             <div class="board-card">
               <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4>Dr. [Board Member]</h4>
-              <p class="board-role">Board Member</p>
-              <p class="board-city">Medina</p>
+              <h4 data-i18n="board.n6">Dr. [Board Member]</h4>
+              <p class="board-role" data-i18n="board.r5">Board Member</p>
+              <p class="board-city" data-i18n="city.madinah">Medina</p>
             </div>
             <div class="board-card">
               <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4>Dr. [Board Member]</h4>
-              <p class="board-role">Board Member</p>
-              <p class="board-city">Dammam</p>
+              <h4 data-i18n="board.n7">Dr. [Board Member]</h4>
+              <p class="board-role" data-i18n="board.r5">Board Member</p>
+              <p class="board-city" data-i18n="city.dammam">Dammam</p>
             </div>
             <div class="board-card">
               <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4>Dr. [Board Member]</h4>
-              <p class="board-role">Board Member</p>
-              <p class="board-city">Abha</p>
+              <h4 data-i18n="board.n8">Dr. [Board Member]</h4>
+              <p class="board-role" data-i18n="board.r5">Board Member</p>
+              <p class="board-city" data-i18n="city.abha">Abha</p>
             </div>
           </div>
         </div>
@@ -313,103 +392,103 @@
       <section class="section section-line" id="membership">
         <div class="page-wrap">
           <div class="section-head reveal">
-            <p class="eyebrow">Join the Society</p>
-            <h2>Membership categories</h2>
-            <p class="section-sub">Choose the category that fits your role. All members gain access to the annual forum, educational resources, and the professional network.</p>
+            <p class="eyebrow" data-i18n="mem.eyebrow">Join the Society</p>
+            <h2 data-i18n="mem.h">Membership categories</h2>
+            <p class="section-sub" data-i18n="mem.sub">Choose the category that fits your role. All members gain access to the annual forum, educational resources, and the professional network.</p>
           </div>
           <div class="mem-grid reveal">
             <div class="mem-card">
-              <p class="mem-type">For Physicians</p>
-              <h3>Active Member</h3>
+              <p class="mem-type" data-i18n="mem.a.type">For Physicians</p>
+              <h3 data-i18n="mem.a.h">Active Member</h3>
               <ul class="mem-features">
-                <li>Full voting rights</li>
-                <li>All CME programmes</li>
-                <li>Forum registration discount</li>
-                <li>Member directory access</li>
-                <li>Monthly newsletter</li>
+                <li data-i18n="mem.a.f1">Full voting rights</li>
+                <li data-i18n="mem.a.f2">All CME programmes</li>
+                <li data-i18n="mem.a.f3">Forum registration discount</li>
+                <li data-i18n="mem.a.f4">Member directory access</li>
+                <li data-i18n="mem.a.f5">Monthly newsletter</li>
               </ul>
-              <a href="mailto:info@sscrs.org" class="mem-btn">Apply Now</a>
+              <a href="mailto:info@sscrs.org" class="mem-btn" data-i18n="cta.apply">Apply Now</a>
             </div>
             <div class="mem-card is-featured">
-              <p class="mem-type">For Trainees</p>
-              <h3>Associate Member</h3>
+              <p class="mem-type" data-i18n="mem.b.type">For Trainees</p>
+              <h3 data-i18n="mem.b.h">Associate Member</h3>
               <ul class="mem-features">
-                <li>Training resources</li>
-                <li>Mentorship programme</li>
-                <li>Discounted forum access</li>
-                <li>Research network</li>
-                <li>Career workshops</li>
+                <li data-i18n="mem.b.f1">Training resources</li>
+                <li data-i18n="mem.b.f2">Mentorship programme</li>
+                <li data-i18n="mem.b.f3">Discounted forum access</li>
+                <li data-i18n="mem.b.f4">Research network</li>
+                <li data-i18n="mem.b.f5">Career workshops</li>
               </ul>
-              <a href="mailto:info@sscrs.org" class="mem-btn">Apply Now</a>
+              <a href="mailto:info@sscrs.org" class="mem-btn" data-i18n="cta.apply">Apply Now</a>
             </div>
             <div class="mem-card">
-              <p class="mem-type">For Companies</p>
-              <h3>Supporting Member</h3>
+              <p class="mem-type" data-i18n="mem.c.type">For Companies</p>
+              <h3 data-i18n="mem.c.h">Supporting Member</h3>
               <ul class="mem-features">
-                <li>Forum exhibition space</li>
-                <li>Brand visibility</li>
-                <li>Sponsorship access</li>
-                <li>Networking events</li>
-                <li>CSR alignment</li>
+                <li data-i18n="mem.c.f1">Forum exhibition space</li>
+                <li data-i18n="mem.c.f2">Brand visibility</li>
+                <li data-i18n="mem.c.f3">Sponsorship access</li>
+                <li data-i18n="mem.c.f4">Networking events</li>
+                <li data-i18n="mem.c.f5">CSR alignment</li>
               </ul>
-              <a href="mailto:info@sscrs.org" class="mem-btn">Apply Now</a>
+              <a href="mailto:info@sscrs.org" class="mem-btn" data-i18n="cta.apply">Apply Now</a>
             </div>
             <div class="mem-card">
-              <p class="mem-type">By Nomination</p>
-              <h3>Honorary Member</h3>
+              <p class="mem-type" data-i18n="mem.d.type">By Nomination</p>
+              <h3 data-i18n="mem.d.h">Honorary Member</h3>
               <ul class="mem-features">
-                <li>Board nomination only</li>
-                <li>Exceptional recognition</li>
-                <li>Lifetime affiliation</li>
-                <li>Speaking invitations</li>
-                <li>Advisory role access</li>
+                <li data-i18n="mem.d.f1">Board nomination only</li>
+                <li data-i18n="mem.d.f2">Exceptional recognition</li>
+                <li data-i18n="mem.d.f3">Lifetime affiliation</li>
+                <li data-i18n="mem.d.f4">Speaking invitations</li>
+                <li data-i18n="mem.d.f5">Advisory role access</li>
               </ul>
-              <a href="mailto:info@sscrs.org" class="mem-btn">Learn More</a>
+              <a href="mailto:info@sscrs.org" class="mem-btn" data-i18n="cta.learn">Learn More</a>
             </div>
           </div>
         </div>
       </section>
 
       <!-- NEWS -->
-      <section class="section section-line section-tint" id="news">
+      <section class="section section-line section-navy" id="news">
         <div class="page-wrap">
           <div class="news-hdr reveal">
             <div class="section-head">
-              <p class="eyebrow">Latest Updates</p>
-              <h2>News &amp; Announcements</h2>
+              <p class="eyebrow" data-i18n="news.eyebrow">Latest Updates</p>
+              <h2 data-i18n="news.h">News &amp; Announcements</h2>
             </div>
-            <a href="#" class="view-all">View all news &rarr;</a>
+            <a href="#" class="view-all" data-i18n="news.all">View all news &rarr;</a>
           </div>
           <div class="news-layout">
             <article class="news-lead reveal">
               <div class="news-thumb">
-                <img src="sscrs-seal.png" width="116" height="116" alt="" />
+                <svg viewBox="0 0 512 512" aria-hidden="true"><use href="#sscrs-seal" /></svg>
               </div>
               <div class="news-body">
-                <span class="news-tag">Annual Forum</span>
-                <h3>SSCRS Annual Forum 2026 — registration now open</h3>
-                <p>Join us in Riyadh for the Kingdom's premier colorectal surgery gathering, featuring keynote lectures, live surgery demonstrations, and professional workshops.</p>
+                <span class="news-tag" data-i18n="news.1.tag">Annual Forum</span>
+                <h3 data-i18n="news.1.h">SSCRS Annual Forum 2026 — registration now open</h3>
+                <p data-i18n="news.1.p">Join us in Riyadh for the Kingdom's premier colorectal surgery gathering, featuring keynote lectures, live surgery demonstrations, and professional workshops.</p>
                 <div class="news-foot">
-                  <time datetime="2026-04-15">15 April 2026</time>
-                  <a href="#" class="read-link">Read more &rarr;</a>
+                  <time datetime="2026-04-15" data-i18n="news.1.d">15 April 2026</time>
+                  <a href="#" class="read-link" data-i18n="cta.readMore">Read more &rarr;</a>
                 </div>
               </div>
             </article>
             <div class="news-list reveal">
               <a href="#" class="news-item">
-                <time datetime="2026-03-28">28 March 2026 &middot; Research</time>
-                <h3>New colorectal cancer screening guidelines published</h3>
-                <p>SSCRS releases updated national guidelines in partnership with the Saudi Ministry of Health.</p>
+                <time datetime="2026-03-28" data-i18n="news.2.d">28 March 2026 &middot; Research</time>
+                <h3 data-i18n="news.2.h">New colorectal cancer screening guidelines published</h3>
+                <p data-i18n="news.2.p">SSCRS releases updated national guidelines in partnership with the Saudi Ministry of Health.</p>
               </a>
               <a href="#" class="news-item">
-                <time datetime="2026-03-10">10 March 2026 &middot; Training</time>
-                <h3>Fellowship programme applications open for the 2026 cycle</h3>
-                <p>Applications are now open for the advanced laparoscopic fellowship programme.</p>
+                <time datetime="2026-03-10" data-i18n="news.3.d">10 March 2026 &middot; Training</time>
+                <h3 data-i18n="news.3.h">Fellowship programme applications open for the 2026 cycle</h3>
+                <p data-i18n="news.3.p">Applications are now open for the advanced laparoscopic fellowship programme.</p>
               </a>
               <a href="#" class="news-item">
-                <time datetime="2026-03-01">1 March 2026 &middot; Awareness</time>
-                <h3>Colorectal Cancer Awareness Month campaign launches</h3>
-                <p>SSCRS joins global efforts to raise public awareness throughout March 2026.</p>
+                <time datetime="2026-03-01" data-i18n="news.4.d">1 March 2026 &middot; Awareness</time>
+                <h3 data-i18n="news.4.h">Colorectal Cancer Awareness Month campaign launches</h3>
+                <p data-i18n="news.4.p">SSCRS joins global efforts to raise public awareness throughout March 2026.</p>
               </a>
             </div>
           </div>
@@ -420,34 +499,34 @@
       <section class="section" id="partners">
         <div class="page-wrap">
           <div class="section-head reveal">
-            <p class="eyebrow">Our Network</p>
-            <h2>Partners &amp; supporting companies</h2>
-            <p class="section-sub">We collaborate with leading healthcare institutions, government bodies, and industry partners to advance colorectal surgical care.</p>
+            <p class="eyebrow" data-i18n="part.eyebrow">Our Network</p>
+            <h2 data-i18n="part.h">Partners &amp; supporting companies</h2>
+            <p class="section-sub" data-i18n="part.sub">We collaborate with leading healthcare institutions, government bodies, and industry partners to advance colorectal surgical care.</p>
           </div>
           <div class="partners-band reveal">
-            <p class="partners-label">Strategic Partners</p>
+            <p class="partners-label" data-i18n="part.strategic">Strategic Partners</p>
             <div class="partners-row">
-              <div class="partner-tile">Ministry of Health</div>
-              <div class="partner-tile">Saudi Commission for Health Specialties</div>
-              <div class="partner-tile">King Faisal Specialist Hospital &amp; Research Centre</div>
+              <div class="partner-tile" data-i18n="part.moh">Ministry of Health</div>
+              <div class="partner-tile" data-i18n="part.scfhs">Saudi Commission for Health Specialties</div>
+              <div class="partner-tile" data-i18n="part.kfshrc">King Faisal Specialist Hospital &amp; Research Centre</div>
             </div>
           </div>
           <div class="partners-band reveal">
-            <p class="partners-label">Supporting Partners</p>
+            <p class="partners-label" data-i18n="part.supporting">Supporting Partners</p>
             <div class="partners-row partners-row-sm">
-              <div class="partner-tile partner-tile-sm">Partner</div>
-              <div class="partner-tile partner-tile-sm">Partner</div>
-              <div class="partner-tile partner-tile-sm">Partner</div>
-              <div class="partner-tile partner-tile-sm">Partner</div>
-              <div class="partner-tile partner-tile-sm">Partner</div>
+              <div class="partner-tile partner-tile-sm" data-i18n="part.placeholder">Partner</div>
+              <div class="partner-tile partner-tile-sm" data-i18n="part.placeholder">Partner</div>
+              <div class="partner-tile partner-tile-sm" data-i18n="part.placeholder">Partner</div>
+              <div class="partner-tile partner-tile-sm" data-i18n="part.placeholder">Partner</div>
+              <div class="partner-tile partner-tile-sm" data-i18n="part.placeholder">Partner</div>
             </div>
           </div>
           <div class="partners-cta reveal">
             <div class="partners-cta-text">
-              <h3>Interested in supporting SSCRS?</h3>
-              <p>Partner with us to advance colorectal health across the Kingdom.</p>
+              <h3 data-i18n="part.cta.h">Interested in supporting SSCRS?</h3>
+              <p data-i18n="part.cta.p">Partner with us to advance colorectal health across the Kingdom.</p>
             </div>
-            <a href="mailto:info@sscrs.org" class="btn btn-green">Become a Partner</a>
+            <a href="mailto:info@sscrs.org" class="btn btn-green" data-i18n="part.cta.btn">Become a Partner</a>
           </div>
         </div>
       </section>
@@ -458,49 +537,51 @@
     <footer class="site-footer" id="footer">
       <div class="page-wrap">
         <div class="footer-identity">
-          <img src="sscrs-seal.png" width="88" height="88"
-               alt="Seal of the Saudi Society of Colon &amp; Rectal Surgery" />
+          <svg viewBox="0 0 512 512" role="img"
+               aria-label="Seal of the Saudi Society of Colon and Rectal Surgery"
+               data-i18n-aria="a11y.seal"><use href="#sscrs-seal" /></svg>
           <span class="lockup-text">
             <span class="lockup-ar" lang="ar">الجمعية السعودية لجراحة القولون والمستقيم</span>
             <span class="lockup-en">Saudi Society of Colon &amp; Rectal Surgery</span>
-            <span class="lockup-est">Established 2009 &middot; 1430H</span>
+            <span class="lockup-est" data-i18n="brand.est">Established 2009 &middot; 1430H</span>
           </span>
         </div>
         <div class="footer-cols">
           <div class="footer-about">
-            <p>Advancing colorectal surgical excellence across the Kingdom of Saudi Arabia since 2009. Riyadh, Kingdom of Saudi Arabia.</p>
+            <p data-i18n="footer.about">Advancing colorectal surgical excellence across the Kingdom of Saudi Arabia since 2009. Riyadh, Kingdom of Saudi Arabia.</p>
           </div>
           <div class="footer-col">
-            <h5>Society</h5>
-            <a href="#about">About Us</a>
-            <a href="#numbers">The Society in Numbers</a>
-            <a href="#vision">Vision &amp; Mission</a>
-            <a href="#board">Board Members</a>
+            <h5 data-i18n="footer.society">Society</h5>
+            <a href="#about" data-i18n="footer.aboutUs">About Us</a>
+            <a href="#numbers" data-i18n="num.eyebrow">The Society in Numbers</a>
+            <a href="#vision" data-i18n="nav.vision">Vision &amp; Mission</a>
+            <a href="#board" data-i18n="board.h">Board Members</a>
           </div>
           <div class="footer-col">
-            <h5>Membership</h5>
-            <a href="#membership">Active Members</a>
-            <a href="#membership">Associate Members</a>
-            <a href="#membership">Supporting Members</a>
-            <a href="#membership">Honorary Members</a>
+            <h5 data-i18n="nav.membership">Membership</h5>
+            <a href="#membership" data-i18n="footer.mem1">Active Members</a>
+            <a href="#membership" data-i18n="footer.mem2">Associate Members</a>
+            <a href="#membership" data-i18n="footer.mem3">Supporting Members</a>
+            <a href="#membership" data-i18n="footer.mem4">Honorary Members</a>
           </div>
           <div class="footer-col">
-            <h5>Connect</h5>
+            <h5 data-i18n="footer.connect">Connect</h5>
             <a href="mailto:info@sscrs.org">info@sscrs.org</a>
-            <a href="#news">News &amp; Announcements</a>
-            <a href="#partners">Partners</a>
+            <a href="#news" data-i18n="news.h">News &amp; Announcements</a>
+            <a href="#partners" data-i18n="nav.partners">Partners</a>
           </div>
         </div>
         <div class="footer-bottom">
-          <p>&copy; 2026 Saudi Society of Colon &amp; Rectal Surgery. All rights reserved.</p>
+          <p data-i18n="footer.copy">&copy; 2026 Saudi Society of Colon &amp; Rectal Surgery. All rights reserved.</p>
           <div class="footer-legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
+            <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="#" data-i18n="footer.terms">Terms of Use</a>
           </div>
         </div>
       </div>
     </footer>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

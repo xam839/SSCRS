@@ -21,13 +21,34 @@ Principles the stylesheet holds to:
 - **The seal leads.** It appears at seven sizes across the page: the header lockup (70px),
   the hero (168px), the about plate (148px), the footer (88px), a compact mark in the sticky
   nav bar, and as a low-opacity watermark behind the hero and the statistics band.
-- **Bilingual identity.** The Arabic society name sits above the English one in the header,
-  hero, about plate, and footer, set in Noto Kufi Arabic. Dual dating (2009 / 1430H) is shown
-  throughout.
+- **Brand-tinted neutrals.** No surface is pure grey. Every "white" section carries a wash
+  drawn from the two logo colours — `--tint-navy` and `--tint-green` — kept very pale so the
+  colour registers as warmth rather than decoration. Section rules, avatars, hover states and
+  the hero gradient all draw from the same two hues.
 - **Hairlines, not shadows.** Sections are separated by 1px rules and grid dividers.
   Border radius never exceeds 3px. There is one box-shadow in the entire stylesheet.
 - **Restrained motion.** A single 450ms fade-up on scroll, and nothing at all under
   `prefers-reduced-motion`.
+
+## Languages / اللغات
+
+The page ships bilingual. English is written into `index.html` and is what loads by default;
+Arabic lives in `translations.js` and is applied on demand.
+
+- The **العربية / English** switch sits in the utility bar (and in the mobile menu).
+- Choosing Arabic sets `lang="ar" dir="rtl"` on `<html>`. The **entire layout mirrors** —
+  navigation, grids, list bullets, borders and the mobile menu all flip, because the
+  stylesheet is written with CSS logical properties (`padding-inline-start`,
+  `border-inline-end`, `inset-inline`) rather than left/right.
+- Arabic sets Noto Kufi Arabic throughout, drops the uppercase and letter-spacing treatments
+  that do not apply to Arabic script, and uses Arabic-Indic numerals (٢٠٠٩، ٥٠٠+).
+- The choice is remembered in `localStorage`, and `?lang=ar` forces it. It is applied by a
+  small inline script in `<head>` so the language never flashes on load.
+- The page title and meta description swap with the language.
+
+> **The Arabic copy needs the society's sign-off.** It was drafted for this redesign, not
+> supplied by the client. Every string is in `translations.js` and can be edited in place —
+> no other file needs to change. Board member names are placeholders in both languages.
 
 ## Sections
 
@@ -51,25 +72,38 @@ Principles the stylesheet holds to:
 
 - **HTML5** — semantic markup, Open Graph tags, skip link
 - **CSS3** — custom properties, Grid, Flexbox, three breakpoints (1100 / 860 / 620)
-- **Vanilla JS** — sticky nav, mobile nav, IntersectionObserver reveals
+- **Vanilla JS** — language switching, sticky nav, mobile nav, IntersectionObserver reveals
 - **Fonts** — Inter and Noto Kufi Arabic, loaded from Google Fonts. This is the only
   external request; everything else is served from the repository. If you need the site
   to be fully self-contained, drop the `<link>` tags in `index.html` and the
   `--sans` / `--arabic` stacks fall back to system fonts.
 
-## Assets
+## The Seal
+
+The seal is drawn as an **inline SVG symbol**, defined once at the top of `index.html` and
+referenced with `<use>` everywhere it appears.
+
+- The ring, its rules, the curved Arabic and English lettering and the two dates are **true
+  vector**, so they stay sharp at every size — this is what was visibly soft before.
+- The emblem in the middle — the colon, palm and swords — is the artwork from the supplied
+  file, extracted and clipped into the inner circle (`seal-core.png`). It is the one raster
+  part left.
+- It is inline rather than an external `.svg` because an SVG loaded through `<img>` or CSS
+  cannot use the page's webfonts, and the ring lettering needs them.
 
 | File | Purpose |
 |---|---|
 | `Layer-0.png` | Original seal supplied by the client, 185×186 |
-| `sscrs-seal.png` | 512×512 upscale used everywhere on the page |
+| `seal-core.png` | Inner emblem extracted from it, used inside the vector ring |
+| `sscrs-seal.png` | Flat raster seal — favicon source, social preview, and the two watermarks |
 | `favicon.png` | 180×180 browser and touch icon |
 
-> **The seal needs a vector original.** `sscrs-seal.png` is a Lanczos upscale of a 185px
-> source, so it cannot gain detail that was never there. At the sizes used it is acceptable,
-> but the fine Arabic lettering on the ring will not be perfectly crisp until an SVG, EPS,
-> or high-resolution PNG of the emblem is supplied. Regenerate the derived assets from a
-> better source and the whole page sharpens with no code changes.
+> **Two things worth knowing.** First, the ring lettering is now set in Noto Kufi Arabic and
+> Inter rather than the original seal's typefaces, so it reads as a cleaned-up version of the
+> mark rather than a pixel-exact reproduction — if the society's brand office needs the exact
+> original, point the seven `<use href="#sscrs-seal">` references at `sscrs-seal.png` instead
+> and the page reverts. Second, the inner emblem still comes from a 185px source; supplying a
+> vector or high-resolution original of the artwork is the last step to a fully crisp seal.
 
 ## Run Locally
 
@@ -96,20 +130,23 @@ Then open `http://localhost:8000`.
 
 ```
 .
-├── index.html      # Single-page site
-├── styles.css      # Design system and all layout
-├── script.js       # Sticky nav, mobile nav, scroll reveal
-├── 404.html        # Custom not-found page
-├── sscrs-seal.png  # Seal used across the page
-├── favicon.png     # Browser icon
-└── Layer-0.png     # Original seal source
+├── index.html       # Single-page site, incl. the inline SVG seal
+├── styles.css       # Design system, tints, RTL-ready layout
+├── translations.js  # All Arabic copy — the only file a translator needs
+├── script.js        # Language switch, sticky nav, mobile nav, reveal
+├── 404.html         # Custom not-found page (bilingual)
+├── seal-core.png    # Inner emblem, used inside the vector ring
+├── sscrs-seal.png   # Flat raster seal — favicon, social, watermarks
+├── favicon.png      # Browser icon
+└── Layer-0.png      # Original seal source
 ```
 
 ## Outstanding Content
 
 The following still carry placeholder copy and need real content before launch:
 
-- Board member names (currently `Dr. [President]`, `Dr. [Vice President]`, and so on)
+- Board member names (currently `Dr. [President]`, `Dr. [Vice President]`, and so on, in both languages)
+- Sign-off on the drafted Arabic copy in `translations.js`
 - News article links and the "View all news" destination
 - Supporting partner names and logos
 - Privacy Policy and Terms of Use pages
