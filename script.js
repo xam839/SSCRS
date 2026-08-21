@@ -77,11 +77,14 @@
       });
     });
 
-    /* --- Sticky nav shadow ---------------------------------- */
-    var navRow = document.querySelector("[data-nav-row]");
-    if (navRow) {
+    /* --- Header elevation once the page scrolls -------------
+       The header is sticky from the very top, so this keys off
+       scroll position rather than the element's own offset.
+       -------------------------------------------------------- */
+    var header = document.querySelector("[data-header]");
+    if (header) {
       var syncStuck = function () {
-        navRow.classList.toggle("is-stuck", navRow.getBoundingClientRect().top <= 0);
+        header.classList.toggle("is-stuck", window.scrollY > 8);
       };
       window.addEventListener("scroll", syncStuck, { passive: true });
       syncStuck();

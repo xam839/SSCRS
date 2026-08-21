@@ -19,7 +19,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
 
     <script>
@@ -84,37 +84,23 @@
               <textPath href="#sealArcTop" startOffset="50%" text-anchor="middle"
                 >الجمعية السعودية لجراحة القولون والمستقيم</textPath>
             </text>
-            <text font-family="Inter, Helvetica, Arial, sans-serif"
+            <text font-family="Plus Jakarta Sans, Helvetica, Arial, sans-serif"
                   font-size="20.5" letter-spacing="0.6">
               <textPath href="#sealArcBottom" startOffset="50%" text-anchor="middle"
                 >SAUDI SOCIETY OF COLON &amp; RECTAL SURGERY</textPath>
             </text>
             <text x="52" y="266" text-anchor="middle"
-                  font-family="Inter, Helvetica, Arial, sans-serif" font-size="26">2009</text>
+                  font-family="Plus Jakarta Sans, Helvetica, Arial, sans-serif" font-size="26">2009</text>
             <text x="460" y="266" text-anchor="middle"
-                  font-family="Inter, Helvetica, Arial, sans-serif" font-size="26">1430</text>
+                  font-family="Plus Jakarta Sans, Helvetica, Arial, sans-serif" font-size="26">1430</text>
           </g>
         </symbol>
       </defs>
     </svg>
 
-    <!-- UTILITY BAR -->
-    <div class="utility-bar">
-      <div class="page-wrap utility-inner">
-        <span class="utility-tagline" data-i18n="utility.tagline">Advancing colorectal surgical excellence across the Kingdom</span>
-        <div class="utility-links">
-          <a href="mailto:info@sscrs.org">info@sscrs.org</a>
-          <a href="#membership" data-i18n="utility.login">Member Login</a>
-          <button class="lang-switch" type="button" data-lang-toggle>
-            <span data-lang-label>العربية</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- IDENTITY BAR — the seal lockup -->
-    <div class="identity-bar">
-      <div class="page-wrap identity-inner">
+    <!-- HEADER — single sticky row -->
+    <header class="site-header" data-header>
+      <div class="page-wrap header-inner">
         <a class="lockup" href="#top" aria-label="SSCRS" data-i18n-aria="a11y.home">
           <svg class="lockup-seal" viewBox="0 0 512 512" aria-hidden="true"><use href="#sscrs-seal" /></svg>
           <span class="lockup-text">
@@ -123,23 +109,7 @@
             <span class="lockup-est" data-i18n="brand.est">Established 2009 &middot; 1430H</span>
           </span>
         </a>
-        <div class="identity-actions">
-          <span class="forum-flag">
-            <span data-i18n="forum.label">Annual Forum</span>
-            <span data-i18n="forum.when">Riyadh &middot; April 2026</span>
-          </span>
-          <a class="btn btn-primary" href="#membership" data-i18n="cta.join">Join the Society</a>
-        </div>
-      </div>
-    </div>
 
-    <!-- NAVIGATION -->
-    <div class="nav-row" data-nav-row>
-      <div class="page-wrap nav-inner">
-        <a class="nav-mini" href="#top" aria-label="SSCRS" data-i18n-aria="a11y.home">
-          <svg viewBox="0 0 512 512" aria-hidden="true"><use href="#sscrs-seal" /></svg>
-          <strong>SSCRS</strong>
-        </a>
         <nav class="nav-shell" aria-label="Primary">
           <a href="#about" data-i18n="nav.about">About</a>
           <a href="#numbers" data-i18n="nav.society">The Society</a>
@@ -149,13 +119,20 @@
           <a href="#news" data-i18n="nav.news">News</a>
           <a href="#partners" data-i18n="nav.partners">Partners</a>
         </nav>
-        <button class="menu-toggle" type="button" data-menu-toggle
-                aria-label="Open navigation" data-i18n-aria="a11y.openNav"
-                aria-expanded="false" aria-controls="mobile-nav">
-          <span></span><span></span><span></span>
-        </button>
+
+        <div class="header-actions">
+          <button class="lang-switch" type="button" data-lang-toggle>
+            <span data-lang-label>العربية</span>
+          </button>
+          <a class="btn btn-primary" href="#membership" data-i18n="cta.join">Join the Society</a>
+          <button class="menu-toggle" type="button" data-menu-toggle
+                  aria-label="Open navigation" data-i18n-aria="a11y.openNav"
+                  aria-expanded="false" aria-controls="mobile-nav">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
-    </div>
+    </header>
 
     <!-- MOBILE NAVIGATION -->
     <div class="mobile-nav" id="mobile-nav" data-mobile-nav aria-hidden="true">
@@ -229,7 +206,7 @@
       </div>
 
       <!-- ABOUT -->
-      <section class="section section-line" id="about">
+      <section class="section" id="about">
         <div class="page-wrap about-grid">
           <div class="about-plate reveal">
             <svg viewBox="0 0 512 512" role="img"
@@ -237,7 +214,6 @@
                  data-i18n-aria="a11y.seal"><use href="#sscrs-seal" /></svg>
             <p class="plate-ar" lang="ar">الجمعية السعودية لجراحة القولون والمستقيم</p>
             <p class="plate-en">Saudi Society of<br />Colon &amp; Rectal Surgery</p>
-            <div class="plate-divider"></div>
             <div class="plate-years">
               <div><b data-i18n="plate.g.v">2009</b><span data-i18n="plate.g.l">Gregorian</span></div>
               <div><b data-i18n="plate.h.v">1430</b><span data-i18n="plate.h.l">Hijri</span></div>
@@ -261,11 +237,12 @@
       <!-- THE SOCIETY IN NUMBERS -->
       <section class="numbers-section" id="numbers">
         <div class="page-wrap">
-          <div class="section-head reveal">
-            <p class="eyebrow" data-i18n="num.eyebrow">The Society in Numbers</p>
+         <div class="numbers-panel reveal">
+          <div class="section-head">
+            <p class="eyebrow eyebrow-dark" data-i18n="num.eyebrow">The Society in Numbers</p>
             <h2 data-i18n="num.h">Measured impact, proven trust</h2>
           </div>
-          <div class="numbers-grid reveal">
+          <div class="numbers-grid">
             <div class="num-card">
               <div class="num-val" data-i18n="num.v1">2009</div>
               <div class="num-label" data-i18n="num.l1">Year Established</div>
@@ -291,11 +268,12 @@
               <div class="num-label" data-i18n="num.l6">Years of Service</div>
             </div>
           </div>
+         </div>
         </div>
       </section>
 
       <!-- VISION, MISSION & GOALS -->
-      <section class="section section-line section-green" id="vision">
+      <section class="section section-tint" id="vision">
         <div class="page-wrap">
           <div class="section-head reveal">
             <p class="eyebrow" data-i18n="vmg.eyebrow">Our Direction</p>
@@ -328,10 +306,10 @@
       </section>
 
       <!-- BOARD MEMBERS -->
-      <section class="section section-line section-navy" id="board">
+      <section class="section" id="board">
         <div class="page-wrap">
           <div class="section-head reveal">
-            <p class="eyebrow" data-i18n="board.eyebrow">Leadership</p>
+            <p class="eyebrow eyebrow-navy" data-i18n="board.eyebrow">Leadership</p>
             <h2 data-i18n="board.h">Board Members</h2>
             <p class="section-sub" data-i18n="board.sub">The society is guided by distinguished surgeons and healthcare leaders from across Saudi Arabia.</p>
           </div>
@@ -389,7 +367,7 @@
       </section>
 
       <!-- MEMBERSHIP -->
-      <section class="section section-line" id="membership">
+      <section class="section section-tint" id="membership">
         <div class="page-wrap">
           <div class="section-head reveal">
             <p class="eyebrow" data-i18n="mem.eyebrow">Join the Society</p>
@@ -450,11 +428,11 @@
       </section>
 
       <!-- NEWS -->
-      <section class="section section-line section-navy" id="news">
+      <section class="section" id="news">
         <div class="page-wrap">
           <div class="news-hdr reveal">
             <div class="section-head">
-              <p class="eyebrow" data-i18n="news.eyebrow">Latest Updates</p>
+              <p class="eyebrow eyebrow-navy" data-i18n="news.eyebrow">Latest Updates</p>
               <h2 data-i18n="news.h">News &amp; Announcements</h2>
             </div>
             <a href="#" class="view-all" data-i18n="news.all">View all news &rarr;</a>
@@ -496,7 +474,7 @@
       </section>
 
       <!-- PARTNERS -->
-      <section class="section" id="partners">
+      <section class="section section-green" id="partners">
         <div class="page-wrap">
           <div class="section-head reveal">
             <p class="eyebrow" data-i18n="part.eyebrow">Our Network</p>

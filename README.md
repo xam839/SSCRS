@@ -18,17 +18,21 @@ and the emblem read as one identity rather than two.
 
 Principles the stylesheet holds to:
 
-- **The seal leads.** It appears at seven sizes across the page: the header lockup (70px),
-  the hero (168px), the about plate (148px), the footer (88px), a compact mark in the sticky
-  nav bar, and as a low-opacity watermark behind the hero and the statistics band.
-- **Brand-tinted neutrals.** No surface is pure grey. Every "white" section carries a wash
-  drawn from the two logo colours — `--tint-navy` and `--tint-green` — kept very pale so the
-  colour registers as warmth rather than decoration. Section rules, avatars, hover states and
-  the hero gradient all draw from the same two hues.
-- **Hairlines, not shadows.** Sections are separated by 1px rules and grid dividers.
-  Border radius never exceeds 3px. There is one box-shadow in the entire stylesheet.
-- **Restrained motion.** A single 450ms fade-up on scroll, and nothing at all under
-  `prefers-reduced-motion`.
+- **The seal leads.** It appears at six sizes across the page: the header lockup (60px),
+  the hero (196px), the about plate (168px), the news lead (132px), the footer (100px), and
+  the mobile menu — plus a low-opacity watermark behind the hero and the statistics panel.
+- **Generous radii and soft elevation.** Cards sit at 24px, panels at 32px, and every button,
+  chip and tag is a pill. Depth comes from wide, very low-contrast shadows that deepen on
+  hover, not from borders doing all the work.
+- **Sentence case, never uppercase.** Section labels are pill chips, navigation is sentence
+  case at 14.5px. There is no letter-spaced micro-type anywhere.
+- **A confident type scale.** 17px body, section headings up to 2.85rem, the hero name at
+  3.5rem in weight 800, set in Plus Jakarta Sans.
+- **Brand-tinted neutrals.** No surface is pure grey. Every tinted section carries a wash
+  drawn from the two logo colours — `--tint-navy` and `--tint-green` — kept pale so the colour
+  registers as warmth rather than decoration.
+- **Restrained motion.** A single fade-and-rise on scroll plus small hover lifts, and nothing
+  at all under `prefers-reduced-motion`.
 
 ## Languages / اللغات
 
@@ -54,13 +58,11 @@ Arabic lives in `translations.js` and is applied on demand.
 
 | Section | Description |
 |---|---|
-| Utility bar | Arabic name, contact, member login, language switch |
-| Identity bar | Seal lockup with bilingual name, forum flag, join CTA |
-| Navigation | Sticky primary nav; compact seal appears once stuck |
+| Header | One sticky row — seal lockup, nav, language switch, join CTA |
 | Hero | Identity statement — seal, bilingual name, est. 2009 · 1430H |
-| At a glance | Four-column strip of current links |
+| At a glance | Four cards that lift over the hero edge |
 | About | Society history, seal plate, and four pillars |
-| The Society in Numbers | Statistics band with seal watermark |
+| The Society in Numbers | Statistics in a contained dark panel |
 | Vision / Mission / Goals | Three-column strategic direction |
 | Board Members | Eight-member leadership grid |
 | Membership | Four membership categories |
@@ -71,9 +73,9 @@ Arabic lives in `translations.js` and is applied on demand.
 ## Tech Stack
 
 - **HTML5** — semantic markup, Open Graph tags, skip link
-- **CSS3** — custom properties, Grid, Flexbox, three breakpoints (1100 / 860 / 620)
+- **CSS3** — custom properties, Grid, Flexbox, logical properties, four breakpoints (1240 / 1080 / 640)
 - **Vanilla JS** — language switching, sticky nav, mobile nav, IntersectionObserver reveals
-- **Fonts** — Inter and Noto Kufi Arabic, loaded from Google Fonts. This is the only
+- **Fonts** — Plus Jakarta Sans and Noto Kufi Arabic, loaded from Google Fonts. This is the only
   external request; everything else is served from the repository. If you need the site
   to be fully self-contained, drop the `<link>` tags in `index.html` and the
   `--sans` / `--arabic` stacks fall back to system fonts.
@@ -101,7 +103,7 @@ referenced with `<use>` everywhere it appears.
 > **Two things worth knowing.** First, the ring lettering is now set in Noto Kufi Arabic and
 > Inter rather than the original seal's typefaces, so it reads as a cleaned-up version of the
 > mark rather than a pixel-exact reproduction — if the society's brand office needs the exact
-> original, point the seven `<use href="#sscrs-seal">` references at `sscrs-seal.png` instead
+> original, point the six `<use href="#sscrs-seal">` references at `sscrs-seal.png` instead
 > and the page reverts. Second, the inner emblem still comes from a 185px source; supplying a
 > vector or high-resolution original of the artwork is the last step to a fully crisp seal.
 
