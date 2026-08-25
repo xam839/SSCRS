@@ -74,6 +74,7 @@
     document.querySelectorAll("[data-lang-toggle]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         applyLanguage(root.lang === "ar" ? "en" : "ar");
+        fitNav();
       });
     });
 
@@ -89,6 +90,45 @@
       window.addEventListener("scroll", syncStuck, { passive: true });
       syncStuck();
     }
+
+    /* --- Keep the nav from colliding with the lockup ---------
+       .nav-shell can shrink below its content width, and its links are
+       nowrap, so when the row is tight the links spill out of their box
+       and paint over the seal lockup. Measure what the nav actually
+       needs and fold it into the hamburger when it will not fit. Doing
+       this by measurement rather than a breakpoint keeps it correct in
+       both languages, whose label widths differ a lot.
+       -------------------------------------------------------- */
+    var headerInner = document.querySelector(".header-inner");
+    var lockup = document.querySelector(".site-header .lockup");
+    var navShell = document.querySelector(".site-header .nav-shell");
+    var headerActions = document.querySelector(".header-actions");
+    var wideEnough = window.matchMedia("(min-width: 1081px)");
+
+    function fitNav() {
+      if (!header || !headerInner || !lockup || !navShell || !headerActions) return;
+      // Below the CSS breakpoint the stylesheet already collapses the nav.
+      if (!wideEnough.matches) { header.classList.remove("nav-collapsed"); return; }
+
+      // Always measure from the expanded state, so the result cannot oscillate.
+      header.classList.remove("nav-collapsed");
+      var needed = 0;
+      for (var i = 0; i < navShell.children.length; i++) {
+        needed += navShell.children[i].offsetWidth;
+      }
+      var gap = parseFloat(getComputedStyle(headerInner).columnGap) || 0;
+      var available = headerInner.clientWidth - lockup.offsetWidth
+                    - headerActions.offsetWidth - gap * 2;
+      if (needed > available) header.classList.add("nav-collapsed");
+    }
+
+    var fitTimer;
+    window.addEventListener("resize", function () {
+      clearTimeout(fitTimer);
+      fitTimer = setTimeout(fitNav, 120);
+    });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNav);
+    fitNav();
 
     /* --- Mobile navigation ---------------------------------- */
     var menuToggle = document.querySelector("[data-menu-toggle]");

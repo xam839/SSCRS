@@ -152,13 +152,13 @@ button { font-family: inherit; }
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 18px; min-height: 88px; padding: 10px 0;
+  gap: 14px; min-height: 88px; padding: 10px 0;
 }
 
 /* The seal lockup — the anchor of the whole page */
-.lockup { display: flex; align-items: center; gap: 13px; flex: none; }
+.lockup { display: flex; align-items: center; gap: 12px; flex: none; }
 .lockup-seal { width: 60px; height: 60px; flex: none; }
-.lockup-text { display: flex; flex-direction: column; gap: 1px; max-width: 232px; }
+.lockup-text { display: flex; flex-direction: column; gap: 1px; max-width: 186px; }
 .lockup-ar {
   font-family: var(--arabic); direction: rtl; font-size: 12.5px; font-weight: 600;
   color: var(--navy); line-height: 1.4;
@@ -174,26 +174,34 @@ button { font-family: inherit; }
 .site-header .lockup-est { display: none; }
 html[lang="en"] .site-header .lockup-ar { display: none; }
 html[lang="ar"] .site-header .lockup-en { display: none; }
-.site-header .lockup-ar { font-size: 14.5px; }
-.site-header .lockup-en { font-size: 15.5px; }
+.site-header .lockup-ar { font-size: 13px; line-height: 1.45; }
+.site-header .lockup-en { font-size: 13.5px; line-height: 1.3; }
 
 /* Navigation — sentence case, pill hover, no uppercase tracking */
-.nav-shell { display: flex; align-items: center; gap: 2px; flex: 1 1 auto; justify-content: center; min-width: 0; }
+.nav-shell { display: flex; align-items: center; gap: 0; flex: 1 1 auto; justify-content: center; min-width: 0; }
 .nav-shell a {
-  padding: 10px 12px; border-radius: var(--r-pill); white-space: nowrap;
-  font-size: 14.5px; font-weight: 500; color: var(--body);
+  padding: 9px 10px; border-radius: var(--r-pill); white-space: nowrap;
+  font-size: 14px; font-weight: 500; color: var(--body);
   letter-spacing: -0.01em;
   transition: background-color .18s ease, color .18s ease;
 }
 .nav-shell a:hover { background: var(--tint-navy); color: var(--navy); }
 
-.header-actions { display: flex; align-items: center; gap: 10px; flex: none; }
-.header-actions .btn { padding: 13px 22px; font-size: 15px; white-space: nowrap; }
+/* Set by script.js when the nav's natural width exceeds the space left
+   between the lockup and the actions. Without it the nav box shrinks
+   below its content and the nowrap links paint over the lockup. */
+.site-header.nav-collapsed .nav-shell,
+.site-header.nav-collapsed .lang-switch,
+.site-header.nav-collapsed .header-actions .btn { display: none; }
+.site-header.nav-collapsed .menu-toggle { display: flex; }
+
+.header-actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.header-actions .btn { padding: 12px 18px; font-size: 14.5px; white-space: nowrap; }
 .lang-switch {
   display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
-  padding: 10px 16px; border-radius: var(--r-pill);
+  padding: 9px 13px; border-radius: var(--r-pill);
   background: var(--tint-navy); border: 1px solid transparent;
-  color: var(--navy); font-size: 14.5px; font-weight: 600; cursor: pointer;
+  color: var(--navy); font-size: 13.5px; font-weight: 600; cursor: pointer;
   transition: background-color .18s ease, border-color .18s ease;
 }
 .lang-switch::before {
@@ -253,16 +261,20 @@ html[lang="ar"] .site-header .lockup-en { display: none; }
 .hero {
   position: relative; overflow: hidden; text-align: center;
   padding: 96px 0 104px;
+  /* Each wash fades to an rgba() of its own colour, not `transparent`.
+     `transparent` is rgba(0,0,0,0), so fading to it interpolates through
+     transparent black and greys the colour out on the way. */
   background:
-    radial-gradient(ellipse 70% 55% at 50% 0%, var(--wash-navy) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 12% 88%, var(--wash-green) 0%, transparent 70%),
-    var(--paper);
+    radial-gradient(ellipse 80% 64% at 50% -8%, #D4E4F7 0%, rgba(212,228,247,0) 72%),
+    radial-gradient(ellipse 48% 44% at 6% 94%,  #D5EDCA 0%, rgba(213,237,202,0) 70%),
+    radial-gradient(ellipse 44% 40% at 96% 82%, #DCEAFA 0%, rgba(220,234,250,0) 70%),
+    linear-gradient(180deg, #F7FBFF 0%, #FFFFFF 100%);
 }
 .hero::before {
   content: ""; position: absolute; top: 46%; left: 50%;
   width: 860px; height: 860px; transform: translate(-50%, -50%);
   background: url("sscrs-seal.png") center/contain no-repeat;
-  opacity: 0.04; pointer-events: none;
+  opacity: 0.11; pointer-events: none;
 }
 .hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
 
@@ -608,8 +620,8 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1240px) {
-  .nav-shell a { padding: 9px 9px; font-size: 14px; }
-  .lockup-text { max-width: 190px; }
+  .nav-shell a { padding: 8px 8px; font-size: 13.5px; }
+  .lockup-text { max-width: 160px; }
 }
 
 @media (max-width: 1080px) {
