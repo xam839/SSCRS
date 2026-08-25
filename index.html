@@ -112,11 +112,12 @@
 
         <nav class="nav-shell" aria-label="Primary">
           <a href="#about" data-i18n="nav.about">About</a>
-          <a href="#numbers" data-i18n="nav.society">The Society</a>
-          <a href="#vision" data-i18n="nav.vision">Vision &amp; Mission</a>
+          <a href="#numbers" data-i18n="nav.society">Numbers</a>
+          <a href="#vision" data-i18n="nav.vision">Vision</a>
           <a href="#board" data-i18n="nav.board">Board</a>
           <a href="#membership" data-i18n="nav.membership">Membership</a>
           <a href="#news" data-i18n="nav.news">News</a>
+          <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
           <a href="#partners" data-i18n="nav.partners">Partners</a>
         </nav>
 
@@ -143,11 +144,12 @@
       </div>
       <nav aria-label="Mobile">
         <a href="#about" data-nav-link data-i18n="nav.about">About</a>
-        <a href="#numbers" data-nav-link data-i18n="nav.society">The Society</a>
-        <a href="#vision" data-nav-link data-i18n="nav.vision">Vision &amp; Mission</a>
+        <a href="#numbers" data-nav-link data-i18n="nav.society">Numbers</a>
+        <a href="#vision" data-nav-link data-i18n="nav.vision">Vision</a>
         <a href="#board" data-nav-link data-i18n="nav.board">Board</a>
         <a href="#membership" data-nav-link data-i18n="nav.membership">Membership</a>
         <a href="#news" data-nav-link data-i18n="nav.news">News</a>
+        <a href="#gallery" data-nav-link data-i18n="nav.gallery">Gallery</a>
         <a href="#partners" data-nav-link data-i18n="nav.partners">Partners</a>
         <a href="#membership" class="mobile-join-btn" data-nav-link data-i18n="cta.join">Join the Society</a>
         <button class="mobile-lang" type="button" data-lang-toggle>
@@ -473,6 +475,127 @@
         </div>
       </section>
 
+      <!-- GALLERY -->
+      <section class="section section-tint" id="gallery">
+        <div class="page-wrap">
+          <div class="section-head reveal">
+            <p class="eyebrow eyebrow-navy" data-i18n="gal.eyebrow">Media</p>
+            <h2 data-i18n="gal.h">Moments from the Society</h2>
+            <p class="section-sub" data-i18n="gal.sub">Scenes from our annual forum, training workshops, and public awareness work across the Kingdom.</p>
+          </div>
+
+          <div class="gal-filters reveal" role="group" aria-label="Filter gallery" data-i18n-aria="a11y.galFilter">
+            <button class="gal-filter is-active" type="button" data-filter="all" data-i18n="gal.f.all">All</button>
+            <button class="gal-filter" type="button" data-filter="forum" data-i18n="gal.f.forum">Annual Forum</button>
+            <button class="gal-filter" type="button" data-filter="workshop" data-i18n="gal.f.workshop">Workshops</button>
+            <button class="gal-filter" type="button" data-filter="awareness" data-i18n="gal.f.awareness">Awareness</button>
+          </div>
+
+          <div class="gal-grid reveal" data-gallery>
+          <figure class="gal-item gal-wide" data-category="forum">
+            <button class="gal-open" type="button" data-gal-open="0"
+                    aria-label="Open image" data-i18n-aria="a11y.openImage">
+              <img src="gallery/forum-01.jpg" alt="" width="1000" height="667" loading="lazy" decoding="async" />
+              <span class="gal-veil" aria-hidden="true"></span>
+            </button>
+            <figcaption>
+              <span class="gal-cat" data-i18n="gal.f.forum">Annual Forum</span>
+              <span class="gal-cap" data-i18n="gal.c1">Opening session of the Annual Forum, Riyadh</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item gal-tall" data-category="forum">
+            <button class="gal-open" type="button" data-gal-open="1"
+                    aria-label="Open image" data-i18n-aria="a11y.openImage">
+              <img src="gallery/forum-02.jpg" alt="" width="760" height="1010" loading="lazy" decoding="async" />
+              <span class="gal-veil" aria-hidden="true"></span>
+            </button>
+            <figcaption>
+              <span class="gal-cat" data-i18n="gal.f.forum">Annual Forum</span>
+              <span class="gal-cap" data-i18n="gal.c2">Keynote lecture at the Annual Forum</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item" data-category="workshop">
+            <button class="gal-open" type="button" data-gal-open="2"
+                    aria-label="Open image" data-i18n-aria="a11y.openImage">
+              <img src="gallery/workshop-01.jpg" alt="" width="860" height="860" loading="lazy" decoding="async" />
+              <span class="gal-veil" aria-hidden="true"></span>
+            </button>
+            <figcaption>
+              <span class="gal-cat" data-i18n="gal.f.workshop">Workshops</span>
+              <span class="gal-cap" data-i18n="gal.c3">Laparoscopic skills workshop</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item gal-wide" data-category="awareness">
+            <button class="gal-open" type="button" data-gal-open="3"
+                    aria-label="Open image" data-i18n-aria="a11y.openImage">
+              <img src="gallery/awareness-01.jpg" alt="" width="1000" height="667" loading="lazy" decoding="async" />
+              <span class="gal-veil" aria-hidden="true"></span>
+            </button>
+            <figcaption>
+              <span class="gal-cat" data-i18n="gal.f.awareness">Awareness</span>
+              <span class="gal-cap" data-i18n="gal.c4">Colorectal Cancer Awareness Month campaign</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item" data-category="workshop">
+            <button class="gal-open" type="button" data-gal-open="4"
+                    aria-label="Open image" data-i18n-aria="a11y.openImage">
+              <img src="gallery/workshop-02.jpg" alt="" width="1000" height="667" loading="lazy" decoding="async" />
+              <span class="gal-veil" aria-hidden="true"></span>
+            </button>
+            <figcaption>
+              <span class="gal-cat" data-i18n="gal.f.workshop">Workshops</span>
+              <span class="gal-cap" data-i18n="gal.c5">Hands-on training for surgical trainees</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item" data-category="awareness">
+            <button class="gal-open" type="button" data-gal-open="5"
+                    aria-label="Open image" data-i18n-aria="a11y.openImage">
+              <img src="gallery/awareness-02.jpg" alt="" width="860" height="860" loading="lazy" decoding="async" />
+              <span class="gal-veil" aria-hidden="true"></span>
+            </button>
+            <figcaption>
+              <span class="gal-cat" data-i18n="gal.f.awareness">Awareness</span>
+              <span class="gal-cap" data-i18n="gal.c6">Public screening awareness stand</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item" data-category="forum">
+            <button class="gal-open" type="button" data-gal-open="6"
+                    aria-label="Open image" data-i18n-aria="a11y.openImage">
+              <img src="gallery/forum-03.jpg" alt="" width="1000" height="667" loading="lazy" decoding="async" />
+              <span class="gal-veil" aria-hidden="true"></span>
+            </button>
+            <figcaption>
+              <span class="gal-cat" data-i18n="gal.f.forum">Annual Forum</span>
+              <span class="gal-cap" data-i18n="gal.c7">Panel discussion on national guidelines</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item gal-tall" data-category="workshop">
+            <button class="gal-open" type="button" data-gal-open="7"
+                    aria-label="Open image" data-i18n-aria="a11y.openImage">
+              <img src="gallery/workshop-03.jpg" alt="" width="760" height="1010" loading="lazy" decoding="async" />
+              <span class="gal-veil" aria-hidden="true"></span>
+            </button>
+            <figcaption>
+              <span class="gal-cat" data-i18n="gal.f.workshop">Workshops</span>
+              <span class="gal-cap" data-i18n="gal.c8">Fellowship programme session</span>
+            </figcaption>
+          </figure>
+          <figure class="gal-item gal-wide" data-category="awareness">
+            <button class="gal-open" type="button" data-gal-open="8"
+                    aria-label="Open image" data-i18n-aria="a11y.openImage">
+              <img src="gallery/awareness-03.jpg" alt="" width="1000" height="667" loading="lazy" decoding="async" />
+              <span class="gal-veil" aria-hidden="true"></span>
+            </button>
+            <figcaption>
+              <span class="gal-cat" data-i18n="gal.f.awareness">Awareness</span>
+              <span class="gal-cap" data-i18n="gal.c9">Community outreach across the Kingdom</span>
+            </figcaption>
+          </figure>
+          </div>
+          <p class="gal-empty" data-gal-empty hidden data-i18n="gal.empty">No images in this category yet.</p>
+        </div>
+      </section>
+
       <!-- PARTNERS -->
       <section class="section section-green" id="partners">
         <div class="page-wrap">
@@ -532,7 +655,7 @@
             <h5 data-i18n="footer.society">Society</h5>
             <a href="#about" data-i18n="footer.aboutUs">About Us</a>
             <a href="#numbers" data-i18n="num.eyebrow">The Society in Numbers</a>
-            <a href="#vision" data-i18n="nav.vision">Vision &amp; Mission</a>
+            <a href="#vision" data-i18n="nav.vision">Vision</a>
             <a href="#board" data-i18n="board.h">Board Members</a>
           </div>
           <div class="footer-col">
@@ -558,6 +681,25 @@
         </div>
       </div>
     </footer>
+
+    <!-- GALLERY LIGHTBOX -->
+    <div class="lightbox" data-lightbox role="dialog" aria-modal="true"
+         aria-label="Image viewer" data-i18n-aria="a11y.viewer" hidden>
+      <button class="lb-btn lb-close" type="button" data-lb-close
+              aria-label="Close" data-i18n-aria="a11y.closeViewer">&times;</button>
+      <button class="lb-btn lb-prev" type="button" data-lb-prev
+              aria-label="Previous image" data-i18n-aria="a11y.prevImage"></button>
+      <button class="lb-btn lb-next" type="button" data-lb-next
+              aria-label="Next image" data-i18n-aria="a11y.nextImage"></button>
+      <figure class="lb-stage">
+        <img data-lb-img alt="" />
+        <figcaption class="lb-meta">
+          <span class="lb-cat" data-lb-cat></span>
+          <span class="lb-cap" data-lb-cap></span>
+          <span class="lb-count"><b data-lb-i></b> / <b data-lb-n></b></span>
+        </figcaption>
+      </figure>
+    </div>
 
     <script src="translations.js"></script>
     <script src="script.js"></script>

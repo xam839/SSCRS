@@ -163,6 +163,146 @@
       });
     }
 
+    /* --- Gallery: filtering + lightbox carousel --------------
+       The lightbox navigates the *currently visible* set, so
+       arrowing through a filtered view stays inside that filter.
+       -------------------------------------------------------- */
+    var galGrid = document.querySelector("[data-gallery]");
+    if (galGrid) {
+      var galItems = Array.prototype.slice.call(galGrid.querySelectorAll(".gal-item"));
+      var galEmpty = document.querySelector("[data-gal-empty]");
+      var lb = document.querySelector("[data-lightbox]");
+      var lbImg = lb && lb.querySelector("[data-lb-img]");
+      var lbCat = lb && lb.querySelector("[data-lb-cat]");
+      var lbCap = lb && lb.querySelector("[data-lb-cap]");
+      var lbI = lb && lb.querySelector("[data-lb-i]");
+      var lbN = lb && lb.querySelector("[data-lb-n]");
+      var visible = galItems.slice();
+      var current = 0;
+      var lastFocus = null;
+      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* Filtering ------------------------------------------- */
+      function applyFilter(cat) {
+        visible = [];
+        galItems.forEach(function (item) {
+          var match = cat === "all" || item.getAttribute("data-category") === cat;
+          if (match) {
+            visible.push(item);
+            item.classList.remove("is-gone");
+            void item.offsetWidth;         // flush layout so the fade-in runs
+            item.classList.remove("is-filtered");
+          } else {
+            item.classList.add("is-filtered");
+            if (reduce) item.classList.add("is-gone");
+            else setTimeout(function () {
+              if (item.classList.contains("is-filtered")) item.classList.add("is-gone");
+            }, 380);
+          }
+        });
+        if (galEmpty) galEmpty.hidden = visible.length > 0;
+      }
+
+      document.querySelectorAll(".gal-filter").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll(".gal-filter").forEach(function (b) {
+            b.classList.toggle("is-active", b === btn);
+          });
+          applyFilter(btn.getAttribute("data-filter"));
+        });
+      });
+
+      /* Lightbox -------------------------------------------- */
+      function render() {
+        if (!visible.length) return;
+        var item = visible[current];
+        var img = item.querySelector("img");
+        var cat = item.querySelector(".gal-cat");
+        var cap = item.querySelector(".gal-cap");
+        var swap = function () {
+          lbImg.src = img.getAttribute("src");
+          // Caption is read from the DOM each time, so it always
+          // reflects the language currently selected.
+          lbCat.textContent = cat ? cat.textContent : "";
+          lbCap.textContent = cap ? cap.textContent : "";
+          lbImg.alt = cap ? cap.textContent : "";
+          lbI.textContent = current + 1;
+          lbN.textContent = visible.length;
+          lb.classList.remove("is-swapping");
+        };
+        if (reduce) { swap(); } else { lb.classList.add("is-swapping"); setTimeout(swap, 160); }
+        // preload the neighbours so arrowing feels instant
+        [current - 1, current + 1].forEach(function (n) {
+          var neighbour = visible[(n + visible.length) % visible.length];
+          if (neighbour) { var pre = new Image(); pre.src = neighbour.querySelector("img").src; }
+        });
+      }
+
+      function openLb(item) {
+        var idx = visible.indexOf(item);
+        if (idx === -1) return;
+        current = idx;
+        lastFocus = document.activeElement;
+        lb.hidden = false;
+        void lb.offsetWidth;               // flush layout so the fade runs
+        lb.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+        render();
+        var close = lb.querySelector("[data-lb-close]");
+        if (close) close.focus();
+      }
+      function closeLb() {
+        lb.classList.remove("is-open");
+        setTimeout(function () { lb.hidden = true; }, reduce ? 0 : 260);
+        document.body.style.overflow = "";
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      function step(delta) {
+        if (!visible.length) return;
+        current = (current + delta + visible.length) % visible.length;
+        render();
+      }
+
+      galItems.forEach(function (item) {
+        var trigger = item.querySelector("[data-gal-open]");
+        if (trigger) trigger.addEventListener("click", function () { openLb(item); });
+      });
+
+      if (lb) {
+        lb.querySelector("[data-lb-close]").addEventListener("click", closeLb);
+        lb.querySelector("[data-lb-prev]").addEventListener("click", function () { step(-1); });
+        lb.querySelector("[data-lb-next]").addEventListener("click", function () { step(1); });
+        // click the backdrop (but not the image or controls) to dismiss
+        lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
+
+        document.addEventListener("keydown", function (e) {
+          if (lb.hidden) return;
+          if (e.key === "Escape") { closeLb(); }
+          else if (e.key === "ArrowRight") { step(root.dir === "rtl" ? -1 : 1); }
+          else if (e.key === "ArrowLeft") { step(root.dir === "rtl" ? 1 : -1); }
+          else if (e.key === "Tab") {
+            // keep focus inside the dialog
+            var f = lb.querySelectorAll("button");
+            var first = f[0], last = f[f.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+          }
+        });
+
+        // swipe
+        var x0 = null;
+        lb.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+        lb.addEventListener("touchend", function (e) {
+          if (x0 === null) return;
+          var dx = e.changedTouches[0].clientX - x0;
+          if (Math.abs(dx) > 45) step(dx < 0 ? 1 : -1);
+          x0 = null;
+        }, { passive: true });
+      }
+
+      applyFilter("all");
+    }
+
     /* --- Scroll reveal --------------------------------------
        The hidden state only applies while .js is on <html>, so if
        anything here fails the content is simply visible.

@@ -67,6 +67,7 @@ Arabic lives in `translations.js` and is applied on demand.
 | Board Members | Eight-member leadership grid |
 | Membership | Four membership categories |
 | News | Lead story plus a dated list |
+| Gallery | Filterable photo grid with a lightbox carousel |
 | Partners | Strategic and supporting partner tiles |
 | Footer | Bilingual identity block, navigation, legal |
 
@@ -107,6 +108,41 @@ referenced with `<use>` everywhere it appears.
 > and the page reverts. Second, the inner emblem still comes from a 185px source; supplying a
 > vector or high-resolution original of the artwork is the last step to a fully crisp seal.
 
+## Gallery
+
+A filterable grid of society photographs; clicking any tile opens a full-screen
+lightbox carousel.
+
+- **Filters** — All / Annual Forum / Workshops / Awareness. Tiles fade and re-flow
+  when a filter changes.
+- **Lightbox** — arrows, keyboard (←/→, Esc), swipe on touch, a running counter, and
+  neighbour preloading so stepping through feels instant. Arrow keys reverse under RTL.
+  It navigates the *currently filtered* set, so arrowing inside "Workshops" stays in
+  Workshops.
+- **Accessibility** — each tile is a real button, focus moves into the dialog on open
+  and returns to the tile on close, focus is trapped while open, and the page behind is
+  scroll-locked. Under `prefers-reduced-motion` the zoom and fade are dropped.
+
+### Replacing the placeholder photographs
+
+`gallery/` currently holds nine generated placeholders — brand gradients with a faint
+seal, no text baked in. To use real photographs:
+
+1. Drop your images into `gallery/`, keeping roughly the same aspect ratios
+   (landscape ~3:2, portrait ~3:4, square).
+2. In `index.html`, update the `src`, `width` and `height` on each
+   `.gal-item img`. The `width`/`height` attributes matter — they reserve space and
+   stop the page jumping while images load.
+3. Edit the caption in the same `<figure>`, and its Arabic twin under the matching
+   `gal.c1` … `gal.c9` key in `translations.js`.
+
+Nothing else needs to change: the grid, filters and lightbox all read from the DOM.
+To add a tenth photo, copy a `<figure>` block, give it a `data-category`, and bump the
+`data-gal-open` index.
+
+> The captions are invented for the placeholders and describe events that have not
+> happened. Replace them along with the images.
+
 ## Run Locally
 
 No build step required.
@@ -137,6 +173,7 @@ Then open `http://localhost:8000`.
 ├── translations.js  # All Arabic copy — the only file a translator needs
 ├── script.js        # Language switch, sticky nav, mobile nav, reveal
 ├── 404.html         # Custom not-found page (bilingual)
+├── gallery/         # Gallery photographs (placeholders for now)
 ├── seal-core.png    # Inner emblem, used inside the vector ring
 ├── sscrs-seal.png   # Flat raster seal — favicon, social, watermarks
 ├── favicon.png      # Browser icon
@@ -151,6 +188,7 @@ The following still carry placeholder copy and need real content before launch:
 - Sign-off on the drafted Arabic copy in `translations.js`
 - News article links and the "View all news" destination
 - Supporting partner names and logos
+- Real photographs for the gallery, replacing the nine placeholders in `gallery/`
 - Privacy Policy and Terms of Use pages
 
 ---

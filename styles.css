@@ -572,6 +572,139 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
 .partners-cta-text p { font-size: 16px; }
 
 /* ============================================================
+   GALLERY — filterable grid, and a full-screen lightbox
+   carousel opened from any tile
+   ============================================================ */
+.gal-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+.gal-filter {
+  padding: 10px 20px; border-radius: var(--r-pill);
+  background: var(--paper); border: 1px solid var(--line);
+  font-size: 14.5px; font-weight: 600; color: var(--body); cursor: pointer;
+  transition: background-color .2s ease, color .2s ease,
+              border-color .2s ease, box-shadow .2s ease;
+}
+.gal-filter:hover { border-color: #BFD0E4; color: var(--navy); }
+.gal-filter.is-active {
+  background: var(--navy); border-color: var(--navy); color: #fff;
+  box-shadow: 0 4px 14px rgba(27,76,147,.22);
+}
+
+.gal-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 172px; grid-auto-flow: dense; gap: 18px;
+}
+.gal-item {
+  position: relative; margin: 0; overflow: hidden;
+  border-radius: var(--r-lg); background: var(--wash-navy);
+  box-shadow: var(--shadow-sm);
+  grid-column: span 1; grid-row: span 2;
+  transition: opacity .38s ease, transform .38s ease, box-shadow .28s ease;
+}
+.gal-item.gal-wide { grid-column: span 2; }
+.gal-item.gal-tall { grid-row: span 3; }
+.gal-item:hover { box-shadow: var(--shadow-lg); }
+
+/* Filtered-out tiles fade and scale before leaving the flow. */
+.gal-item.is-filtered { opacity: 0; transform: scale(.94); pointer-events: none; }
+.gal-item.is-gone { display: none; }
+
+.gal-open {
+  display: block; width: 100%; height: 100%; padding: 0;
+  border: 0; background: none; cursor: zoom-in; position: relative;
+}
+.gal-open img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .5s cubic-bezier(.2,.6,.3,1);
+}
+.gal-item:hover .gal-open img { transform: scale(1.06); }
+.gal-veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(11,36,68,0) 42%, rgba(11,36,68,.72) 100%);
+  opacity: .82; transition: opacity .28s ease;
+}
+.gal-item:hover .gal-veil { opacity: 1; }
+
+.gal-item figcaption {
+  position: absolute; inset-inline: 0; bottom: 0; padding: 20px 22px;
+  pointer-events: none; display: flex; flex-direction: column; gap: 5px;
+  transform: translateY(6px); opacity: .96;
+  transition: transform .3s ease;
+}
+.gal-item:hover figcaption { transform: none; }
+.gal-cat {
+  align-self: flex-start; padding: 4px 11px; border-radius: var(--r-pill);
+  background: rgba(255,255,255,.16); backdrop-filter: blur(4px);
+  color: #C9EBBB; font-size: 11.5px; font-weight: 600;
+}
+.gal-cap { color: #fff; font-size: 15px; font-weight: 600; line-height: 1.35; letter-spacing: -0.015em; }
+
+.gal-empty { text-align: center; padding: 48px 0; color: var(--muted); font-size: 16px; }
+
+/* Lightbox --------------------------------------------------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(6,18,36,.94);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center; padding: 5vh 6vw;
+  opacity: 0; transition: opacity .28s ease;
+}
+.lightbox[hidden] { display: none; }
+.lightbox.is-open { opacity: 1; }
+
+.lb-stage {
+  margin: 0; max-width: 100%; max-height: 90vh;
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+}
+.lb-stage img {
+  max-width: 100%; max-height: 76vh; width: auto; height: auto;
+  border-radius: var(--r-md); box-shadow: 0 30px 80px rgba(0,0,0,.5);
+  transition: opacity .22s ease;
+}
+.lightbox.is-swapping .lb-stage img { opacity: 0; }
+.lb-meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.lb-cat {
+  padding: 5px 13px; border-radius: var(--r-pill);
+  background: rgba(255,255,255,.13); color: #C9EBBB; font-size: 12.5px; font-weight: 600;
+}
+.lb-cap { color: #fff; font-size: 16px; font-weight: 600; letter-spacing: -0.015em; }
+.lb-count { color: rgba(255,255,255,.55); font-size: 14px; }
+
+.lb-btn {
+  position: absolute; display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px; border-radius: 50%; cursor: pointer;
+  background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.18);
+  color: #fff; transition: background-color .2s ease, transform .2s ease;
+}
+.lb-btn:hover { background: rgba(255,255,255,.2); transform: scale(1.06); }
+.lb-close { top: 22px; inset-inline-end: 22px; font-size: 26px; line-height: 1; }
+.lb-prev, .lb-next { top: 50%; margin-top: -26px; }
+.lb-prev { inset-inline-start: 20px; }
+.lb-next { inset-inline-end: 20px; }
+.lb-prev::before, .lb-next::before {
+  content: ""; width: 13px; height: 13px;
+  border-top: 2.5px solid currentColor; border-inline-start: 2.5px solid currentColor;
+}
+.lb-prev::before { transform: rotate(-45deg); margin-inline-start: 5px; }
+.lb-next::before { transform: rotate(135deg); margin-inline-end: 5px; }
+
+@media (max-width: 1080px) {
+  .gal-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+  .gal-item.gal-wide { grid-column: span 2; }
+}
+@media (max-width: 640px) {
+  .gal-grid { grid-template-columns: 1fr; grid-auto-rows: 150px; gap: 14px; }
+  .gal-item, .gal-item.gal-wide, .gal-item.gal-tall { grid-column: span 1; grid-row: span 2; }
+  .gal-filters { gap: 8px; }
+  .gal-filter { padding: 9px 15px; font-size: 13.5px; }
+  .lightbox { padding: 4vh 4vw; }
+  .lb-btn { width: 44px; height: 44px; }
+  .lb-prev { inset-inline-start: 8px; }
+  .lb-next { inset-inline-end: 8px; }
+  .lb-close { top: 12px; inset-inline-end: 12px; }
+  .lb-stage img { max-height: 64vh; }
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .site-footer {
@@ -681,6 +814,8 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; }
+  .gal-item:hover .gal-open img { transform: none; }
+  .gal-item.is-filtered { opacity: 1; transform: none; }
   *, *::before, *::after {
     animation-duration: .001ms !important;
     transition-duration: .001ms !important;
