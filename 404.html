@@ -1,59 +1,69 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page Not Found | SSCRS</title>
+    <link rel="icon" type="image/png" href="/SSCRS/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
     <style>
       :root {
-        --blue:  #24599E;
-        --green: #6CB261;
-        --cream: #f1faee;
-        --dark:  #14241a;
+        --navy-900: #0C2549; --navy: #1B4C93; --green: #4E9E37;
+        --tint-navy: #F3F7FC; --tint-green: #F5FAF3;
+        --ink: #16202C; --body: #4A5663; --muted: #6E7B8B; --line: #E0E7F0;
       }
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
       body {
-        background: var(--blue);
-        color: #fff;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background:
+          radial-gradient(circle at 18% 10%, var(--tint-green) 0%, transparent 45%),
+          radial-gradient(circle at 84% 82%, var(--tint-navy) 0%, transparent 50%),
+          #fff;
+        color: var(--body);
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 24px;
+        display: flex; align-items: center; justify-content: center;
+        text-align: center; padding: 32px; line-height: 1.7;
       }
-      .wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+      .wrap { display: flex; flex-direction: column; align-items: center; max-width: 480px; }
+      img { width: 132px; height: 132px; margin-bottom: 30px; }
       .code {
-        font-size: clamp(5rem, 20vw, 9rem);
-        font-weight: 800;
-        letter-spacing: -0.05em;
-        line-height: 1;
-        color: rgba(255,255,255,0.12);
+        font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+        text-transform: uppercase; color: var(--green); margin-bottom: 16px;
       }
-      h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; }
-      p  { color: rgba(164,184,187,0.8); font-size: 1rem; max-width: 340px; line-height: 1.6; }
+      .ar {
+        font-family: "Noto Kufi Arabic", "Segoe UI", Tahoma, sans-serif;
+        direction: rtl; font-size: 1.15rem; font-weight: 700;
+        color: var(--navy); line-height: 1.7; margin-bottom: 6px;
+      }
+      h1 { font-size: 1.45rem; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1.3; }
+      .rule { width: 44px; height: 2px; background: var(--green); opacity: 0.6; margin: 22px 0; }
+      .msg-ar {
+        font-family: "Noto Kufi Arabic", "Segoe UI", Tahoma, sans-serif;
+        direction: rtl; font-size: 0.9rem; color: var(--muted); margin-bottom: 4px;
+      }
+      .msg-en { font-size: 0.95rem; color: var(--muted); margin-bottom: 32px; }
       a {
-        display: inline-block;
-        margin-top: 8px;
-        padding: 13px 30px;
-        background: var(--green);
-        color: #fff;
-        text-decoration: none;
-        border-radius: 99px;
-        font-weight: 600;
-        font-size: 15px;
-        transition: opacity 0.2s;
+        display: inline-block; padding: 13px 30px; border-radius: 3px;
+        background: var(--navy); color: #fff; text-decoration: none;
+        font-weight: 600; font-size: 14px; transition: background-color 0.18s ease;
       }
-      a:hover { opacity: 0.88; }
+      a:hover { background: #123A72; }
     </style>
   </head>
   <body>
     <div class="wrap">
-      <div class="code">404</div>
-      <h1>Page not found</h1>
-      <p>The page you're looking for doesn't exist or has been moved.</p>
-      <a href="/">Back to Home</a>
+      <!-- Project-site paths. If SSCRS moves to a custom domain,
+           change these /SSCRS/ paths to / -->
+      <img src="/SSCRS/sscrs-seal.png" alt="Seal of the Saudi Society of Colon &amp; Rectal Surgery" />
+      <p class="code">Error 404</p>
+      <p class="ar" lang="ar">الصفحة غير موجودة</p>
+      <h1>This page could not be found</h1>
+      <div class="rule"></div>
+      <p class="msg-ar" lang="ar">الصفحة التي تبحث عنها غير موجودة أو تم نقلها إلى عنوان آخر.</p>
+      <p class="msg-en">The page you are looking for does not exist, or has been moved.</p>
+      <a href="/SSCRS/">Return to the homepage &middot; العودة إلى الرئيسية</a>
     </div>
   </body>
 </html>

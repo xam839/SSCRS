@@ -1,85 +1,157 @@
 # SSCRS — Saudi Society of Colon & Rectal Surgery
 
-Official website of the Saudi Society of Colon & Rectal Surgery (SSCRS), built as a fully static site ready for GitHub Pages hosting.
+Official website of the Saudi Society of Colon & Rectal Surgery (SSCRS) —
+الجمعية السعودية لجراحة القولون والمستقيم — built as a fully static site for GitHub Pages.
 
 ## Live Site
 
-> **[https://\<your-username\>.github.io/\<repo-name\>/](https://github.com)**  
-> Replace the URL above after you publish the repo and enable GitHub Pages.
+> **[https://\<your-username\>.github.io/SSCRS/](https://github.com)**
+> Replace this URL once GitHub Pages is enabled.
 
 ---
+
+## Design
+
+The design is built around the society seal. The palette is sampled directly from it —
+navy `#1B4C93` from the inner disc, green `#4E9E37` from the palm and swords — so the page
+and the emblem read as one identity rather than two.
+
+Principles the stylesheet holds to:
+
+- **The seal leads.** It appears at six sizes across the page: the header lockup (60px),
+  the hero (196px), the about plate (168px), the news lead (132px), the footer (100px), and
+  the mobile menu — plus a low-opacity watermark behind the hero and the statistics panel.
+- **Generous radii and soft elevation.** Cards sit at 24px, panels at 32px, and every button,
+  chip and tag is a pill. Depth comes from wide, very low-contrast shadows that deepen on
+  hover, not from borders doing all the work.
+- **Sentence case, never uppercase.** Section labels are pill chips, navigation is sentence
+  case at 14.5px. There is no letter-spaced micro-type anywhere.
+- **A confident type scale.** 17px body, section headings up to 2.85rem, the hero name at
+  3.5rem in weight 800, set in Plus Jakarta Sans.
+- **Brand-tinted neutrals.** No surface is pure grey. Every tinted section carries a wash
+  drawn from the two logo colours — `--tint-navy` and `--tint-green` — kept pale so the colour
+  registers as warmth rather than decoration.
+- **Restrained motion.** A single fade-and-rise on scroll plus small hover lifts, and nothing
+  at all under `prefers-reduced-motion`.
+
+## Languages / اللغات
+
+The page ships bilingual. English is written into `index.html` and is what loads by default;
+Arabic lives in `translations.js` and is applied on demand.
+
+- The **العربية / English** switch sits in the utility bar (and in the mobile menu).
+- Choosing Arabic sets `lang="ar" dir="rtl"` on `<html>`. The **entire layout mirrors** —
+  navigation, grids, list bullets, borders and the mobile menu all flip, because the
+  stylesheet is written with CSS logical properties (`padding-inline-start`,
+  `border-inline-end`, `inset-inline`) rather than left/right.
+- Arabic sets Noto Kufi Arabic throughout, drops the uppercase and letter-spacing treatments
+  that do not apply to Arabic script, and uses Arabic-Indic numerals (٢٠٠٩، ٥٠٠+).
+- The choice is remembered in `localStorage`, and `?lang=ar` forces it. It is applied by a
+  small inline script in `<head>` so the language never flashes on load.
+- The page title and meta description swap with the language.
+
+> **The Arabic copy needs the society's sign-off.** It was drafted for this redesign, not
+> supplied by the client. Every string is in `translations.js` and can be edited in place —
+> no other file needs to change. Board member names are placeholders in both languages.
 
 ## Sections
 
 | Section | Description |
 |---|---|
-| Hero | Full-viewport introduction with animated headline |
-| About | Association history and pillars |
-| Numbers | Key statistics in a dark grid panel |
-| Vision / Mission / Goals | Strategic direction in a three-column layout |
-| Board Members | Leadership grid with president highlight |
-| Membership | Four-tier subscription cards |
-| News | Announcements in an asymmetric grid |
+| Header | One sticky row — seal lockup, nav, language switch, join CTA |
+| Hero | Identity statement — seal, bilingual name, est. 2009 · 1430H |
+| At a glance | Four cards that lift over the hero edge |
+| About | Society history, seal plate, and four pillars |
+| The Society in Numbers | Statistics in a contained dark panel |
+| Vision / Mission / Goals | Three-column strategic direction |
+| Board Members | Eight-member leadership grid |
+| Membership | Four membership categories |
+| News | Lead story plus a dated list |
 | Partners | Strategic and supporting partner tiles |
-| Footer | Navigation, contact, and legal links |
-
-## Features
-
-- Animated splash screen with SVG ring progress
-- Scroll progress bar (blue → green gradient)
-- Scroll-triggered reveal animations
-- Responsive layout (desktop / tablet / mobile)
-- Mobile full-screen navigation overlay
-- Pure HTML + CSS + JS — zero dependencies
+| Footer | Bilingual identity block, navigation, legal |
 
 ## Tech Stack
 
-- **HTML5** — semantic markup
-- **CSS3** — custom properties, Grid, Flexbox, keyframe animations
-- **Vanilla JS** — IntersectionObserver, scroll events
+- **HTML5** — semantic markup, Open Graph tags, skip link
+- **CSS3** — custom properties, Grid, Flexbox, logical properties, four breakpoints (1240 / 1080 / 640)
+- **Vanilla JS** — language switching, sticky nav, mobile nav, IntersectionObserver reveals
+- **Fonts** — Plus Jakarta Sans and Noto Kufi Arabic, loaded from Google Fonts. This is the only
+  external request; everything else is served from the repository. If you need the site
+  to be fully self-contained, drop the `<link>` tags in `index.html` and the
+  `--sans` / `--arabic` stacks fall back to system fonts.
+
+## The Seal
+
+The seal is drawn as an **inline SVG symbol**, defined once at the top of `index.html` and
+referenced with `<use>` everywhere it appears.
+
+- The ring, its rules, the curved Arabic and English lettering and the two dates are **true
+  vector**, so they stay sharp at every size — this is what was visibly soft before.
+- The emblem in the middle — the colon, palm and swords — is the artwork from the supplied
+  file, extracted and clipped into the inner circle (`seal-core.png`). It is the one raster
+  part left.
+- It is inline rather than an external `.svg` because an SVG loaded through `<img>` or CSS
+  cannot use the page's webfonts, and the ring lettering needs them.
+
+| File | Purpose |
+|---|---|
+| `Layer-0.png` | Original seal supplied by the client, 185×186 |
+| `seal-core.png` | Inner emblem extracted from it, used inside the vector ring |
+| `sscrs-seal.png` | Flat raster seal — favicon source, social preview, and the two watermarks |
+| `favicon.png` | 180×180 browser and touch icon |
+
+> **Two things worth knowing.** First, the ring lettering is now set in Noto Kufi Arabic and
+> Inter rather than the original seal's typefaces, so it reads as a cleaned-up version of the
+> mark rather than a pixel-exact reproduction — if the society's brand office needs the exact
+> original, point the six `<use href="#sscrs-seal">` references at `sscrs-seal.png` instead
+> and the page reverts. Second, the inner emblem still comes from a 185px source; supplying a
+> vector or high-resolution original of the artwork is the last step to a fully crisp seal.
 
 ## Run Locally
 
-No build step required. Just open `index.html` in any browser:
+No build step required.
 
 ```bash
-# Option A — double-click index.html in your file manager
-
-# Option B — serve with any static server (avoids CORS issues with assets)
-npx serve .
-# or
 python -m http.server 8000
 ```
 
+Then open `http://localhost:8000`.
+
 ## Deploy to GitHub Pages
 
-1. Push this repository to GitHub (see steps below).
+1. Push this repository to GitHub.
 2. Go to **Settings → Pages**.
 3. Under **Source**, select **Deploy from a branch**.
 4. Set branch to `main` and folder to `/ (root)`.
-5. Click **Save** — your site will be live within a minute.
+5. Click **Save** — the site will be live within a minute.
 
-## Push to GitHub (first time)
-
-```bash
-# 1 — create a new repo on github.com (do NOT add README or .gitignore there)
-
-# 2 — inside this project folder, run:
-git remote add origin https://github.com/<your-username>/<repo-name>.git
-git branch -M main
-git push -u origin main
-```
+> `404.html` links back to `/SSCRS/` because GitHub Pages serves project sites from a
+> subpath. If the site moves to a custom domain, change those two paths to `/`.
 
 ## Project Structure
 
 ```
 .
-├── index.html      # Main page
-├── styles.css      # All styles and animations
-├── script.js       # Splash, scroll progress, reveal, mobile nav
-├── Layer-0.png     # SSCRS logo
-└── 404.html        # GitHub Pages custom 404 → redirects home
+├── index.html       # Single-page site, incl. the inline SVG seal
+├── styles.css       # Design system, tints, RTL-ready layout
+├── translations.js  # All Arabic copy — the only file a translator needs
+├── script.js        # Language switch, sticky nav, mobile nav, reveal
+├── 404.html         # Custom not-found page (bilingual)
+├── seal-core.png    # Inner emblem, used inside the vector ring
+├── sscrs-seal.png   # Flat raster seal — favicon, social, watermarks
+├── favicon.png      # Browser icon
+└── Layer-0.png      # Original seal source
 ```
+
+## Outstanding Content
+
+The following still carry placeholder copy and need real content before launch:
+
+- Board member names (currently `Dr. [President]`, `Dr. [Vice President]`, and so on, in both languages)
+- Sign-off on the drafted Arabic copy in `translations.js`
+- News article links and the "View all news" destination
+- Supporting partner names and logos
+- Privacy Policy and Terms of Use pages
 
 ---
 
