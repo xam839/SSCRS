@@ -68,6 +68,7 @@ Arabic lives in `translations.js` and is applied on demand.
 | Membership | Four membership categories |
 | News | Lead story plus a dated list |
 | Gallery | Filterable photo grid with a lightbox carousel |
+| Help assistant | Floating button and answer panel (placeholder) |
 | Partners | Strategic and supporting partner tiles |
 | Footer | Bilingual identity block, navigation, legal |
 
@@ -143,6 +144,69 @@ To add a tenth photo, copy a `<figure>` block, give it a `data-category`, and bu
 > The captions are invented for the placeholders and describe events that have not
 > happened. Replace them along with the images.
 
+## Help Assistant
+
+A floating button in the bottom corner opens a small assistant panel that answers
+questions about the society. **This is a placeholder implementation, meant to be
+replaced.**
+
+It is offline: there is no model and no network call. `chatbot.js` scores a question
+against a small keyword knowledge base built from the content already on this page —
+membership, the annual forum, training, partnerships, the board, the gallery, contact
+details — and falls back to pointing at info@sscrs.org.
+
+### Clinical questions are refused, deliberately
+
+This is a surgical society's website, and visitors will ask personal medical
+questions. Anything that reads as one gets a referral instead of an answer:
+
+> I can't help with medical or personal health questions, and nothing here is medical
+> advice. Please speak with a qualified colorectal surgeon or your own physician — and
+> if this is urgent, seek medical care now.
+
+The panel also carries a permanent "general information only, not medical advice"
+note. **Keep both when you replace the backend.** A real model must be given the same
+instruction in its system prompt, and the refusal should stay server-side rather than
+relying on the browser.
+
+### Replacing it with a real backend
+
+Everything behind the UI is reached through one function:
+
+```js
+SSCRS_CHAT.setResponder(async function (text, lang) {
+  const r = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: text, lang: lang })
+  });
+  return (await r.json()).reply;      // a string
+});
+```
+
+The responder may return a string or a promise for one. The panel, typing indicator,
+language switching and the safety note all keep working unchanged.
+
+> **Never put an API key in `chatbot.js`.** It is served to every visitor. A paid model
+> has to be called from a small server endpoint that holds the key — which means this
+> site would no longer be purely static, and would need somewhere to run that endpoint.
+
+Other entry points: `SSCRS_CHAT.open()`, `.close()`, `.ask(text)`, and
+`.knowledgeBase` for the current entries.
+
+### A note on the Arabic matching
+
+Arabic morphology makes naive substring matching unsafe, and two cases bit during
+development: `ألم` ("pain") normalises to `الم`, which is the opening of `الملتقى`
+("the forum"), and `هل لدي` ("do I have") sits inside `هل لديكم` ("do you have"),
+which means the opposite. Arabic terms are therefore matched at word boundaries with
+the usual attached prefixes and up to two stacked suffixes. Arabic punctuation is
+excluded from the "letter" class — `؟` is U+061F, inside the Arabic block, so treating
+the block as letters broke every question that ended in one.
+
+If you extend the knowledge base, add inflected forms rather than relying on
+substrings, and re-check that ordinary questions are not caught by the clinical guard.
+
 ## Run Locally
 
 No build step required.
@@ -171,6 +235,7 @@ Then open `http://localhost:8000`.
 ├── index.html       # Single-page site, incl. the inline SVG seal
 ├── styles.css       # Design system, tints, RTL-ready layout
 ├── translations.js  # All Arabic copy — the only file a translator needs
+├── chatbot.js       # Help assistant + its knowledge base (placeholder)
 ├── script.js        # Language switch, sticky nav, mobile nav, reveal
 ├── 404.html         # Custom not-found page (bilingual)
 ├── gallery/         # Gallery photographs (placeholders for now)
@@ -189,6 +254,7 @@ The following still carry placeholder copy and need real content before launch:
 - News article links and the "View all news" destination
 - Supporting partner names and logos
 - Real photographs for the gallery, replacing the nine placeholders in `gallery/`
+- A real backend for the help assistant; the current answers are hand-written
 - Privacy Policy and Terms of Use pages
 
 ---

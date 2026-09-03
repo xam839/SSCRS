@@ -28,6 +28,9 @@
     document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
       EN["aria:" + el.getAttribute("data-i18n-aria")] = el.getAttribute("aria-label");
     });
+    document.querySelectorAll("[data-i18n-ph]").forEach(function (el) {
+      EN["ph:" + el.getAttribute("data-i18n-ph")] = el.getAttribute("placeholder");
+    });
     EN["doc.title"] = document.title;
     var desc = document.querySelector('meta[name="description"]');
     EN["doc.desc"] = desc ? desc.getAttribute("content") : "";
@@ -50,6 +53,12 @@
       if (typeof value === "string") el.setAttribute("aria-label", value);
     });
 
+    document.querySelectorAll("[data-i18n-ph]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-ph");
+      var value = ar ? AR[key] : EN["ph:" + key];
+      if (typeof value === "string") el.setAttribute("placeholder", value);
+    });
+
     root.lang = ar ? "ar" : "en";
     root.dir = ar ? "rtl" : "ltr";
 
@@ -63,6 +72,9 @@
     });
 
     try { localStorage.setItem("sscrs-lang", root.lang); } catch (e) {}
+
+    // Modules loaded separately (chatbot.js) listen for this.
+    document.dispatchEvent(new CustomEvent("sscrs:languagechange", { detail: { lang: root.lang } }));
   }
 
   document.addEventListener("DOMContentLoaded", function () {

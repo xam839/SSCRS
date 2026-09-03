@@ -701,7 +701,44 @@
       </figure>
     </div>
 
+    <!-- HELP ASSISTANT — placeholder implementation, see chatbot.js -->
+    <button class="chat-fab" type="button" data-chat-open
+            aria-label="Open the help assistant" data-i18n-aria="a11y.chatOpen"
+            aria-expanded="false" aria-controls="chat-panel">
+      <span class="chat-fab-icon" aria-hidden="true"></span>
+      <span class="chat-fab-text" data-i18n="chat.fab">Ask us</span>
+    </button>
+
+    <section class="chat-panel" id="chat-panel" data-chat-panel role="dialog"
+             aria-label="Help assistant" data-i18n-aria="a11y.chatPanel" hidden>
+      <header class="chat-head">
+        <span class="chat-avatar" aria-hidden="true">
+          <svg viewBox="0 0 512 512"><use href="#sscrs-seal" /></svg>
+        </span>
+        <span class="chat-id">
+          <strong data-i18n="chat.title">SSCRS Assistant</strong>
+          <span data-i18n="chat.status">Here to answer questions about the society</span>
+        </span>
+        <button class="chat-close" type="button" data-chat-close
+                aria-label="Close the assistant" data-i18n-aria="a11y.chatClose">&times;</button>
+      </header>
+
+      <div class="chat-log" data-chat-log role="log" aria-live="polite"></div>
+      <div class="chat-chips" data-chat-chips hidden></div>
+
+      <form class="chat-form" data-chat-form>
+        <input class="chat-input" data-chat-input type="text" autocomplete="off"
+               placeholder="Type your question…" data-i18n-ph="chat.placeholder"
+               aria-label="Your question" data-i18n-aria="a11y.chatInput" />
+        <button class="chat-send" type="submit"
+                aria-label="Send" data-i18n-aria="a11y.chatSend"></button>
+      </form>
+
+      <p class="chat-note" data-i18n="chat.note">Preview assistant &middot; general information only, not medical advice.</p>
+    </section>
+
     <script src="translations.js"></script>
     <script src="script.js"></script>
+    <script src="chatbot.js"></script>
   </body>
 </html>

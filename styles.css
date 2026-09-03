@@ -705,6 +705,156 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
 }
 
 /* ============================================================
+   HELP ASSISTANT — floating button and panel
+   Placeholder implementation; see chatbot.js
+   ============================================================ */
+.chat-fab {
+  position: fixed; inset-inline-end: 26px; bottom: 26px; z-index: 240;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 22px 14px 18px; border: 0; border-radius: var(--r-pill);
+  background: linear-gradient(140deg, var(--navy-600) 0%, var(--navy) 55%, var(--navy-800) 100%);
+  color: #fff; font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+  cursor: pointer; box-shadow: 0 10px 30px rgba(11,36,68,.28);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.chat-fab:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(11,36,68,.34); }
+.chat-fab-icon {
+  width: 21px; height: 21px; flex: none; background: currentColor;
+  -webkit-mask: var(--chat-icon) center/contain no-repeat;
+  mask: var(--chat-icon) center/contain no-repeat;
+}
+/* A single unobtrusive ping shortly after load, then it stays still. */
+.chat-fab::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  border: 2px solid var(--green-600); opacity: 0; pointer-events: none;
+  animation: chatPing 2.6s ease-out 1.2s 2;
+}
+@keyframes chatPing {
+  0%   { transform: scale(1);    opacity: .6; }
+  100% { transform: scale(1.2);  opacity: 0; }
+}
+.chat-fab.is-active .chat-fab-icon {
+  -webkit-mask-image: var(--close-icon); mask-image: var(--close-icon);
+}
+.chat-fab.is-active::after { animation: none; }
+
+.chat-panel {
+  position: fixed; inset-inline-end: 26px; bottom: 98px; z-index: 241;
+  width: min(384px, calc(100vw - 36px)); max-height: min(586px, calc(100vh - 140px));
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--r-lg); box-shadow: 0 24px 64px rgba(11,36,68,.24);
+  opacity: 0; transform: translateY(14px) scale(.98);
+  transition: opacity .24s ease, transform .24s cubic-bezier(.2,.7,.3,1);
+}
+.chat-panel[hidden] { display: none; }
+.chat-panel.is-open { opacity: 1; transform: none; }
+
+.chat-head {
+  display: flex; align-items: center; gap: 12px; padding: 16px 18px;
+  background: linear-gradient(140deg, var(--navy-800), var(--navy-900));
+  color: #fff; flex: none;
+}
+.chat-avatar {
+  width: 42px; height: 42px; flex: none; border-radius: 50%;
+  background: rgba(255,255,255,.12); padding: 4px;
+}
+.chat-avatar svg { width: 100%; height: 100%; }
+.chat-id { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+.chat-id strong { font-size: 15px; font-weight: 700; letter-spacing: -0.02em; }
+.chat-id span { font-size: 12.5px; color: rgba(255,255,255,.62); line-height: 1.35; }
+.chat-close {
+  width: 34px; height: 34px; flex: none; border-radius: 50%; cursor: pointer;
+  background: rgba(255,255,255,.12); border: 0; color: #fff; font-size: 20px; line-height: 1;
+  transition: background-color .18s ease;
+}
+.chat-close:hover { background: rgba(255,255,255,.24); }
+
+.chat-log {
+  flex: 1; overflow-y: auto; padding: 18px; display: flex;
+  flex-direction: column; gap: 12px; background: var(--tint-navy);
+  overscroll-behavior: contain;
+}
+.chat-msg { display: flex; }
+.chat-msg.chat-user { justify-content: flex-end; }
+.chat-bubble {
+  max-width: 84%; padding: 12px 15px; border-radius: 16px;
+  font-size: 14.5px; line-height: 1.6;
+}
+.chat-bot .chat-bubble {
+  background: var(--paper); color: var(--body);
+  border: 1px solid var(--line); border-start-start-radius: 5px;
+}
+.chat-user .chat-bubble {
+  background: var(--navy); color: #fff; border-start-end-radius: 5px;
+}
+.chat-typing .chat-bubble { display: flex; gap: 5px; padding: 15px; }
+.chat-typing span {
+  width: 7px; height: 7px; border-radius: 50%; background: #B4C2D6;
+  animation: chatDot 1.2s infinite ease-in-out;
+}
+.chat-typing span:nth-child(2) { animation-delay: .16s; }
+.chat-typing span:nth-child(3) { animation-delay: .32s; }
+@keyframes chatDot {
+  0%, 60%, 100% { transform: translateY(0);    opacity: .45; }
+  30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+.chat-chips {
+  display: flex; flex-wrap: wrap; gap: 8px; padding: 0 18px 14px;
+  background: var(--tint-navy); flex: none;
+}
+.chat-chips[hidden] { display: none; }
+.chat-chip {
+  padding: 8px 14px; border-radius: var(--r-pill); cursor: pointer;
+  background: var(--paper); border: 1px solid #CFDCEC;
+  color: var(--navy); font-size: 13.5px; font-weight: 600;
+  transition: background-color .18s ease, border-color .18s ease;
+}
+.chat-chip:hover { background: var(--wash-navy); border-color: var(--navy-600); }
+
+.chat-form {
+  display: flex; align-items: center; gap: 8px; padding: 12px;
+  border-top: 1px solid var(--line); background: var(--paper); flex: none;
+}
+.chat-input {
+  flex: 1; min-width: 0; padding: 12px 15px; border-radius: var(--r-pill);
+  border: 1px solid var(--line); background: var(--tint-navy);
+  font-family: inherit; font-size: 14.5px; color: var(--ink);
+}
+.chat-input::placeholder { color: var(--muted); }
+.chat-input:focus { outline: none; border-color: var(--navy-600); background: var(--paper); }
+.chat-send {
+  width: 42px; height: 42px; flex: none; border: 0; border-radius: 50%;
+  background: var(--navy); cursor: pointer;
+  transition: background-color .18s ease, transform .18s ease;
+}
+.chat-send::before {
+  content: ""; display: block; width: 18px; height: 18px; margin: 0 auto;
+  background: #fff;
+  -webkit-mask: var(--send-icon) center/contain no-repeat;
+  mask: var(--send-icon) center/contain no-repeat;
+}
+[dir="rtl"] .chat-send::before { transform: scaleX(-1); }
+.chat-send:hover { background: var(--navy-800); transform: scale(1.06); }
+
+.chat-note {
+  padding: 0 18px 14px; font-size: 11.5px; line-height: 1.5;
+  color: var(--muted); text-align: center; background: var(--paper); flex: none;
+}
+
+@media (max-width: 640px) {
+  .chat-fab { inset-inline-end: 16px; bottom: 16px; padding: 13px 18px 13px 15px; font-size: 14.5px; }
+  .chat-panel {
+    inset-inline: 12px; bottom: 84px; width: auto;
+    max-height: min(70vh, calc(100vh - 120px));
+  }
+}
+@media (max-height: 560px) {
+  .chat-panel { max-height: calc(100vh - 100px); bottom: 78px; }
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .site-footer {
@@ -751,6 +901,9 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
 :root {
   --globe: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20"/></svg>');
   --check: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%234E9E37" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>');
+  --chat-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 9 9 0 01-4.1-.9L3 20.5l1.6-4.6A8.4 8.4 0 013 11.5a8.4 8.4 0 019-8.4 8.4 8.4 0 019 8.4z"/></svg>');
+  --close-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>');
+  --send-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M3.4 20.4l17.5-8a.6.6 0 000-1.1l-17.5-8a.6.6 0 00-.8.7l2 6.3c.1.3.3.5.6.5l8.4 1-8.4 1c-.3 0-.5.2-.6.5l-2 6.3a.6.6 0 00.8.8z"/></svg>');
 }
 
 /* ============================================================
@@ -815,6 +968,8 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; }
   .gal-item:hover .gal-open img { transform: none; }
+  .chat-fab::after { animation: none; }
+  .chat-typing span { animation: none; }
   .gal-item.is-filtered { opacity: 1; transform: none; }
   *, *::before, *::after {
     animation-duration: .001ms !important;
