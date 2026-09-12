@@ -296,7 +296,7 @@ Then open `http://localhost:8000`.
 The following still carry placeholder copy and need real content before launch:
 
 - BM-05's name (Arabic surname missing, English spelling unverified) — their card is held out of the page until confirmed
-- Board roles for BM-02 to BM-05, and bios for BM-01 and BM-04 (attachments named in `data/board-members.txt`)
+- Board roles for BM-02 to BM-05 (only the chair's is confirmed)
 - Remaining board members beyond the five supplied
 - Real cooperation agreements, replacing the three placeholder rows
 - Sign-off on the drafted Arabic copy in `translations.js`

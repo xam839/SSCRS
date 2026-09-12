@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=7" />
+    <link rel="stylesheet" href="styles.css?v=10" />
 
     <script>
       // Applied before first paint so the chosen language never flashes.
@@ -395,17 +395,29 @@
             <h2 data-i18n="board.h">Board Members</h2>
             <p class="section-sub" data-i18n="board.sub">The society is guided by distinguished surgeons and healthcare leaders from across Saudi Arabia.</p>
           </div>
-          <div class="member-grid reveal">
-            <article class="member-card is-president">
-              <div class="member-photo">
+
+          <div class="member-feature-wrap reveal">
+            <article class="member-feature">
+              <div class="member-feature-photo">
                 <img src="members/bm-01.jpg" alt="" width="880" height="1100"
                      loading="lazy" decoding="async" />
               </div>
-              <div class="member-body">
+              <div class="member-feature-body">
+                <p class="member-role is-chair" data-i18n="bm1.role">Chairperson of the Board</p>
                 <h3 data-i18n="bm1.name">Prof. Samar Alhomoud</h3>
-                <p class="member-role" data-i18n="bm1.role">Chairperson of the Board</p>
+                <p class="member-feature-spec" data-i18n="bm1.spec">Consultant Colorectal Surgeon &middot; Professor of Surgery</p>
+                <p class="member-feature-bio" data-i18n="bm1.bio">Consultant colorectal surgeon at the Cancer Center of Excellence, King Faisal Specialist Hospital &amp; Research Centre, and Professor of Surgery at AlFaisal University. An international expert in colorectal cancer screening and prevention who has helped draft national, regional and WHO policy, with publications including NEJM and Lancet Oncology.</p>
+                <ul class="member-creds">
+                  <li data-i18n="bm1.c1">Founding member of the society</li>
+                  <li data-i18n="bm1.c2">Honorary Fellow, ASCRS (2026)</li>
+                  <li data-i18n="bm1.c3">Chair, WHO IARC Ethics Committee</li>
+                  <li data-i18n="bm1.c4">King Abdulaziz Medal, First Class</li>
+                </ul>
               </div>
             </article>
+          </div>
+
+          <div class="member-grid reveal">
             <article class="member-card">
               <div class="member-photo">
                 <img src="members/bm-02.jpg" alt="" width="880" height="1100"
@@ -415,7 +427,7 @@
                 <h3 data-i18n="bm2.name">Dr. Anmar Faisal Semilan</h3>
                 <p class="member-spec" data-i18n="bm2.spec">Colorectal &amp; General Surgery</p>
                 <p class="member-org" data-i18n="bm2.org">King Fahad Armed Forces Hospital</p>
-                <p class="member-bio" data-i18n="bm2.bio">Director of General Surgery Residents' Training Program</p>
+                <p class="member-bio" data-i18n="bm2.bio">Consultant in colorectal and general surgery at King Fahad Armed Forces Hospital, where he directs the General Surgery residents' training programme.</p>
               </div>
             </article>
             <article class="member-card">
@@ -425,10 +437,9 @@
               </div>
               <div class="member-body">
                 <h3 data-i18n="bm3.name">Dr. Rami Alsairafi</h3>
-                <p class="member-spec" data-i18n="bm3.spec">Colorectal and General Surgery Consultant</p>
-                <p class="member-org" data-i18n="bm3.org">Security Forces Hospital Program, Riyadh &mdash; Dr. Sulaiman Al Habib Hospital, Al Takhassusi branch</p>
-                <p class="member-city" data-i18n="bm3.city">Riyadh</p>
-                <p class="member-bio" data-i18n="bm3.bio">Clinical Fellowship in Robotic and Laparoscopic Oncology Colorectal Surgery and Benign Proctology, Yonsei University, Seoul, South Korea</p>
+                <p class="member-spec" data-i18n="bm3.spec">Colorectal &amp; General Surgery</p>
+                <p class="member-org" data-i18n="bm3.org">Security Forces Hospital &middot; Riyadh</p>
+                <p class="member-bio" data-i18n="bm3.bio">Consultant in colorectal and general surgery in Riyadh, with a clinical fellowship in robotic and laparoscopic colorectal oncology from Yonsei University, Seoul.</p>
               </div>
             </article>
             <article class="member-card">
@@ -437,7 +448,10 @@
                      loading="lazy" decoding="async" />
               </div>
               <div class="member-body">
-                <h3 data-i18n="bm4.name">Dr. Ahmad Zubaidi</h3>
+                <h3 data-i18n="bm4.name">Prof. Ahmad Zubaidi</h3>
+                <p class="member-spec" data-i18n="bm4.spec">Professor of Colorectal &amp; General Surgery</p>
+                <p class="member-org" data-i18n="bm4.org">King Khalid University Hospital &middot; Riyadh</p>
+                <p class="member-bio" data-i18n="bm4.bio">Professor and consultant colorectal surgeon at King Khalid University Hospital, Riyadh, FRCSC, with more than 75 peer-reviewed publications.</p>
               </div>
             </article>
           </div>
@@ -903,8 +917,8 @@
       <p class="chat-note" data-i18n="chat.note">Preview assistant &middot; general information only, not medical advice.</p>
     </section>
 
-    <script src="translations.js?v=7"></script>
-    <script src="script.js?v=7"></script>
-    <script src="chatbot.js?v=7"></script>
+    <script src="translations.js?v=10"></script>
+    <script src="script.js?v=10"></script>
+    <script src="chatbot.js?v=10"></script>
   </body>
 </html>

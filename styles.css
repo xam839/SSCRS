@@ -472,10 +472,54 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
   width: 7px; height: 7px; border-radius: 50%; background: var(--green);
 }
 
-/* Board / member cards -------------------------------------- */
-.member-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+/* Board / member cards --------------------------------------
+   The chair sits on a wide feature card; the rest share an even
+   three-up grid. Biographies are levelled to a similar length so
+   the three cards end up the same height.
+   ----------------------------------------------------------- */
+.member-feature-wrap { margin-bottom: 24px; }
+.member-feature {
+  display: grid; grid-template-columns: 330px 1fr;
+  border-radius: var(--r-xl); overflow: hidden;
+  background: linear-gradient(150deg, var(--navy-800) 0%, var(--navy-900) 70%);
+  box-shadow: var(--shadow-lg); position: relative;
 }
+.member-feature::after {
+  content: ""; position: absolute; inset-inline-end: -80px; bottom: -80px;
+  width: 280px; height: 280px; pointer-events: none;
+  background: url("sscrs-seal.png") center/contain no-repeat; opacity: .07;
+}
+.member-feature-photo { position: relative; background: var(--navy-900); }
+.member-feature-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.member-feature-photo::after {
+  content: ""; position: absolute; inset: 0;
+  box-shadow: inset 0 0 0 4px var(--green);
+}
+.member-feature-body {
+  position: relative; z-index: 1;
+  padding: 40px 42px; display: flex; flex-direction: column; justify-content: center;
+}
+.member-role.is-chair {
+  align-self: flex-start; background: var(--green); color: #fff;
+  padding: 6px 15px; border-radius: var(--r-pill);
+  font-size: 12.5px; font-weight: 600; margin-bottom: 16px;
+}
+.member-feature-body h3 { font-size: 1.75rem; color: #fff; margin-bottom: 8px; }
+.member-feature-spec {
+  font-size: 14.5px; font-weight: 600; color: #B9E5A8; margin-bottom: 16px;
+}
+.member-feature-bio {
+  font-size: 15px; line-height: 1.7; color: rgba(255,255,255,.76);
+  max-width: 62ch; margin-bottom: 22px;
+}
+.member-creds { display: flex; flex-wrap: wrap; gap: 8px; }
+.member-creds li {
+  padding: 7px 14px; border-radius: var(--r-pill);
+  background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.86); font-size: 12.5px; font-weight: 500;
+}
+
+.member-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .member-card {
   background: var(--paper); border: 1px solid var(--line);
   border-radius: var(--r-lg); overflow: hidden;
@@ -485,28 +529,36 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
 }
 .member-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
 .member-photo { position: relative; aspect-ratio: 4 / 5; background: var(--wash-navy); overflow: hidden; }
-.member-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.6,.3,1); }
+.member-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top center;
+  transition: transform .5s cubic-bezier(.2,.6,.3,1);
+}
 .member-card:hover .member-photo img { transform: scale(1.04); }
-.member-card.is-president .member-photo::after {
-  content: ""; position: absolute; inset: 0;
-  box-shadow: inset 0 0 0 3px var(--green);
+.member-body { padding: 24px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+.member-body h3 { font-size: 1.1rem; margin-bottom: 8px; letter-spacing: -0.022em; }
+/* Reserve two lines so a specialty that wraps does not push that
+   card's bio divider out of line with its neighbours. */
+.member-spec {
+  font-size: 13.5px; font-weight: 600; color: var(--navy);
+  line-height: 1.45; min-height: calc(2 * 1.45em);
 }
-.member-body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
-.member-body h3 { font-size: 1.0625rem; margin-bottom: 8px; letter-spacing: -0.022em; }
-.member-role {
-  align-self: flex-start; padding: 5px 12px; border-radius: var(--r-pill);
-  background: var(--wash-green); color: var(--green-700);
-  font-size: 12.5px; font-weight: 600;
-}
-.member-card.is-president .member-role { background: var(--navy); color: #fff; }
-.member-spec { font-size: 13.5px; font-weight: 600; color: var(--navy); margin-top: 10px; line-height: 1.45; }
-.member-org { font-size: 13px; color: var(--body); margin-top: 6px; line-height: 1.5; }
-.member-city { font-size: 13px; color: var(--muted); margin-top: 6px; }
+.member-org { font-size: 13px; color: var(--muted); margin-top: 5px; line-height: 1.5; }
 .member-bio {
-  margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line-soft);
-  font-size: 14px; line-height: 1.6; color: var(--body);
+  margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line-soft);
+  font-size: 14px; line-height: 1.62; color: var(--body);
 }
 .member-note { margin-top: 26px; font-size: 13.5px; color: var(--muted); font-style: italic; }
+
+@media (max-width: 940px) {
+  .member-feature { grid-template-columns: 1fr; }
+  /* Stacked, a 16:10 crop got very tall on narrow screens and pushed
+     the whole card past a screenful, so cap it. */
+  .member-feature-photo { aspect-ratio: 16 / 10; max-height: 360px; }
+  .member-feature-photo img { object-position: center 20%; }
+  .member-feature-body { padding: 30px 26px; }
+  .member-feature-body h3 { font-size: 1.5rem; }
+  .member-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
 /* Membership tiers ------------------------------------------ */
 .tier-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
@@ -1222,7 +1274,6 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
 
 @media (max-width: 1080px) {
   .numbers-grid { grid-template-columns: repeat(3, 1fr); }
-  .member-grid { grid-template-columns: repeat(2, 1fr); }
   .tier-grid { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 52px; }
   .about-plate { max-width: 460px; }
@@ -1259,6 +1310,7 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
   .numbers-panel { padding: 44px 24px; border-radius: var(--r-lg); }
   .numbers-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .member-grid, .partners-row, .partners-row-sm { grid-template-columns: 1fr; }
+  .member-creds li { font-size: 12px; }
   .tier-card { padding: 30px 24px; }
   .vmg-layout { grid-template-columns: 1fr; }
   .vmg-card:last-child { grid-column: span 1; }
