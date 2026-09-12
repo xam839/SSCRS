@@ -40,8 +40,8 @@
       k: { en: ["member", "join", "membership", "apply", "subscribe", "fee", "category"],
            ar: ["عضوية", "انضمام", "انضم", "اشتراك", "تقديم", "رسوم", "فئة", "عضو"] },
       a: {
-        en: "There are four membership categories: Active (for physicians), Associate (for trainees), Supporting (for companies) and Honorary (by board nomination). Each includes access to the annual forum, educational resources and the member network. You can see the full comparison in the Membership section, or write to info@sscrs.org to apply.",
-        ar: "تضم الجمعية أربع فئات للعضوية: عضو عامل (للأطباء)، وعضو منتسب (للمتدربين)، وعضو داعم (للشركات)، وعضو فخري (بترشيح من مجلس الإدارة). وتشمل كل فئة حضور الملتقى السنوي والموارد التعليمية وشبكة الأعضاء. يمكنك مراجعة قسم العضوية، أو المراسلة على info@sscrs.org للتقديم."
+        en: "There are three membership categories: Active (for consultant and specialist physicians), Associate (for residents and fellows in training) and Supporting (for companies and institutions). Each lists its own benefits and conditions in the Membership section, and applications go to info@sscrs.org.",
+        ar: "تضم الجمعية ثلاث فئات للعضوية: عضو عامل (للاستشاريين والأخصائيين)، وعضو منتسب (للمقيمين وأطباء الزمالة)، وعضو داعم (للشركات والمؤسسات). ولكل فئة مزاياها وشروطها في قسم العضوية، والتقديم عبر info@sscrs.org."
       }
     },
     {

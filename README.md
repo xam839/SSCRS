@@ -64,12 +64,13 @@ Arabic lives in `translations.js` and is applied on demand.
 | About | Society history, seal plate, and four pillars |
 | The Society in Numbers | Statistics in a contained dark panel |
 | Vision / Mission / Goals | Three-column strategic direction |
-| Board Members | Eight-member leadership grid |
-| Membership | Four membership categories |
+| Board Members | Eight member cards with photo and biography |
+| Membership | Three categories, each with benefits and conditions |
 | News | Lead story plus a dated list |
-| Gallery | Filterable photo grid with a lightbox carousel |
+| Awareness | Public-health tips, before Board of Directors |
+| Gallery | Filterable horizontal carousel with a lightbox |
 | Help assistant | Floating button and answer panel (placeholder) |
-| Partners | Strategic and supporting partner tiles |
+| Partners | Partner tiles + Cooperation Agreements |
 | Footer | Bilingual identity block, navigation, legal |
 
 ## Tech Stack
@@ -207,6 +208,48 @@ the block as letters broke every question that ended in one.
 If you extend the knowledge base, add inflected forms rather than relying on
 substrings, and re-check that ordinary questions are not caught by the clinical guard.
 
+## Pages
+
+| File | |
+|---|---|
+| `index.html` | The single-page site |
+| `regulations.html` | Special Regulations — the society's published PDFs |
+
+The header, mobile nav, footer, seal and assistant are **duplicated** between
+the two pages, each marked with a keep-in-sync comment. The site has no build
+step, so a second page means a second copy; a JS include was rejected because it
+keeps the header out of the HTML source, which costs SEO and breaks without
+JavaScript. If a third page is added, that is the point to move to a generator
+or server-side includes rather than copying again.
+
+Sub-pages set their own `<title>` and description for the language switch via
+`data-title-key` / `data-desc-key` on `<html>`; without them a page inherits the
+home page's title when switched to Arabic.
+
+## Replacing the placeholder content
+
+| What | Where | Notes |
+|---|---|---|
+| Member photos | `members/member-01…08.jpg` | 4:5 portraits. Keep the filenames or update `src` in `index.html`. |
+| Member biographies | `index.html` + `mem.b1…b8` in `translations.js` | One or two sentences each. |
+| Membership conditions | `tier.a/b/c.req1…3` in `translations.js` | Three categories: Active, Associate, Supporting. |
+| Gallery photographs | `gallery/` | See the Gallery section above. |
+| Regulation PDFs | `regulations/` | Replace the four placeholder files, then update titles and dates. |
+| Cooperation agreements | `coop.a1…a3` in `translations.js` | Entity, scope and date per row. |
+| Awareness tips | `awr.*` in `translations.js` | Keep the "not medical advice" note. |
+
+> Everything above is placeholder content written for layout review. None of it
+> has been approved by the society, and the awareness copy in particular is
+> general health information, not clinical guidance.
+
+## Cache busting
+
+Local CSS and JS are referenced with a `?v=N` query. GitHub Pages caches these
+hard enough that a deploy can otherwise leave visitors on stale assets — this
+bit repeatedly during development, with edited files not taking effect until the
+cache was bypassed. **Bump the number in `index.html` and `regulations.html`
+whenever you release.**
+
 ## Run Locally
 
 No build step required.
@@ -233,12 +276,15 @@ Then open `http://localhost:8000`.
 ```
 .
 ├── index.html       # Single-page site, incl. the inline SVG seal
+├── regulations.html # Special Regulations page (shared blocks duplicated)
 ├── styles.css       # Design system, tints, RTL-ready layout
 ├── translations.js  # All Arabic copy — the only file a translator needs
 ├── chatbot.js       # Help assistant + its knowledge base (placeholder)
 ├── script.js        # Language switch, sticky nav, mobile nav, reveal
 ├── 404.html         # Custom not-found page (bilingual)
 ├── gallery/         # Gallery photographs (placeholders for now)
+├── members/         # Board portraits (placeholders for now)
+├── regulations/     # Regulation PDFs (placeholders for now)
 ├── seal-core.png    # Inner emblem, used inside the vector ring
 ├── sscrs-seal.png   # Flat raster seal — favicon, social, watermarks
 ├── favicon.png      # Browser icon
@@ -249,7 +295,9 @@ Then open `http://localhost:8000`.
 
 The following still carry placeholder copy and need real content before launch:
 
-- Board member names (currently `Dr. [President]`, `Dr. [Vice President]`, and so on, in both languages)
+- Board member names, photographs and biographies (both languages)
+- Official conditions for the three membership categories
+- Real cooperation agreements, replacing the three placeholder rows
 - Sign-off on the drafted Arabic copy in `translations.js`
 - News article links and the "View all news" destination
 - Supporting partner names and logos

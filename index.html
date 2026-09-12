@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=3" />
+    <link rel="stylesheet" href="styles.css?v=4" />
 
     <script>
       // Applied before first paint so the chosen language never flashes.
@@ -395,56 +395,105 @@
             <h2 data-i18n="board.h">Board Members</h2>
             <p class="section-sub" data-i18n="board.sub">The society is guided by distinguished surgeons and healthcare leaders from across Saudi Arabia.</p>
           </div>
-          <div class="board-grid reveal">
-            <div class="board-card is-president">
-              <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4 data-i18n="board.n1">Dr. [President]</h4>
-              <p class="board-role" data-i18n="board.r1">President</p>
-              <p class="board-city" data-i18n="city.riyadh">Riyadh</p>
-            </div>
-            <div class="board-card">
-              <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4 data-i18n="board.n2">Dr. [Vice President]</h4>
-              <p class="board-role" data-i18n="board.r2">Vice President</p>
-              <p class="board-city" data-i18n="city.jeddah">Jeddah</p>
-            </div>
-            <div class="board-card">
-              <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4 data-i18n="board.n3">Dr. [Secretary]</h4>
-              <p class="board-role" data-i18n="board.r3">Secretary General</p>
-              <p class="board-city" data-i18n="city.riyadh">Riyadh</p>
-            </div>
-            <div class="board-card">
-              <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4 data-i18n="board.n4">Dr. [Treasurer]</h4>
-              <p class="board-role" data-i18n="board.r4">Treasurer</p>
-              <p class="board-city" data-i18n="city.dammam">Dammam</p>
-            </div>
-            <div class="board-card">
-              <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4 data-i18n="board.n5">Dr. [Board Member]</h4>
-              <p class="board-role" data-i18n="board.r5">Board Member</p>
-              <p class="board-city" data-i18n="city.makkah">Makkah</p>
-            </div>
-            <div class="board-card">
-              <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4 data-i18n="board.n6">Dr. [Board Member]</h4>
-              <p class="board-role" data-i18n="board.r5">Board Member</p>
-              <p class="board-city" data-i18n="city.madinah">Medina</p>
-            </div>
-            <div class="board-card">
-              <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4 data-i18n="board.n7">Dr. [Board Member]</h4>
-              <p class="board-role" data-i18n="board.r5">Board Member</p>
-              <p class="board-city" data-i18n="city.dammam">Dammam</p>
-            </div>
-            <div class="board-card">
-              <div class="board-avatar" aria-hidden="true">SS</div>
-              <h4 data-i18n="board.n8">Dr. [Board Member]</h4>
-              <p class="board-role" data-i18n="board.r5">Board Member</p>
-              <p class="board-city" data-i18n="city.abha">Abha</p>
-            </div>
+          <div class="member-grid reveal">
+            <article class="member-card is-president">
+              <div class="member-photo">
+                <img src="members/member-01.jpg" alt="" width="640" height="800"
+                     loading="lazy" decoding="async" />
+              </div>
+              <div class="member-body">
+                <h3 data-i18n="mem.n1">Dr. [President]</h3>
+                <p class="member-role" data-i18n="mem.r1">President</p>
+                <p class="member-city" data-i18n="city.riyadh">Riyadh</p>
+                <p class="member-bio" data-i18n="mem.b1">Consultant colorectal surgeon with a focus on minimally invasive oncologic surgery and national screening policy.</p>
+              </div>
+            </article>
+            <article class="member-card">
+              <div class="member-photo">
+                <img src="members/member-02.jpg" alt="" width="640" height="800"
+                     loading="lazy" decoding="async" />
+              </div>
+              <div class="member-body">
+                <h3 data-i18n="mem.n2">Dr. [Vice President]</h3>
+                <p class="member-role" data-i18n="mem.r2">Vice President</p>
+                <p class="member-city" data-i18n="city.jeddah">Jeddah</p>
+                <p class="member-bio" data-i18n="mem.b2">Consultant surgeon working across advanced laparoscopic practice and postgraduate surgical training.</p>
+              </div>
+            </article>
+            <article class="member-card">
+              <div class="member-photo">
+                <img src="members/member-03.jpg" alt="" width="640" height="800"
+                     loading="lazy" decoding="async" />
+              </div>
+              <div class="member-body">
+                <h3 data-i18n="mem.n3">Dr. [Secretary]</h3>
+                <p class="member-role" data-i18n="mem.r3">Secretary General</p>
+                <p class="member-city" data-i18n="city.riyadh">Riyadh</p>
+                <p class="member-bio" data-i18n="mem.b3">Consultant colorectal surgeon; coordinates the society's scientific programme and member communications.</p>
+              </div>
+            </article>
+            <article class="member-card">
+              <div class="member-photo">
+                <img src="members/member-04.jpg" alt="" width="640" height="800"
+                     loading="lazy" decoding="async" />
+              </div>
+              <div class="member-body">
+                <h3 data-i18n="mem.n4">Dr. [Treasurer]</h3>
+                <p class="member-role" data-i18n="mem.r4">Treasurer</p>
+                <p class="member-city" data-i18n="city.dammam">Dammam</p>
+                <p class="member-bio" data-i18n="mem.b4">Consultant surgeon overseeing the society's finances, subscriptions and sponsorship governance.</p>
+              </div>
+            </article>
+            <article class="member-card">
+              <div class="member-photo">
+                <img src="members/member-05.jpg" alt="" width="640" height="800"
+                     loading="lazy" decoding="async" />
+              </div>
+              <div class="member-body">
+                <h3 data-i18n="mem.n5">Dr. [Board Member]</h3>
+                <p class="member-role" data-i18n="mem.r5">Board Member</p>
+                <p class="member-city" data-i18n="city.makkah">Makkah</p>
+                <p class="member-bio" data-i18n="mem.b5">Consultant colorectal surgeon with an interest in inflammatory bowel disease and pelvic floor disorders.</p>
+              </div>
+            </article>
+            <article class="member-card">
+              <div class="member-photo">
+                <img src="members/member-06.jpg" alt="" width="640" height="800"
+                     loading="lazy" decoding="async" />
+              </div>
+              <div class="member-body">
+                <h3 data-i18n="mem.n6">Dr. [Board Member]</h3>
+                <p class="member-role" data-i18n="mem.r5">Board Member</p>
+                <p class="member-city" data-i18n="city.madinah">Medina</p>
+                <p class="member-bio" data-i18n="mem.b6">Consultant surgeon contributing to regional outreach and public awareness programmes.</p>
+              </div>
+            </article>
+            <article class="member-card">
+              <div class="member-photo">
+                <img src="members/member-07.jpg" alt="" width="640" height="800"
+                     loading="lazy" decoding="async" />
+              </div>
+              <div class="member-body">
+                <h3 data-i18n="mem.n7">Dr. [Board Member]</h3>
+                <p class="member-role" data-i18n="mem.r5">Board Member</p>
+                <p class="member-city" data-i18n="city.dammam">Dammam</p>
+                <p class="member-bio" data-i18n="mem.b7">Consultant colorectal surgeon active in clinical research and multicentre trial participation.</p>
+              </div>
+            </article>
+            <article class="member-card">
+              <div class="member-photo">
+                <img src="members/member-08.jpg" alt="" width="640" height="800"
+                     loading="lazy" decoding="async" />
+              </div>
+              <div class="member-body">
+                <h3 data-i18n="mem.n8">Dr. [Board Member]</h3>
+                <p class="member-role" data-i18n="mem.r5">Board Member</p>
+                <p class="member-city" data-i18n="city.abha">Abha</p>
+                <p class="member-bio" data-i18n="mem.b8">Consultant surgeon supporting training placements and fellowship supervision in the south.</p>
+              </div>
+            </article>
           </div>
+          <p class="member-note reveal" data-i18n="board.note">Photographs and biographies are placeholders pending the society's own material.</p>
         </div>
       </section>
 
@@ -454,58 +503,74 @@
           <div class="section-head reveal">
             <p class="eyebrow" data-i18n="mem.eyebrow">Join the Society</p>
             <h2 data-i18n="mem.h">Membership categories</h2>
-            <p class="section-sub" data-i18n="mem.sub">Choose the category that fits your role. All members gain access to the annual forum, educational resources, and the professional network.</p>
+            <p class="section-sub" data-i18n="mem.sub">Three categories, each with its own benefits and conditions. All members gain access to the annual forum, educational resources and the professional network.</p>
           </div>
-          <div class="mem-grid reveal">
-            <div class="mem-card">
-              <p class="mem-type" data-i18n="mem.a.type">For Physicians</p>
-              <h3 data-i18n="mem.a.h">Active Member</h3>
-              <ul class="mem-features">
-                <li data-i18n="mem.a.f1">Full voting rights</li>
-                <li data-i18n="mem.a.f2">All CME programmes</li>
-                <li data-i18n="mem.a.f3">Forum registration discount</li>
-                <li data-i18n="mem.a.f4">Member directory access</li>
-                <li data-i18n="mem.a.f5">Monthly newsletter</li>
+          <div class="tier-grid reveal">
+            <article class="tier-card">
+              <p class="tier-for" data-i18n="tier.a.for">For consultant and specialist physicians</p>
+              <h3 data-i18n="tier.a.h">Active Member</h3>
+
+              <p class="tier-label" data-i18n="tier.benefits">What you get</p>
+              <ul class="tier-list">
+                  <li data-i18n="tier.a.ben1">Full voting rights at the general assembly</li>
+                  <li data-i18n="tier.a.ben2">All accredited CME programmes</li>
+                  <li data-i18n="tier.a.ben3">Discounted Annual Forum registration</li>
+                  <li data-i18n="tier.a.ben4">Listing in the member directory</li>
               </ul>
-              <a href="mailto:info@sscrs.org" class="mem-btn" data-i18n="cta.apply">Apply Now</a>
-            </div>
-            <div class="mem-card is-featured">
-              <p class="mem-type" data-i18n="mem.b.type">For Trainees</p>
-              <h3 data-i18n="mem.b.h">Associate Member</h3>
-              <ul class="mem-features">
-                <li data-i18n="mem.b.f1">Training resources</li>
-                <li data-i18n="mem.b.f2">Mentorship programme</li>
-                <li data-i18n="mem.b.f3">Discounted forum access</li>
-                <li data-i18n="mem.b.f4">Research network</li>
-                <li data-i18n="mem.b.f5">Career workshops</li>
+
+              <p class="tier-label" data-i18n="tier.requirements">Requirements</p>
+              <ul class="tier-list tier-reqs">
+                  <li data-i18n="tier.a.req1">Saudi Board or recognised equivalent in surgery</li>
+                  <li data-i18n="tier.a.req2">Current professional licence (SCFHS)</li>
+                  <li data-i18n="tier.a.req3">Practising in colorectal surgery</li>
               </ul>
-              <a href="mailto:info@sscrs.org" class="mem-btn" data-i18n="cta.apply">Apply Now</a>
-            </div>
-            <div class="mem-card">
-              <p class="mem-type" data-i18n="mem.c.type">For Companies</p>
-              <h3 data-i18n="mem.c.h">Supporting Member</h3>
-              <ul class="mem-features">
-                <li data-i18n="mem.c.f1">Forum exhibition space</li>
-                <li data-i18n="mem.c.f2">Brand visibility</li>
-                <li data-i18n="mem.c.f3">Sponsorship access</li>
-                <li data-i18n="mem.c.f4">Networking events</li>
-                <li data-i18n="mem.c.f5">CSR alignment</li>
+
+              <a href="mailto:info@sscrs.org" class="tier-btn" data-i18n="cta.apply">Apply Now</a>
+            </article>
+            <article class="tier-card is-featured">
+              <p class="tier-for" data-i18n="tier.b.for">For residents and fellows in training</p>
+              <h3 data-i18n="tier.b.h">Associate Member</h3>
+
+              <p class="tier-label" data-i18n="tier.benefits">What you get</p>
+              <ul class="tier-list">
+                  <li data-i18n="tier.b.ben1">Training resources and mentorship</li>
+                  <li data-i18n="tier.b.ben2">Reduced Annual Forum fees</li>
+                  <li data-i18n="tier.b.ben3">Access to the research network</li>
+                  <li data-i18n="tier.b.ben4">Career development workshops</li>
               </ul>
-              <a href="mailto:info@sscrs.org" class="mem-btn" data-i18n="cta.apply">Apply Now</a>
-            </div>
-            <div class="mem-card">
-              <p class="mem-type" data-i18n="mem.d.type">By Nomination</p>
-              <h3 data-i18n="mem.d.h">Honorary Member</h3>
-              <ul class="mem-features">
-                <li data-i18n="mem.d.f1">Board nomination only</li>
-                <li data-i18n="mem.d.f2">Exceptional recognition</li>
-                <li data-i18n="mem.d.f3">Lifetime affiliation</li>
-                <li data-i18n="mem.d.f4">Speaking invitations</li>
-                <li data-i18n="mem.d.f5">Advisory role access</li>
+
+              <p class="tier-label" data-i18n="tier.requirements">Requirements</p>
+              <ul class="tier-list tier-reqs">
+                  <li data-i18n="tier.b.req1">Enrolled in a recognised surgical training programme</li>
+                  <li data-i18n="tier.b.req2">Current trainee registration</li>
+                  <li data-i18n="tier.b.req3">Endorsement from a programme director</li>
               </ul>
-              <a href="mailto:info@sscrs.org" class="mem-btn" data-i18n="cta.learn">Learn More</a>
-            </div>
+
+              <a href="mailto:info@sscrs.org" class="tier-btn" data-i18n="cta.apply">Apply Now</a>
+            </article>
+            <article class="tier-card">
+              <p class="tier-for" data-i18n="tier.c.for">For companies and institutions</p>
+              <h3 data-i18n="tier.c.h">Supporting Member</h3>
+
+              <p class="tier-label" data-i18n="tier.benefits">What you get</p>
+              <ul class="tier-list">
+                  <li data-i18n="tier.c.ben1">Exhibition space at the Annual Forum</li>
+                  <li data-i18n="tier.c.ben2">Brand visibility across society channels</li>
+                  <li data-i18n="tier.c.ben3">Sponsorship and partnership access</li>
+                  <li data-i18n="tier.c.ben4">Invitations to networking events</li>
+              </ul>
+
+              <p class="tier-label" data-i18n="tier.requirements">Requirements</p>
+              <ul class="tier-list tier-reqs">
+                  <li data-i18n="tier.c.req1">Registered commercial or academic entity</li>
+                  <li data-i18n="tier.c.req2">Activity relevant to colorectal healthcare</li>
+                  <li data-i18n="tier.c.req3">Board approval of the application</li>
+              </ul>
+
+              <a href="mailto:info@sscrs.org" class="tier-btn" data-i18n="cta.apply">Apply Now</a>
+            </article>
           </div>
+          <p class="member-note reveal" data-i18n="mem.note">Conditions shown are placeholders pending the society's official requirements for each category.</p>
         </div>
       </section>
 
@@ -860,8 +925,8 @@
       <p class="chat-note" data-i18n="chat.note">Preview assistant &middot; general information only, not medical advice.</p>
     </section>
 
-    <script src="translations.js?v=3"></script>
-    <script src="script.js?v=3"></script>
-    <script src="chatbot.js?v=3"></script>
+    <script src="translations.js?v=4"></script>
+    <script src="script.js?v=4"></script>
+    <script src="chatbot.js?v=4"></script>
   </body>
 </html>
