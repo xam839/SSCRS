@@ -190,6 +190,53 @@ html[lang="ar"] .site-header .lockup-en { display: none; }
 }
 .nav-shell a:hover { background: var(--tint-navy); color: var(--navy); }
 
+/* Grouped navigation -----------------------------------------
+   Ten flat links cannot fit the bar in either language, so
+   related destinations sit behind two disclosure menus. */
+.nav-group { position: relative; }
+.nav-trigger {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 10px; border: 0; border-radius: var(--r-pill);
+  background: none; cursor: pointer; white-space: nowrap;
+  font-size: 14px; font-weight: 500; color: var(--body);
+  letter-spacing: -0.01em;
+  transition: background-color .18s ease, color .18s ease;
+}
+.nav-trigger::after {
+  content: ""; width: 7px; height: 7px; flex: none;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .2s ease;
+}
+.nav-trigger:hover,
+.nav-group.is-open .nav-trigger { background: var(--tint-navy); color: var(--navy); }
+.nav-group.is-open .nav-trigger::after { transform: translateY(1px) rotate(225deg); }
+
+.nav-menu {
+  position: absolute; top: calc(100% + 10px); inset-inline-start: 0; z-index: 90;
+  min-width: 208px; padding: 8px;
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--r-md); box-shadow: var(--shadow-md);
+  display: flex; flex-direction: column; gap: 2px;
+  opacity: 0; transform: translateY(-6px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+.nav-menu[hidden] { display: none; }
+.nav-group.is-open .nav-menu { opacity: 1; transform: none; }
+.nav-menu a {
+  padding: 10px 13px; border-radius: var(--r-sm); white-space: nowrap;
+  font-size: 14.5px; font-weight: 500; color: var(--body); text-align: start;
+  transition: background-color .16s ease, color .16s ease;
+}
+.nav-menu a:hover { background: var(--tint-navy); color: var(--navy); }
+
+/* Group headings in the mobile sheet */
+.mobile-nav-group {
+  margin: 18px 0 6px; padding-inline-start: 18px;
+  font-size: 12.5px; font-weight: 700; color: var(--muted);
+}
+.mobile-nav nav > .mobile-nav-group:first-child { margin-top: 0; }
+
 /* Set by script.js when the nav's natural width exceeds the space left
    between the lockup and the actions. Without it the nav box shrinks
    below its content and the nowrap links paint over the lockup. */

@@ -142,6 +142,62 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitNav);
     fitNav();
 
+    /* --- Grouped navigation disclosures ----------------------
+       Click or keyboard opens a menu; hovering opens it on
+       pointer devices. Only one is open at a time.
+       -------------------------------------------------------- */
+    var navGroups = Array.prototype.slice.call(document.querySelectorAll("[data-nav-group]"));
+    if (navGroups.length) {
+      var closeGroups = function (except) {
+        navGroups.forEach(function (g) {
+          if (g === except) return;
+          g.classList.remove("is-open");
+          g.querySelector("[data-nav-trigger]").setAttribute("aria-expanded", "false");
+          g.querySelector("[data-nav-menu]").hidden = true;
+        });
+      };
+      var openGroup = function (g) {
+        closeGroups(g);
+        g.querySelector("[data-nav-menu]").hidden = false;
+        void g.offsetWidth;                     // flush layout so the fade runs
+        g.classList.add("is-open");
+        g.querySelector("[data-nav-trigger]").setAttribute("aria-expanded", "true");
+      };
+      var closeGroup = function (g) {
+        g.classList.remove("is-open");
+        g.querySelector("[data-nav-trigger]").setAttribute("aria-expanded", "false");
+        var menu = g.querySelector("[data-nav-menu]");
+        setTimeout(function () { if (!g.classList.contains("is-open")) menu.hidden = true; }, 180);
+      };
+
+      navGroups.forEach(function (g) {
+        var trigger = g.querySelector("[data-nav-trigger]");
+        trigger.addEventListener("click", function () {
+          g.classList.contains("is-open") ? closeGroup(g) : openGroup(g);
+        });
+        g.addEventListener("mouseenter", function () {
+          if (window.matchMedia("(hover: hover)").matches) openGroup(g);
+        });
+        g.addEventListener("mouseleave", function () {
+          if (window.matchMedia("(hover: hover)").matches) closeGroup(g);
+        });
+        // Leaving the group by keyboard closes it.
+        g.addEventListener("focusout", function (e) {
+          if (!g.contains(e.relatedTarget)) closeGroup(g);
+        });
+        g.querySelectorAll("[data-nav-menu] a").forEach(function (a) {
+          a.addEventListener("click", function () { closeGroup(g); });
+        });
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeGroups(null);
+      });
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest("[data-nav-group]")) closeGroups(null);
+      });
+    }
+
     /* --- Mobile navigation ---------------------------------- */
     var menuToggle = document.querySelector("[data-menu-toggle]");
     var mobileNav = document.querySelector("[data-mobile-nav]");

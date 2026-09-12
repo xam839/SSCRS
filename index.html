@@ -111,14 +111,35 @@
         </a>
 
         <nav class="nav-shell" aria-label="Primary">
-          <a href="#about" data-i18n="nav.about">About</a>
-          <a href="#numbers" data-i18n="nav.society">Numbers</a>
-          <a href="#vision" data-i18n="nav.vision">Vision</a>
-          <a href="#board" data-i18n="nav.board">Board</a>
-          <a href="#membership" data-i18n="nav.membership">Membership</a>
-          <a href="#news" data-i18n="nav.news">News</a>
-          <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
-          <a href="#partners" data-i18n="nav.partners">Partners</a>
+          <div class="nav-group" data-nav-group>
+            <button class="nav-trigger" type="button" data-nav-trigger
+                    aria-expanded="false" aria-controls="menu-society">
+              <span data-i18n="nav.societyGroup">The Society</span>
+            </button>
+            <div class="nav-menu" id="menu-society" data-nav-menu hidden>
+              <a href="index.html#about" data-i18n="nav.about">About</a>
+              <a href="index.html#numbers" data-i18n="nav.society">Numbers</a>
+              <a href="index.html#vision" data-i18n="nav.vision">Vision</a>
+              <a href="index.html#board" data-i18n="nav.board">Board</a>
+            </div>
+          </div>
+
+          <a href="index.html#membership" data-i18n="nav.membership">Membership</a>
+          <a href="index.html#awareness" data-i18n="nav.awareness">Awareness</a>
+
+          <div class="nav-group" data-nav-group>
+            <button class="nav-trigger" type="button" data-nav-trigger
+                    aria-expanded="false" aria-controls="menu-media">
+              <span data-i18n="nav.media">Media</span>
+            </button>
+            <div class="nav-menu" id="menu-media" data-nav-menu hidden>
+              <a href="index.html#news" data-i18n="nav.news">News</a>
+              <a href="index.html#gallery" data-i18n="nav.gallery">Gallery</a>
+            </div>
+          </div>
+
+          <a href="index.html#partners" data-i18n="nav.partners">Partners</a>
+          <a href="regulations.html" data-i18n="nav.regulations">Regulations</a>
         </nav>
 
         <div class="header-actions">
@@ -143,15 +164,21 @@
                 aria-label="Close navigation" data-i18n-aria="a11y.closeNav">&times;</button>
       </div>
       <nav aria-label="Mobile">
-        <a href="#about" data-nav-link data-i18n="nav.about">About</a>
-        <a href="#numbers" data-nav-link data-i18n="nav.society">Numbers</a>
-        <a href="#vision" data-nav-link data-i18n="nav.vision">Vision</a>
-        <a href="#board" data-nav-link data-i18n="nav.board">Board</a>
-        <a href="#membership" data-nav-link data-i18n="nav.membership">Membership</a>
-        <a href="#news" data-nav-link data-i18n="nav.news">News</a>
-        <a href="#gallery" data-nav-link data-i18n="nav.gallery">Gallery</a>
-        <a href="#partners" data-nav-link data-i18n="nav.partners">Partners</a>
-        <a href="#membership" class="mobile-join-btn" data-nav-link data-i18n="cta.join">Join the Society</a>
+        <p class="mobile-nav-group" data-i18n="nav.societyGroup">The Society</p>
+        <a href="index.html#about" data-nav-link data-i18n="nav.about">About</a>
+        <a href="index.html#numbers" data-nav-link data-i18n="nav.society">Numbers</a>
+        <a href="index.html#vision" data-nav-link data-i18n="nav.vision">Vision</a>
+        <a href="index.html#board" data-nav-link data-i18n="nav.board">Board</a>
+
+        <p class="mobile-nav-group" data-i18n="nav.mediaGroup">Membership &amp; Media</p>
+        <a href="index.html#membership" data-nav-link data-i18n="nav.membership">Membership</a>
+        <a href="index.html#awareness" data-nav-link data-i18n="nav.awareness">Awareness</a>
+        <a href="index.html#news" data-nav-link data-i18n="nav.news">News</a>
+        <a href="index.html#gallery" data-nav-link data-i18n="nav.gallery">Gallery</a>
+        <a href="index.html#partners" data-nav-link data-i18n="nav.partners">Partners</a>
+        <a href="regulations.html" data-nav-link data-i18n="nav.regulations">Regulations</a>
+
+        <a href="index.html#membership" class="mobile-join-btn" data-nav-link data-i18n="cta.join">Join the Society</a>
         <button class="mobile-lang" type="button" data-lang-toggle>
           <span data-lang-label>العربية</span>
         </button>
