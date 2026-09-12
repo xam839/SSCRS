@@ -83,8 +83,8 @@
       k: { en: ["board", "leadership", "president", "chair", "committee", "who runs"],
            ar: ["مجلس", "إدارة", "رئيس", "قيادة", "أعضاء المجلس"] },
       a: {
-        en: "The society is guided by a board of distinguished surgeons and healthcare leaders from across the Kingdom, including a President, Vice President, Secretary General and Treasurer. You can see them in the Board section.",
-        ar: "تقود الجمعية نخبة من الجراحين وقادة القطاع الصحي من مختلف مناطق المملكة، ويضم المجلس رئيسًا ونائبًا للرئيس وأمينًا عامًا ومشرفًا ماليًا. يمكنك الاطلاع عليهم في قسم مجلس الإدارة."
+        en: "The society is guided by a board of distinguished surgeons and healthcare leaders from across the Kingdom, chaired by Prof. Samar Alhomoud. You can see the members in the Board section; the remaining roles and biographies are still being published.",
+        ar: "تقود الجمعية نخبة من الجراحين وقادة القطاع الصحي من مختلف مناطق المملكة، برئاسة البروفيسورة سمر الحمود. ويمكنك الاطلاع على الأعضاء في قسم مجلس الإدارة، وما زالت بقية المناصب والسير الذاتية قيد النشر."
       }
     },
     {

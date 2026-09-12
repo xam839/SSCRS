@@ -1,26 +1,43 @@
 <!doctype html>
-<html lang="en" dir="ltr" data-title-key="reg.docTitle" data-desc-key="reg.docDesc">
+<html
+  lang="en"
+  dir="ltr"
+  data-title-key="reg.docTitle"
+  data-desc-key="reg.docDesc"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Regulations | SSCRS</title>
-    <meta name="description" content="Published regulations and bylaws of the Saudi Society of Colon &amp; Rectal Surgery, available to view or download as PDF." />
+    <meta
+      name="description"
+      content="Published regulations and bylaws of the Saudi Society of Colon &amp; Rectal Surgery, available to view or download as PDF."
+    />
     <meta name="theme-color" content="#0C2549" />
 
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="sscrs-seal.png" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Saudi Society of Colon &amp; Rectal Surgery" />
+    <meta
+      property="og:site_name"
+      content="Saudi Society of Colon &amp; Rectal Surgery"
+    />
     <meta property="og:title" content="Regulations | SSCRS" />
-    <meta property="og:description" content="Published regulations and bylaws of the Saudi Society of Colon &amp; Rectal Surgery." />
+    <meta
+      property="og:description"
+      content="Published regulations and bylaws of the Saudi Society of Colon &amp; Rectal Surgery."
+    />
     <meta property="og:image" content="sscrs-seal.png" />
     <meta name="twitter:card" content="summary" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=5" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=7" />
 
     <script>
       // Applied before first paint so the chosen language never flashes.
@@ -38,8 +55,9 @@
     </script>
   </head>
   <body>
-
-    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>
+    <a class="skip-link" href="#main" data-i18n="a11y.skip"
+      >Skip to main content</a
+    >
 
     <!-- ============================================================
          SHARED BLOCKS — keep in sync with index.html
@@ -48,7 +66,7 @@
          second copy. If a third page appears, move to includes or a
          generator instead of copying again.
          ============================================================ -->
-<!-- ============================================================
+    <!-- ============================================================
          THE SOCIETY SEAL, as vector.
 
          The ring, its rules and all of its lettering are true vector,
@@ -60,11 +78,17 @@
          appears. It is inline rather than an external .svg file so
          that it inherits the page's webfonts.
          ============================================================ -->
-    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    <svg
+      width="0"
+      height="0"
+      aria-hidden="true"
+      focusable="false"
+      style="position: absolute"
+    >
       <defs>
         <linearGradient id="sealRing" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#FFFFFF" />
-          <stop offset="45%"  stop-color="#EEF2F7" />
+          <stop offset="0%" stop-color="#FFFFFF" />
+          <stop offset="45%" stop-color="#EEF2F7" />
           <stop offset="100%" stop-color="#DCE4EE" />
         </linearGradient>
         <clipPath id="sealCoreClip">
@@ -72,55 +96,145 @@
         </clipPath>
 
         <!-- Baseline arcs for the ring lettering -->
-        <path id="sealArcTop"    d="M 49,256 A 207,207 0 0 1 463,256" fill="none" />
-        <path id="sealArcBottom" d="M 58,256 A 198,198 0 0 0 454,256" fill="none" />
+        <path
+          id="sealArcTop"
+          d="M 49,256 A 207,207 0 0 1 463,256"
+          fill="none"
+        />
+        <path
+          id="sealArcBottom"
+          d="M 58,256 A 198,198 0 0 0 454,256"
+          fill="none"
+        />
 
         <symbol id="sscrs-seal" viewBox="0 0 512 512">
           <circle cx="256" cy="256" r="250" fill="url(#sealRing)" />
-          <circle cx="256" cy="256" r="250" fill="none" stroke="#C3CFDD" stroke-width="2" />
-          <circle cx="256" cy="256" r="242" fill="none" stroke="#4E9E37" stroke-width="2.5" />
-          <circle cx="256" cy="256" r="166" fill="none" stroke="#4E9E37" stroke-width="2.5" />
-          <circle cx="256" cy="256" r="161" fill="none" stroke="#C3CFDD" stroke-width="2" />
+          <circle
+            cx="256"
+            cy="256"
+            r="250"
+            fill="none"
+            stroke="#C3CFDD"
+            stroke-width="2"
+          />
+          <circle
+            cx="256"
+            cy="256"
+            r="242"
+            fill="none"
+            stroke="#4E9E37"
+            stroke-width="2.5"
+          />
+          <circle
+            cx="256"
+            cy="256"
+            r="166"
+            fill="none"
+            stroke="#4E9E37"
+            stroke-width="2.5"
+          />
+          <circle
+            cx="256"
+            cy="256"
+            r="161"
+            fill="none"
+            stroke="#C3CFDD"
+            stroke-width="2"
+          />
 
-          <image href="seal-core.png" x="96" y="96" width="320" height="320"
-                 clip-path="url(#sealCoreClip)" />
+          <image
+            href="seal-core.png"
+            x="96"
+            y="96"
+            width="320"
+            height="320"
+            clip-path="url(#sealCoreClip)"
+          />
 
           <g fill="#3C7A2A" font-weight="700">
-            <text font-family="Noto Kufi Arabic, Segoe UI, Tahoma, sans-serif"
-                  font-size="23" direction="rtl">
-              <textPath href="#sealArcTop" startOffset="50%" text-anchor="middle"
-                >الجمعية السعودية لجراحة القولون والمستقيم</textPath>
+            <text
+              font-family="Noto Kufi Arabic, Segoe UI, Tahoma, sans-serif"
+              font-size="23"
+              direction="rtl"
+            >
+              <textPath
+                href="#sealArcTop"
+                startOffset="50%"
+                text-anchor="middle"
+              >
+                الجمعية السعودية لجراحة القولون والمستقيم
+              </textPath>
             </text>
-            <text font-family="Plus Jakarta Sans, Helvetica, Arial, sans-serif"
-                  font-size="20.5" letter-spacing="0.6">
-              <textPath href="#sealArcBottom" startOffset="50%" text-anchor="middle"
-                >SAUDI SOCIETY OF COLON &amp; RECTAL SURGERY</textPath>
+            <text
+              font-family="Plus Jakarta Sans, Helvetica, Arial, sans-serif"
+              font-size="20.5"
+              letter-spacing="0.6"
+            >
+              <textPath
+                href="#sealArcBottom"
+                startOffset="50%"
+                text-anchor="middle"
+              >
+                SAUDI SOCIETY OF COLON &amp; RECTAL SURGERY
+              </textPath>
             </text>
-            <text x="52" y="266" text-anchor="middle"
-                  font-family="Plus Jakarta Sans, Helvetica, Arial, sans-serif" font-size="26">2009</text>
-            <text x="460" y="266" text-anchor="middle"
-                  font-family="Plus Jakarta Sans, Helvetica, Arial, sans-serif" font-size="26">1430</text>
+            <text
+              x="52"
+              y="266"
+              text-anchor="middle"
+              font-family="Plus Jakarta Sans, Helvetica, Arial, sans-serif"
+              font-size="26"
+            >
+              2009
+            </text>
+            <text
+              x="460"
+              y="266"
+              text-anchor="middle"
+              font-family="Plus Jakarta Sans, Helvetica, Arial, sans-serif"
+              font-size="26"
+            >
+              1430
+            </text>
           </g>
         </symbol>
       </defs>
     </svg>
 
-<!-- HEADER — single sticky row -->
+    <!-- HEADER — single sticky row -->
     <header class="site-header" data-header>
       <div class="page-wrap header-inner">
-        <a class="lockup" href="#top" aria-label="SSCRS" data-i18n-aria="a11y.home">
-          <svg class="lockup-seal" viewBox="0 0 512 512" aria-hidden="true"><use href="#sscrs-seal" /></svg>
+        <a
+          class="lockup"
+          href="#top"
+          aria-label="SSCRS"
+          data-i18n-aria="a11y.home"
+        >
+          <svg class="lockup-seal" viewBox="0 0 512 512" aria-hidden="true">
+            <use href="#sscrs-seal" />
+          </svg>
           <span class="lockup-text">
-            <span class="lockup-ar" lang="ar">الجمعية السعودية لجراحة القولون والمستقيم</span>
-            <span class="lockup-en">Saudi Society of Colon &amp; Rectal Surgery</span>
-            <span class="lockup-est" data-i18n="brand.est">Established 2009 &middot; 1430H</span>
+            <span class="lockup-ar" lang="ar"
+              >الجمعية السعودية لجراحة القولون والمستقيم</span
+            >
+            <span class="lockup-en"
+              >Saudi Society of Colon &amp; Rectal Surgery</span
+            >
+            <span class="lockup-est" data-i18n="brand.est"
+              >Established 2009 &middot; 1430H</span
+            >
           </span>
         </a>
 
         <nav class="nav-shell" aria-label="Primary">
           <div class="nav-group" data-nav-group>
-            <button class="nav-trigger" type="button" data-nav-trigger
-                    aria-expanded="false" aria-controls="menu-society">
+            <button
+              class="nav-trigger"
+              type="button"
+              data-nav-trigger
+              aria-expanded="false"
+              aria-controls="menu-society"
+            >
               <span data-i18n="nav.societyGroup">The Society</span>
             </button>
             <div class="nav-menu" id="menu-society" data-nav-menu hidden>
@@ -131,12 +245,19 @@
             </div>
           </div>
 
-          <a href="index.html#membership" data-i18n="nav.membership">Membership</a>
+          <a href="index.html#membership" data-i18n="nav.membership"
+            >Membership</a
+          >
           <a href="index.html#awareness" data-i18n="nav.awareness">Awareness</a>
 
           <div class="nav-group" data-nav-group>
-            <button class="nav-trigger" type="button" data-nav-trigger
-                    aria-expanded="false" aria-controls="menu-media">
+            <button
+              class="nav-trigger"
+              type="button"
+              data-nav-trigger
+              aria-expanded="false"
+              aria-controls="menu-media"
+            >
               <span data-i18n="nav.media">Media</span>
             </button>
             <div class="nav-menu" id="menu-media" data-nav-menu hidden>
@@ -146,46 +267,98 @@
           </div>
 
           <a href="index.html#partners" data-i18n="nav.partners">Partners</a>
-          <a href="regulations.html" aria-current="page" data-i18n="nav.regulations">Regulations</a>
+          <a
+            href="regulations.html"
+            aria-current="page"
+            data-i18n="nav.regulations"
+            >Regulations</a
+          >
         </nav>
 
         <div class="header-actions">
           <button class="lang-switch" type="button" data-lang-toggle>
             <span data-lang-label>العربية</span>
           </button>
-          <a class="btn btn-primary" href="#membership" data-i18n="cta.join">Join the Society</a>
-          <button class="menu-toggle" type="button" data-menu-toggle
-                  aria-label="Open navigation" data-i18n-aria="a11y.openNav"
-                  aria-expanded="false" aria-controls="mobile-nav">
+          <a class="btn btn-primary" href="#membership" data-i18n="cta.join"
+            >Join the Society</a
+          >
+          <button
+            class="menu-toggle"
+            type="button"
+            data-menu-toggle
+            aria-label="Open navigation"
+            data-i18n-aria="a11y.openNav"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+          >
             <span></span><span></span><span></span>
           </button>
         </div>
       </div>
     </header>
 
-<!-- MOBILE NAVIGATION -->
+    <!-- MOBILE NAVIGATION -->
     <div class="mobile-nav" id="mobile-nav" data-mobile-nav aria-hidden="true">
       <div class="mobile-nav-head">
-        <svg style="width:46px;height:46px" viewBox="0 0 512 512" aria-hidden="true"><use href="#sscrs-seal" /></svg>
-        <button class="mobile-nav-close" type="button" data-menu-close
-                aria-label="Close navigation" data-i18n-aria="a11y.closeNav">&times;</button>
+        <svg
+          style="width: 46px; height: 46px"
+          viewBox="0 0 512 512"
+          aria-hidden="true"
+        >
+          <use href="#sscrs-seal" />
+        </svg>
+        <button
+          class="mobile-nav-close"
+          type="button"
+          data-menu-close
+          aria-label="Close navigation"
+          data-i18n-aria="a11y.closeNav"
+        >
+          &times;
+        </button>
       </div>
       <nav aria-label="Mobile">
         <p class="mobile-nav-group" data-i18n="nav.societyGroup">The Society</p>
         <a href="index.html#about" data-nav-link data-i18n="nav.about">About</a>
-        <a href="index.html#numbers" data-nav-link data-i18n="nav.society">Numbers</a>
-        <a href="index.html#vision" data-nav-link data-i18n="nav.vision">Vision</a>
+        <a href="index.html#numbers" data-nav-link data-i18n="nav.society"
+          >Numbers</a
+        >
+        <a href="index.html#vision" data-nav-link data-i18n="nav.vision"
+          >Vision</a
+        >
         <a href="index.html#board" data-nav-link data-i18n="nav.board">Board</a>
 
-        <p class="mobile-nav-group" data-i18n="nav.mediaGroup">Membership &amp; Media</p>
-        <a href="index.html#membership" data-nav-link data-i18n="nav.membership">Membership</a>
-        <a href="index.html#awareness" data-nav-link data-i18n="nav.awareness">Awareness</a>
+        <p class="mobile-nav-group" data-i18n="nav.mediaGroup">
+          Membership &amp; Media
+        </p>
+        <a href="index.html#membership" data-nav-link data-i18n="nav.membership"
+          >Membership</a
+        >
+        <a href="index.html#awareness" data-nav-link data-i18n="nav.awareness"
+          >Awareness</a
+        >
         <a href="index.html#news" data-nav-link data-i18n="nav.news">News</a>
-        <a href="index.html#gallery" data-nav-link data-i18n="nav.gallery">Gallery</a>
-        <a href="index.html#partners" data-nav-link data-i18n="nav.partners">Partners</a>
-        <a href="regulations.html" aria-current="page" data-nav-link data-i18n="nav.regulations">Regulations</a>
+        <a href="index.html#gallery" data-nav-link data-i18n="nav.gallery"
+          >Gallery</a
+        >
+        <a href="index.html#partners" data-nav-link data-i18n="nav.partners"
+          >Partners</a
+        >
+        <a
+          href="regulations.html"
+          aria-current="page"
+          data-nav-link
+          data-i18n="nav.regulations"
+          >Regulations</a
+        >
 
-        <a href="index.html#membership" class="mobile-join-btn" data-nav-link data-i18n="cta.join">Join the Society</a>
+        <a
+          href="index.html#membership"
+          class="mobile-join-btn"
+          data-nav-link
+          data-i18n="cta.join"
+          >Join the Society</a
+        >
         <button class="mobile-lang" type="button" data-lang-toggle>
           <span data-lang-label>العربية</span>
         </button>
@@ -201,7 +374,10 @@
             <span data-i18n="nav.regulations">Regulations</span>
           </nav>
           <h1 data-i18n="reg.h">Special Regulations</h1>
-          <p class="page-hero-sub" data-i18n="reg.sub">The society's published regulations and bylaws. Each document can be read in the browser or downloaded as a PDF.</p>
+          <p class="page-hero-sub" data-i18n="reg.sub">
+            The society's published regulations and bylaws. Each document can be
+            read in the browser or downloaded as a PDF.
+          </p>
         </div>
       </section>
 
@@ -212,85 +388,163 @@
               <span class="reg-icon" aria-hidden="true"></span>
               <div class="reg-body">
                 <h3 data-i18n="reg.d1">SSCRS Basic Bylaw</h3>
-                <p data-i18n="reg.d1.p">The founding statute: the society's purpose, membership, governance and dissolution.</p>
-                <span class="reg-meta" data-i18n="reg.d1.m">2025 &middot; PDF</span>
+                <p data-i18n="reg.d1.p">
+                  The founding statute: the society's purpose, membership,
+                  governance and dissolution.
+                </p>
+                <span class="reg-meta" data-i18n="reg.d1.m"
+                  >2025 &middot; PDF</span
+                >
               </div>
               <div class="reg-actions">
-                <a class="btn btn-outline" href="regulations/basic-bylaw.pdf" target="_blank" rel="noopener"
-                   data-i18n="reg.view">View</a>
-                <a class="btn btn-primary" href="regulations/basic-bylaw.pdf" download
-                   data-i18n="reg.download">Download</a>
+                <a
+                  class="btn btn-outline"
+                  href="regulations/basic-bylaw.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  data-i18n="reg.view"
+                  >View</a
+                >
+                <a
+                  class="btn btn-primary"
+                  href="regulations/basic-bylaw.pdf"
+                  download
+                  data-i18n="reg.download"
+                  >Download</a
+                >
               </div>
             </li>
             <li class="reg-item">
               <span class="reg-icon" aria-hidden="true"></span>
               <div class="reg-body">
                 <h3 data-i18n="reg.d2">Membership Regulations</h3>
-                <p data-i18n="reg.d2.p">Categories, eligibility, subscription terms, rights and obligations of members.</p>
-                <span class="reg-meta" data-i18n="reg.d2.m">2025 &middot; PDF</span>
+                <p data-i18n="reg.d2.p">
+                  Categories, eligibility, subscription terms, rights and
+                  obligations of members.
+                </p>
+                <span class="reg-meta" data-i18n="reg.d2.m"
+                  >2025 &middot; PDF</span
+                >
               </div>
               <div class="reg-actions">
-                <a class="btn btn-outline" href="regulations/membership-regulations.pdf" target="_blank" rel="noopener"
-                   data-i18n="reg.view">View</a>
-                <a class="btn btn-primary" href="regulations/membership-regulations.pdf" download
-                   data-i18n="reg.download">Download</a>
+                <a
+                  class="btn btn-outline"
+                  href="regulations/membership-regulations.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  data-i18n="reg.view"
+                  >View</a
+                >
+                <a
+                  class="btn btn-primary"
+                  href="regulations/membership-regulations.pdf"
+                  download
+                  data-i18n="reg.download"
+                  >Download</a
+                >
               </div>
             </li>
             <li class="reg-item">
               <span class="reg-icon" aria-hidden="true"></span>
               <div class="reg-body">
                 <h3 data-i18n="reg.d3">Financial Regulations</h3>
-                <p data-i18n="reg.d3.p">Budgeting, subscriptions, sponsorship income, disbursement and annual audit.</p>
-                <span class="reg-meta" data-i18n="reg.d3.m">2024 &middot; PDF</span>
+                <p data-i18n="reg.d3.p">
+                  Budgeting, subscriptions, sponsorship income, disbursement and
+                  annual audit.
+                </p>
+                <span class="reg-meta" data-i18n="reg.d3.m"
+                  >2024 &middot; PDF</span
+                >
               </div>
               <div class="reg-actions">
-                <a class="btn btn-outline" href="regulations/financial-regulations.pdf" target="_blank" rel="noopener"
-                   data-i18n="reg.view">View</a>
-                <a class="btn btn-primary" href="regulations/financial-regulations.pdf" download
-                   data-i18n="reg.download">Download</a>
+                <a
+                  class="btn btn-outline"
+                  href="regulations/financial-regulations.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  data-i18n="reg.view"
+                  >View</a
+                >
+                <a
+                  class="btn btn-primary"
+                  href="regulations/financial-regulations.pdf"
+                  download
+                  data-i18n="reg.download"
+                  >Download</a
+                >
               </div>
             </li>
             <li class="reg-item">
               <span class="reg-icon" aria-hidden="true"></span>
               <div class="reg-body">
                 <h3 data-i18n="reg.d4">Board Election Rules</h3>
-                <p data-i18n="reg.d4.p">Nomination, candidacy conditions, voting procedure and term lengths.</p>
-                <span class="reg-meta" data-i18n="reg.d4.m">2024 &middot; PDF</span>
+                <p data-i18n="reg.d4.p">
+                  Nomination, candidacy conditions, voting procedure and term
+                  lengths.
+                </p>
+                <span class="reg-meta" data-i18n="reg.d4.m"
+                  >2024 &middot; PDF</span
+                >
               </div>
               <div class="reg-actions">
-                <a class="btn btn-outline" href="regulations/board-elections.pdf" target="_blank" rel="noopener"
-                   data-i18n="reg.view">View</a>
-                <a class="btn btn-primary" href="regulations/board-elections.pdf" download
-                   data-i18n="reg.download">Download</a>
+                <a
+                  class="btn btn-outline"
+                  href="regulations/board-elections.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  data-i18n="reg.view"
+                  >View</a
+                >
+                <a
+                  class="btn btn-primary"
+                  href="regulations/board-elections.pdf"
+                  download
+                  data-i18n="reg.download"
+                  >Download</a
+                >
               </div>
             </li>
           </ul>
-
-          <p class="reg-note reveal" data-i18n="reg.note">These are placeholder documents. Replace the files in the <code>regulations/</code> folder with the society's published PDFs, and update the titles and dates here.</p>
         </div>
       </section>
     </main>
 
-<footer class="site-footer" id="footer">
+    <footer class="site-footer" id="footer">
       <div class="page-wrap">
         <div class="footer-identity">
-          <svg viewBox="0 0 512 512" role="img"
-               aria-label="Seal of the Saudi Society of Colon and Rectal Surgery"
-               data-i18n-aria="a11y.seal"><use href="#sscrs-seal" /></svg>
+          <svg
+            viewBox="0 0 512 512"
+            role="img"
+            aria-label="Seal of the Saudi Society of Colon and Rectal Surgery"
+            data-i18n-aria="a11y.seal"
+          >
+            <use href="#sscrs-seal" />
+          </svg>
           <span class="lockup-text">
-            <span class="lockup-ar" lang="ar">الجمعية السعودية لجراحة القولون والمستقيم</span>
-            <span class="lockup-en">Saudi Society of Colon &amp; Rectal Surgery</span>
-            <span class="lockup-est" data-i18n="brand.est">Established 2009 &middot; 1430H</span>
+            <span class="lockup-ar" lang="ar"
+              >الجمعية السعودية لجراحة القولون والمستقيم</span
+            >
+            <span class="lockup-en"
+              >Saudi Society of Colon &amp; Rectal Surgery</span
+            >
+            <span class="lockup-est" data-i18n="brand.est"
+              >Established 2009 &middot; 1430H</span
+            >
           </span>
         </div>
         <div class="footer-cols">
           <div class="footer-about">
-            <p data-i18n="footer.about">Advancing colorectal surgical excellence across the Kingdom of Saudi Arabia since 2009. Riyadh, Kingdom of Saudi Arabia.</p>
+            <p data-i18n="footer.about">
+              Advancing colorectal surgical excellence across the Kingdom of
+              Saudi Arabia since 2009. Riyadh, Kingdom of Saudi Arabia.
+            </p>
           </div>
           <div class="footer-col">
             <h5 data-i18n="footer.society">Society</h5>
             <a href="#about" data-i18n="footer.aboutUs">About Us</a>
-            <a href="#numbers" data-i18n="num.eyebrow">The Society in Numbers</a>
+            <a href="#numbers" data-i18n="num.eyebrow"
+              >The Society in Numbers</a
+            >
             <a href="#vision" data-i18n="nav.vision">Vision</a>
             <a href="#board" data-i18n="board.h">Board Members</a>
           </div>
@@ -309,7 +563,10 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p data-i18n="footer.copy">&copy; 2026 Saudi Society of Colon &amp; Rectal Surgery. All rights reserved.</p>
+          <p data-i18n="footer.copy">
+            &copy; 2026 Saudi Society of Colon &amp; Rectal Surgery. All rights
+            reserved.
+          </p>
           <div class="footer-legal">
             <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
             <a href="#" data-i18n="footer.terms">Terms of Use</a>
@@ -318,44 +575,79 @@
       </div>
     </footer>
 
-<!-- HELP ASSISTANT — placeholder implementation, see chatbot.js -->
-    <button class="chat-fab" type="button" data-chat-open
-            aria-label="Open the help assistant" data-i18n-aria="a11y.chatOpen"
-            aria-expanded="false" aria-controls="chat-panel">
+    <!-- HELP ASSISTANT — placeholder implementation, see chatbot.js -->
+    <button
+      class="chat-fab"
+      type="button"
+      data-chat-open
+      aria-label="Open the help assistant"
+      data-i18n-aria="a11y.chatOpen"
+      aria-expanded="false"
+      aria-controls="chat-panel"
+    >
       <span class="chat-fab-icon" aria-hidden="true"></span>
       <span class="chat-fab-text" data-i18n="chat.fab">Ask us</span>
     </button>
 
-    <section class="chat-panel" id="chat-panel" data-chat-panel role="dialog"
-             aria-label="Help assistant" data-i18n-aria="a11y.chatPanel" hidden>
+    <section
+      class="chat-panel"
+      id="chat-panel"
+      data-chat-panel
+      role="dialog"
+      aria-label="Help assistant"
+      data-i18n-aria="a11y.chatPanel"
+      hidden
+    >
       <header class="chat-head">
         <span class="chat-avatar" aria-hidden="true">
           <svg viewBox="0 0 512 512"><use href="#sscrs-seal" /></svg>
         </span>
         <span class="chat-id">
           <strong data-i18n="chat.title">SSCRS Assistant</strong>
-          <span data-i18n="chat.status">Here to answer questions about the society</span>
+          <span data-i18n="chat.status"
+            >Here to answer questions about the society</span
+          >
         </span>
-        <button class="chat-close" type="button" data-chat-close
-                aria-label="Close the assistant" data-i18n-aria="a11y.chatClose">&times;</button>
+        <button
+          class="chat-close"
+          type="button"
+          data-chat-close
+          aria-label="Close the assistant"
+          data-i18n-aria="a11y.chatClose"
+        >
+          &times;
+        </button>
       </header>
 
       <div class="chat-log" data-chat-log role="log" aria-live="polite"></div>
       <div class="chat-chips" data-chat-chips hidden></div>
 
       <form class="chat-form" data-chat-form>
-        <input class="chat-input" data-chat-input type="text" autocomplete="off"
-               placeholder="Type your question…" data-i18n-ph="chat.placeholder"
-               aria-label="Your question" data-i18n-aria="a11y.chatInput" />
-        <button class="chat-send" type="submit"
-                aria-label="Send" data-i18n-aria="a11y.chatSend"></button>
+        <input
+          class="chat-input"
+          data-chat-input
+          type="text"
+          autocomplete="off"
+          placeholder="Type your question…"
+          data-i18n-ph="chat.placeholder"
+          aria-label="Your question"
+          data-i18n-aria="a11y.chatInput"
+        />
+        <button
+          class="chat-send"
+          type="submit"
+          aria-label="Send"
+          data-i18n-aria="a11y.chatSend"
+        ></button>
       </form>
 
-      <p class="chat-note" data-i18n="chat.note">Preview assistant &middot; general information only, not medical advice.</p>
+      <p class="chat-note" data-i18n="chat.note">
+        Preview assistant &middot; general information only, not medical advice.
+      </p>
     </section>
 
-    <script src="translations.js?v=5"></script>
-    <script src="script.js?v=5"></script>
-    <script src="chatbot.js?v=5"></script>
+    <script src="translations.js?v=7"></script>
+    <script src="script.js?v=7"></script>
+    <script src="chatbot.js?v=7"></script>
   </body>
 </html>

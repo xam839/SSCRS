@@ -230,8 +230,8 @@ home page's title when switched to Arabic.
 
 | What | Where | Notes |
 |---|---|---|
-| Member photos | `members/member-01…08.jpg` | 4:5 portraits. Keep the filenames or update `src` in `index.html`. |
-| Member biographies | `index.html` + `mem.b1…b8` in `translations.js` | One or two sentences each. |
+| Board data | `data/board-members.txt` | Source of record. Fields marked `؟؟` are still missing — the page simply omits them rather than guessing. |
+| Member photos | `members/bm-01…05.jpg` | Real portraits, cropped to 4:5. `bm-03` is only 405px wide — ask for a larger original. |
 | ~~Membership conditions~~ | — | **Done.** Taken from the society's Basic Bylaw, Articles 8–12. |
 | Gallery photographs | `gallery/` | See the Gallery section above. |
 | Regulation PDFs | `regulations/` | Replace the four placeholder files, then update titles and dates. |
@@ -295,7 +295,9 @@ Then open `http://localhost:8000`.
 
 The following still carry placeholder copy and need real content before launch:
 
-- Board member names, photographs and biographies (both languages)
+- BM-05's name (Arabic surname missing, English spelling unverified) — their card is held out of the page until confirmed
+- Board roles for BM-02 to BM-05, and bios for BM-01 and BM-04 (attachments named in `data/board-members.txt`)
+- Remaining board members beyond the five supplied
 - Real cooperation agreements, replacing the three placeholder rows
 - Sign-off on the drafted Arabic copy in `translations.js`
 - News article links and the "View all news" destination
