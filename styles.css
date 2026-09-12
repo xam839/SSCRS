@@ -942,6 +942,99 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
 }
 
 /* ============================================================
+   AWARENESS — public health tips
+   ============================================================ */
+.awr-layout { display: grid; grid-template-columns: 1fr 1.05fr; gap: 28px; align-items: start; }
+
+.awr-feature {
+  padding: 44px 40px; border-radius: var(--r-xl);
+  background: linear-gradient(155deg, var(--navy-800) 0%, var(--navy-900) 100%);
+  box-shadow: var(--shadow-lg); color: rgba(255,255,255,.74);
+  position: relative; overflow: hidden;
+}
+.awr-feature::before {
+  content: ""; position: absolute; inset-inline-end: -90px; bottom: -90px;
+  width: 300px; height: 300px; pointer-events: none;
+  background: url("sscrs-seal.png") center/contain no-repeat; opacity: .07;
+}
+.awr-feature-tag {
+  display: inline-block; padding: 6px 14px; border-radius: var(--r-pill);
+  background: rgba(255,255,255,.12); color: #B9E5A8;
+  font-size: 12.5px; font-weight: 600; margin-bottom: 18px;
+}
+.awr-feature h3 { color: #fff; font-size: 1.65rem; margin-bottom: 14px; }
+.awr-feature p { font-size: 16px; line-height: 1.7; margin-bottom: 26px; position: relative; }
+
+.awr-tips { display: flex; flex-direction: column; gap: 14px; }
+.awr-tip {
+  display: flex; align-items: flex-start; gap: 18px;
+  padding: 24px 26px; border-radius: var(--r-lg);
+  background: var(--paper); border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.awr-tip:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.awr-num {
+  flex: none; width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--wash-green); color: var(--green-700);
+  font-size: 14px; font-weight: 700; letter-spacing: -0.02em;
+}
+.awr-tip h4 { font-size: 1.0625rem; margin-bottom: 6px; }
+.awr-tip p { font-size: 15px; line-height: 1.6; }
+
+.awr-disclaimer {
+  margin-top: 34px; padding: 16px 22px; border-radius: var(--r-md);
+  background: var(--paper); border: 1px solid var(--line);
+  border-inline-start: 3px solid var(--green);
+  font-size: 14.5px; color: var(--muted); line-height: 1.6;
+}
+
+/* ============================================================
+   COOPERATION AGREEMENTS — inside Partners
+   ============================================================ */
+.coop {
+  margin-top: 56px; padding: 44px 46px; border-radius: var(--r-xl);
+  background: var(--paper); border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+.coop-head { margin-bottom: 28px; }
+.coop-head h3 { font-size: 1.5rem; margin-bottom: 8px; }
+.coop-head p { font-size: 15.5px; }
+.coop-list { display: flex; flex-direction: column; }
+.coop-item {
+  display: flex; align-items: center; gap: 18px;
+  padding: 20px 0; border-bottom: 1px solid var(--line-soft);
+}
+.coop-item:last-child { border-bottom: 0; }
+.coop-icon {
+  flex: none; width: 40px; height: 40px; border-radius: var(--r-sm);
+  background: var(--wash-navy) var(--doc-icon) center/19px no-repeat;
+}
+.coop-body { flex: 1; min-width: 0; }
+.coop-body h4 { font-size: 1.0625rem; margin-bottom: 4px; }
+.coop-body p { font-size: 14.5px; line-height: 1.55; }
+.coop-meta {
+  flex: none; padding: 6px 14px; border-radius: var(--r-pill);
+  background: var(--tint-green); color: var(--green-700);
+  font-size: 13px; font-weight: 600; white-space: nowrap;
+}
+.coop-note { margin-top: 22px; font-size: 13px; color: var(--muted); font-style: italic; }
+
+@media (max-width: 1080px) {
+  .awr-layout { grid-template-columns: 1fr; }
+  .awr-feature { padding: 36px 32px; }
+}
+@media (max-width: 640px) {
+  .awr-feature { padding: 30px 24px; border-radius: var(--r-lg); }
+  .awr-feature h3 { font-size: 1.4rem; }
+  .awr-tip { padding: 20px; gap: 14px; }
+  .coop { padding: 30px 24px; border-radius: var(--r-lg); }
+  .coop-item { flex-wrap: wrap; gap: 12px; }
+  .coop-meta { order: 3; }
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .site-footer {
@@ -991,6 +1084,7 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
   --chat-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 9 9 0 01-4.1-.9L3 20.5l1.6-4.6A8.4 8.4 0 013 11.5a8.4 8.4 0 019-8.4 8.4 8.4 0 019 8.4z"/></svg>');
   --close-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>');
   --send-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M3.4 20.4l17.5-8a.6.6 0 000-1.1l-17.5-8a.6.6 0 00-.8.7l2 6.3c.1.3.3.5.6.5l8.4 1-8.4 1c-.3 0-.5.2-.6.5l-2 6.3a.6.6 0 00.8.8z"/></svg>');
+  --doc-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%231B4C93" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg>');
 }
 
 /* ============================================================

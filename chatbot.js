@@ -125,6 +125,36 @@
       }
     },
     {
+      id: "awareness",
+      /* Points at the Awareness section. Note the clinical guard runs
+         first, so a personal symptom question still gets the referral
+         rather than this. */
+      k: { en: ["awareness", "tips", "advice", "signs", "warning", "risk", "prevent"],
+           ar: ["توعية", "نصائح", "نصيحة", "علامات", "إرشاد", "مخاطر", "الوقاية"] },
+      a: {
+        en: "The Awareness section covers what the society most wants the public to know: screening from age 45, not waiting out bleeding, reporting lasting changes in bowel habit, how family history moves the screening date, and the daily habits that lower risk. It is general awareness only — anything about your own health belongs with a physician.",
+        ar: "يغطي قسم التوعية أبرز ما تحرص الجمعية على إيصاله للمجتمع: الفحص المبكر من سن ٤٥، وعدم تجاهل النزيف، ومراجعة الطبيب عند تغير عادات الإخراج لفترة، وأثر التاريخ العائلي في تقديم موعد الفحص، والعادات اليومية التي تقلل الخطر. وهو للتوعية العامة فقط — أما ما يخص صحتك الشخصية فمرجعه الطبيب المختص."
+      }
+    },
+    {
+      id: "agreements",
+      k: { en: ["agreement", "agreements", "memorandum", "mou", "cooperation", "signed"],
+           ar: ["اتفاقية", "اتفاقيات", "مذكرة", "تعاون", "وقعت", "شراكات"] },
+      a: {
+        en: "The Cooperation Agreements list sits inside the Partners section — formal agreements with the Ministry of Health, the Saudi Commission for Health Specialties and King Faisal Specialist Hospital & Research Centre, covering screening, accredited education and shared research.",
+        ar: "تجد قائمة اتفاقيات التعاون ضمن قسم الشركاء — اتفاقيات رسمية مع وزارة الصحة والهيئة السعودية للتخصصات الصحية ومستشفى الملك فيصل التخصصي ومركز الأبحاث، تشمل الفحص المبكر والتعليم المعتمد والبحوث المشتركة."
+      }
+    },
+    {
+      id: "regulations",
+      k: { en: ["regulation", "regulations", "bylaw", "bylaws", "statute", "policy", "document", "pdf", "download"],
+           ar: ["لائحة", "اللوائح", "نظام", "أنظمة", "سياسة", "وثيقة", "وثائق", "تحميل"] },
+      a: {
+        en: "The society's published regulations and bylaws are on the Regulations page, where each document can be viewed or downloaded as a PDF.",
+        ar: "لوائح الجمعية وأنظمتها المنشورة متاحة في صفحة اللوائح، ويمكن استعراض كل وثيقة أو تحميلها بصيغة PDF."
+      }
+    },
+    {
       id: "gallery",
       k: { en: ["photo", "photos", "gallery", "picture", "image", "media"],
            ar: ["صور", "صورة", "معرض", "وسائط"] },

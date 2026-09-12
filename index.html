@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=2" />
 
     <script>
       // Applied before first paint so the chosen language never flashes.
@@ -331,6 +331,59 @@
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- AWARENESS -->
+      <section class="section section-green" id="awareness">
+        <div class="page-wrap">
+          <div class="section-head reveal">
+            <p class="eyebrow" data-i18n="awr.eyebrow">Awareness</p>
+            <h2 data-i18n="awr.h">Know the signs, act early</h2>
+            <p class="section-sub" data-i18n="awr.sub">Colorectal disease is highly treatable when found early. These are the points the society most wants the public to know.</p>
+          </div>
+
+          <div class="awr-layout">
+            <article class="awr-feature reveal">
+              <span class="awr-feature-tag" data-i18n="awr.feature.tag">Start here</span>
+              <h3 data-i18n="awr.feature.h">Screening from age 45</h3>
+              <p data-i18n="awr.feature.p">Most colorectal cancers grow from polyps that cause no symptoms at all. Screening finds and removes them before they turn, which is why it is offered from 45 — earlier if a close relative has been affected.</p>
+              <a class="btn btn-green" href="index.html#news" data-i18n="awr.feature.cta">Read the national guidelines</a>
+            </article>
+
+            <ul class="awr-tips reveal">
+              <li class="awr-tip">
+                <span class="awr-num" aria-hidden="true">01</span>
+                <div>
+                  <h4 data-i18n="awr.t1.h">Do not wait out bleeding</h4>
+                  <p data-i18n="awr.t1.p">Blood in the stool is common and usually benign — but it is never something to monitor on your own. Have it looked at.</p>
+                </div>
+              </li>
+              <li class="awr-tip">
+                <span class="awr-num" aria-hidden="true">02</span>
+                <div>
+                  <h4 data-i18n="awr.t2.h">Note lasting changes in habit</h4>
+                  <p data-i18n="awr.t2.p">A change in bowel pattern that persists beyond a few weeks is worth reporting, even when nothing else feels wrong.</p>
+                </div>
+              </li>
+              <li class="awr-tip">
+                <span class="awr-num" aria-hidden="true">03</span>
+                <div>
+                  <h4 data-i18n="awr.t3.h">Family history moves the date</h4>
+                  <p data-i18n="awr.t3.p">A parent or sibling with colorectal cancer usually means starting screening earlier. Tell your doctor about it.</p>
+                </div>
+              </li>
+              <li class="awr-tip">
+                <span class="awr-num" aria-hidden="true">04</span>
+                <div>
+                  <h4 data-i18n="awr.t4.h">Daily habits matter</h4>
+                  <p data-i18n="awr.t4.p">Fibre, movement, a healthy weight and avoiding tobacco all lower risk over a lifetime. None of them replace screening.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <p class="awr-disclaimer reveal" data-i18n="awr.disclaimer">This section is general health awareness, not medical advice. For anything concerning you personally, please consult a qualified physician.</p>
         </div>
       </section>
 
@@ -657,6 +710,40 @@
               <div class="partner-tile partner-tile-sm" data-i18n="part.placeholder">Partner</div>
             </div>
           </div>
+          <div class="coop reveal" id="agreements">
+            <div class="coop-head">
+              <h3 data-i18n="coop.h">Cooperation Agreements</h3>
+              <p data-i18n="coop.sub">Formal agreements the society has signed to advance training, research and public health.</p>
+            </div>
+            <ul class="coop-list">
+              <li class="coop-item">
+                <span class="coop-icon" aria-hidden="true"></span>
+                <div class="coop-body">
+                  <h4 data-i18n="coop.a1.h">Ministry of Health</h4>
+                  <p data-i18n="coop.a1.p">Joint national colorectal cancer screening programme and public awareness campaigns.</p>
+                </div>
+                <span class="coop-meta" data-i18n="coop.a1.d">Signed 2025</span>
+              </li>
+              <li class="coop-item">
+                <span class="coop-icon" aria-hidden="true"></span>
+                <div class="coop-body">
+                  <h4 data-i18n="coop.a2.h">Saudi Commission for Health Specialties</h4>
+                  <p data-i18n="coop.a2.p">Accreditation of continuing medical education and the advanced fellowship pathway.</p>
+                </div>
+                <span class="coop-meta" data-i18n="coop.a2.d">Signed 2024</span>
+              </li>
+              <li class="coop-item">
+                <span class="coop-icon" aria-hidden="true"></span>
+                <div class="coop-body">
+                  <h4 data-i18n="coop.a3.h">King Faisal Specialist Hospital &amp; Research Centre</h4>
+                  <p data-i18n="coop.a3.p">Shared research protocols and surgical training placements.</p>
+                </div>
+                <span class="coop-meta" data-i18n="coop.a3.d">Signed 2024</span>
+              </li>
+            </ul>
+            <p class="coop-note" data-i18n="coop.note">Placeholder entries — replace with the society's signed agreements.</p>
+          </div>
+
           <div class="partners-cta reveal">
             <div class="partners-cta-text">
               <h3 data-i18n="part.cta.h">Interested in supporting SSCRS?</h3>
@@ -772,8 +859,8 @@
       <p class="chat-note" data-i18n="chat.note">Preview assistant &middot; general information only, not medical advice.</p>
     </section>
 
-    <script src="translations.js"></script>
-    <script src="script.js"></script>
-    <script src="chatbot.js"></script>
+    <script src="translations.js?v=2"></script>
+    <script src="script.js?v=2"></script>
+    <script src="chatbot.js?v=2"></script>
   </body>
 </html>
