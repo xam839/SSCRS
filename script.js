@@ -427,7 +427,51 @@
         else if (e.key === "ArrowLeft") { e.preventDefault(); scrollStep(root.dir === "rtl" ? 1 : -1); }
       });
 
+      /* --- Autoplay -----------------------------------------
+         Advances on its own, pauses whenever someone is actually
+         using it (hover, focus, touch, or a hidden tab), and never
+         runs under prefers-reduced-motion.
+         ---------------------------------------------------- */
+      var autoTimer = null;
+      var AUTO_MS = 4200;
+
+      function autoAdvance() {
+        var max = maxScroll();
+        if (max <= 0) return;
+        var pos = Math.abs(track.scrollLeft);
+        // at the end, wrap back round to the start
+        if (pos >= max - 2) {
+          track.scrollTo({ left: 0, behavior: reduce ? "auto" : "smooth" });
+        } else {
+          scrollStep(1);
+        }
+      }
+      function startAuto() {
+        if (reduce || autoTimer) return;
+        autoTimer = setInterval(autoAdvance, AUTO_MS);
+      }
+      function stopAuto() {
+        if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+      }
+
+      var viewport = document.querySelector(".gal-viewport");
+      if (viewport) {
+        ["mouseenter", "focusin", "touchstart", "pointerdown"].forEach(function (ev) {
+          viewport.addEventListener(ev, stopAuto, { passive: true });
+        });
+        ["mouseleave", "focusout"].forEach(function (ev) {
+          viewport.addEventListener(ev, startAuto);
+        });
+      }
+      document.addEventListener("visibilitychange", function () {
+        document.hidden ? stopAuto() : startAuto();
+      });
+      // Clicking an arrow is deliberate navigation; hand control over.
+      if (prevBtn) prevBtn.addEventListener("click", stopAuto);
+      if (nextBtn) nextBtn.addEventListener("click", stopAuto);
+
       syncCarousel();
+      startAuto();
 
       applyFilter("all");
       syncCarousel();

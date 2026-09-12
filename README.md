@@ -65,7 +65,7 @@ Arabic lives in `translations.js` and is applied on demand.
 | The Society in Numbers | Statistics in a contained dark panel |
 | Vision / Mission / Goals | Three-column strategic direction |
 | Board Members | Eight member cards with photo and biography |
-| Membership | Affiliate / Regular / Supporting, per the Basic Bylaw |
+| Membership | Affiliate / Regular / Honorary, per the Basic Bylaw |
 | News | Lead story plus a dated list |
 | Awareness | Public-health tips, before Board of Directors |
 | Gallery | Filterable horizontal carousel with a lightbox |
@@ -115,8 +115,10 @@ referenced with `<use>` everywhere it appears.
 A filterable grid of society photographs; clicking any tile opens a full-screen
 lightbox carousel.
 
-- **Filters** — All / Annual Forum / Workshops / Awareness. Tiles fade and re-flow
-  when a filter changes.
+- **Filters** — All / Annual Forum / Workshops / Awareness. Slides fade and the
+  track rewinds when a filter changes.
+- **Autoplay** — advances every 4.2s, pauses on hover, focus, touch or a hidden
+  tab, wraps at the end, and never runs under `prefers-reduced-motion`.
 - **Lightbox** — arrows, keyboard (←/→, Esc), swipe on touch, a running counter, and
   neighbour preloading so stepping through feels instant. Arrow keys reverse under RTL.
   It navigates the *currently filtered* set, so arrowing inside "Workshops" stays in
