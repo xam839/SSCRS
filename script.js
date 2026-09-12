@@ -31,10 +31,15 @@
     document.querySelectorAll("[data-i18n-ph]").forEach(function (el) {
       EN["ph:" + el.getAttribute("data-i18n-ph")] = el.getAttribute("placeholder");
     });
-    EN["doc.title"] = document.title;
+    EN[titleKey()] = document.title;
     var desc = document.querySelector('meta[name="description"]');
-    EN["doc.desc"] = desc ? desc.getAttribute("content") : "";
+    EN[descKey()] = desc ? desc.getAttribute("content") : "";
   }
+
+  /* Sub-pages declare their own keys on <html>, so switching language
+     on regulations.html does not retitle it as the home page. */
+  function titleKey() { return root.getAttribute("data-title-key") || "doc.title"; }
+  function descKey()  { return root.getAttribute("data-desc-key")  || "doc.desc"; }
 
   function applyLanguage(lang) {
     captureEnglish();
@@ -62,9 +67,9 @@
     root.lang = ar ? "ar" : "en";
     root.dir = ar ? "rtl" : "ltr";
 
-    if (dict["doc.title"]) document.title = dict["doc.title"];
+    if (dict[titleKey()]) document.title = dict[titleKey()];
     var desc = document.querySelector('meta[name="description"]');
-    if (desc && dict["doc.desc"]) desc.setAttribute("content", dict["doc.desc"]);
+    if (desc && dict[descKey()]) desc.setAttribute("content", dict[descKey()]);
 
     // The switch always offers the *other* language.
     document.querySelectorAll("[data-lang-label]").forEach(function (el) {
