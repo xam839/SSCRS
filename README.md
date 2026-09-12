@@ -65,7 +65,7 @@ Arabic lives in `translations.js` and is applied on demand.
 | The Society in Numbers | Statistics in a contained dark panel |
 | Vision / Mission / Goals | Three-column strategic direction |
 | Board Members | Eight member cards with photo and biography |
-| Membership | Three categories, each with benefits and conditions |
+| Membership | Affiliate / Regular / Supporting, per the Basic Bylaw |
 | News | Lead story plus a dated list |
 | Awareness | Public-health tips, before Board of Directors |
 | Gallery | Filterable horizontal carousel with a lightbox |
@@ -232,7 +232,7 @@ home page's title when switched to Arabic.
 |---|---|---|
 | Member photos | `members/member-01…08.jpg` | 4:5 portraits. Keep the filenames or update `src` in `index.html`. |
 | Member biographies | `index.html` + `mem.b1…b8` in `translations.js` | One or two sentences each. |
-| Membership conditions | `tier.a/b/c.req1…3` in `translations.js` | Three categories: Active, Associate, Supporting. |
+| ~~Membership conditions~~ | — | **Done.** Taken from the society's Basic Bylaw, Articles 8–12. |
 | Gallery photographs | `gallery/` | See the Gallery section above. |
 | Regulation PDFs | `regulations/` | Replace the four placeholder files, then update titles and dates. |
 | Cooperation agreements | `coop.a1…a3` in `translations.js` | Entity, scope and date per row. |
@@ -296,7 +296,6 @@ Then open `http://localhost:8000`.
 The following still carry placeholder copy and need real content before launch:
 
 - Board member names, photographs and biographies (both languages)
-- Official conditions for the three membership categories
 - Real cooperation agreements, replacing the three placeholder rows
 - Sign-off on the drafted Arabic copy in `translations.js`
 - News article links and the "View all news" destination

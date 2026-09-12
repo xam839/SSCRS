@@ -550,6 +550,35 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
 .tier-card.is-featured .tier-list li { color: rgba(255,255,255,.78); }
 .tier-card.is-featured .tier-list li::before { background-color: rgba(255,255,255,.16); }
 
+.tier-fee {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px;
+  margin: -12px 0 24px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.tier-amount { font-size: 1.7rem; font-weight: 800; color: var(--navy); letter-spacing: -0.03em; }
+.tier-per { font-size: 13.5px; color: var(--muted); }
+.tier-card.is-featured .tier-fee { border-bottom-color: rgba(255,255,255,.16); }
+.tier-card.is-featured .tier-amount { color: #fff; }
+.tier-card.is-featured .tier-per { color: rgba(255,255,255,.6); }
+
+.tier-limit {
+  margin: -6px 0 22px; padding: 12px 14px; border-radius: var(--r-sm);
+  background: var(--tint-navy); font-size: 13px; line-height: 1.55; color: var(--muted);
+}
+.tier-card.is-featured .tier-limit { background: rgba(255,255,255,.08); color: rgba(255,255,255,.6); }
+
+.tier-src { margin-top: 14px; font-size: 12px; color: var(--muted); text-align: center; }
+.tier-card.is-featured .tier-src { color: rgba(255,255,255,.45); }
+
+.tier-terms {
+  margin-top: 30px; padding: 18px 24px; border-radius: var(--r-md);
+  background: var(--paper); border: 1px solid var(--line);
+  border-inline-start: 3px solid var(--navy);
+  font-size: 14.5px; line-height: 1.65; color: var(--body);
+}
+.tier-source { margin-top: 14px; font-size: 13.5px; color: var(--muted); }
+.tier-source a { color: var(--navy); font-weight: 600; text-decoration: underline; }
+
 .tier-btn {
   margin-top: auto; display: block; text-align: center; padding: 13px;
   border-radius: var(--r-pill); font-size: 15px; font-weight: 600;

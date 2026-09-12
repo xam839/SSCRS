@@ -40,8 +40,8 @@
       k: { en: ["member", "join", "membership", "apply", "subscribe", "fee", "category"],
            ar: ["عضوية", "انضمام", "انضم", "اشتراك", "تقديم", "رسوم", "فئة", "عضو"] },
       a: {
-        en: "There are three membership categories: Active (for consultant and specialist physicians), Associate (for residents and fellows in training) and Supporting (for companies and institutions). Each lists its own benefits and conditions in the Membership section, and applications go to info@sscrs.org.",
-        ar: "تضم الجمعية ثلاث فئات للعضوية: عضو عامل (للاستشاريين والأخصائيين)، وعضو منتسب (للمقيمين وأطباء الزمالة)، وعضو داعم (للشركات والمؤسسات). ولكل فئة مزاياها وشروطها في قسم العضوية، والتقديم عبر info@sscrs.org."
+        en: "The Basic Bylaw sets three categories you can apply for: Affiliate (SAR 200 a year, for licensed practitioners and medical students), Regular (SAR 300 a year, for surgeons classified in colorectal surgery, with General Assembly voting rights) and Supporting (the regular subscription plus an unrestricted donation of at least SAR 100,000). Honorary membership is granted by board decision and is not applied for. Conditions for each are in the Membership section; applications go to info@sscrs.org.",
+        ar: "تحدد اللائحة الأساسية ثلاث فئات يمكن التقدم إليها: عضو منتسب (٢٠٠ ريال سنويًا، للممارسين الصحيين المرخصين وطلبة الطب)، وعضو عادي (٣٠٠ ريال سنويًا، للمصنفين في جراحة القولون والمستقيم، وله حق التصويت في الجمعية العمومية)، وعضو داعم (اشتراك العضوية العادية إضافة إلى تبرع غير مقيد لا يقل عن ١٠٠٬٠٠٠ ريال). أما العضوية الفخرية فتُمنح بقرار من مجلس الإدارة ولا يُتقدَّم إليها بطلب. وتجد شروط كل فئة في قسم العضوية، والتقديم عبر info@sscrs.org."
       }
     },
     {
