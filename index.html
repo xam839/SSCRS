@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=16" />
+    <link rel="stylesheet" href="styles.css?v=17" />
 
     <script>
       // Applied before first paint so the chosen language never flashes.
@@ -321,28 +321,52 @@
             <p class="eyebrow" data-i18n="vmg.eyebrow">Our Direction</p>
             <h2 data-i18n="vmg.h">Vision, Mission &amp; Goals</h2>
           </div>
-          <div class="vmg-layout reveal">
-            <div class="vmg-card">
+
+          <!-- Vision and Mission are a matched pair; the goals are a
+               list and belong in their own band rather than crammed
+               into a third card of the same row. -->
+          <div class="vmg-pair reveal">
+            <article class="vmg-card is-vision">
+              <span class="vmg-icon" aria-hidden="true"></span>
               <span class="vmg-tag" data-i18n="vmg.vision.tag">Vision</span>
               <h3 data-i18n="vmg.vision.h">The trusted national reference</h3>
               <p data-i18n="vmg.vision.p">To be the premier national authority for colorectal surgical excellence in Saudi Arabia — setting the standard for practice, education, and research.</p>
-            </div>
-            <div class="vmg-card">
+            </article>
+            <article class="vmg-card is-mission">
+              <span class="vmg-icon" aria-hidden="true"></span>
               <span class="vmg-tag" data-i18n="vmg.mission.tag">Mission</span>
               <h3 data-i18n="vmg.mission.h">Empower &amp; protect</h3>
               <p data-i18n="vmg.mission.p">To support surgical education, promote public awareness, facilitate research exchange, and foster professional collaboration across the Kingdom.</p>
-            </div>
-            <div class="vmg-card">
-              <span class="vmg-tag" data-i18n="vmg.goals.tag">Goals</span>
+            </article>
+          </div>
+
+          <div class="goals-band reveal">
+            <div class="goals-head">
+              <span class="vmg-tag is-onDark" data-i18n="vmg.goals.tag">Goals</span>
               <h3 data-i18n="vmg.goals.h">Our commitments</h3>
-              <ul class="goals-list">
-                <li data-i18n="vmg.goal1">Organize and support scientific conferences and workshops</li>
-                <li data-i18n="vmg.goal2">Strengthen ties between Saudi specialists and international societies</li>
-                <li data-i18n="vmg.goal3">Raise community awareness about colorectal disease prevention</li>
-                <li data-i18n="vmg.goal4">Support research and clinical innovation in colorectal surgery</li>
-                <li data-i18n="vmg.goal5">Provide continuing medical education for members at all levels</li>
-              </ul>
             </div>
+            <ol class="goals-grid">
+              <li class="goal">
+                <span class="goal-num" aria-hidden="true">01</span>
+                <span data-i18n="vmg.goal1">Organize and support scientific conferences and workshops</span>
+              </li>
+              <li class="goal">
+                <span class="goal-num" aria-hidden="true">02</span>
+                <span data-i18n="vmg.goal2">Strengthen ties between Saudi specialists and international societies</span>
+              </li>
+              <li class="goal">
+                <span class="goal-num" aria-hidden="true">03</span>
+                <span data-i18n="vmg.goal3">Raise community awareness about colorectal disease prevention</span>
+              </li>
+              <li class="goal">
+                <span class="goal-num" aria-hidden="true">04</span>
+                <span data-i18n="vmg.goal4">Support research and clinical innovation in colorectal surgery</span>
+              </li>
+              <li class="goal">
+                <span class="goal-num" aria-hidden="true">05</span>
+                <span data-i18n="vmg.goal5">Provide continuing medical education for members at all levels</span>
+              </li>
+            </ol>
           </div>
         </div>
       </section>
@@ -887,8 +911,8 @@
       <p class="chat-note" data-i18n="chat.note">Preview assistant &middot; general information only, not medical advice.</p>
     </section>
 
-    <script src="translations.js?v=16"></script>
-    <script src="script.js?v=16"></script>
-    <script src="chatbot.js?v=16"></script>
+    <script src="translations.js?v=17"></script>
+    <script src="script.js?v=17"></script>
+    <script src="chatbot.js?v=17"></script>
   </body>
 </html>

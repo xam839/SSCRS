@@ -500,29 +500,100 @@ html[lang="ar"] .hero-en { font-size: clamp(1rem, 1.9vw, 1.2rem); font-weight: 6
 .num-val sup { font-size: 1.1rem; color: var(--green-600); top: -0.75em; }
 .num-label { margin-top: 12px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,.62); line-height: 1.45; }
 
-/* Vision / Mission / Goals ---------------------------------- */
-.vmg-layout { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+/* Vision / Mission / Goals -----------------------------------
+   Vision and Mission are a matched pair of cards; the goals sit in
+   their own dark band underneath. Putting a five-item list in a
+   third card of the same row could never balance against two short
+   paragraphs.
+   ----------------------------------------------------------- */
+.vmg-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
 .vmg-card {
-  padding: 40px 34px; border-radius: var(--r-lg);
+  position: relative; overflow: hidden;
+  padding: 40px 36px; border-radius: var(--r-xl);
   background: var(--paper); border: 1px solid var(--line);
   box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column;
   transition: transform .22s ease, box-shadow .22s ease;
 }
-.vmg-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.vmg-card::after {
+  content: ""; position: absolute; inset-inline-end: -60px; top: -60px;
+  width: 200px; height: 200px; border-radius: 50%; pointer-events: none;
+  background: var(--wash-navy); opacity: .55;
+}
+.vmg-card.is-mission::after { background: var(--wash-green); }
+.vmg-card > * { position: relative; z-index: 1; }
+.vmg-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+
+.vmg-icon {
+  width: 54px; height: 54px; border-radius: var(--r-md); margin-bottom: 22px;
+  display: grid; place-items: center;
+  background: var(--navy); color: #fff;
+  box-shadow: 0 6px 18px rgba(27,76,147,.28);
+}
+.vmg-card.is-mission .vmg-icon {
+  background: var(--green); box-shadow: 0 6px 18px rgba(78,158,55,.28);
+}
+.vmg-icon::before {
+  content: ""; width: 26px; height: 26px; background: currentColor;
+  -webkit-mask: var(--vi) center/contain no-repeat;
+  mask: var(--vi) center/contain no-repeat;
+}
+.vmg-card.is-vision  { --vi: var(--ic-eye); }
+.vmg-card.is-mission { --vi: var(--ic-target); }
+
 .vmg-tag {
-  display: inline-block; padding: 6px 14px; border-radius: var(--r-pill);
-  background: var(--wash-green); color: var(--green-700);
-  font-size: 13px; font-weight: 600; margin-bottom: 20px;
+  align-self: flex-start; padding: 6px 14px; border-radius: var(--r-pill);
+  background: var(--wash-navy); color: var(--navy);
+  font-size: 13px; font-weight: 600; margin-bottom: 14px;
 }
-.vmg-card h3 { font-size: 1.4rem; margin-bottom: 14px; }
-.vmg-card p { font-size: 16px; }
-.goals-list li {
-  position: relative; padding-inline-start: 24px; font-size: 15.5px;
-  line-height: 1.6; margin-bottom: 13px;
+.vmg-card.is-mission .vmg-tag { background: var(--wash-green); color: var(--green-700); }
+.vmg-tag.is-onDark { background: rgba(255,255,255,.12); color: #B9E5A8; }
+.vmg-card h3 { font-size: 1.45rem; margin-bottom: 14px; }
+.vmg-card p { font-size: 16px; line-height: 1.7; }
+
+/* Goals band */
+.goals-band {
+  position: relative; overflow: hidden; margin-top: 24px;
+  padding: 44px 46px; border-radius: var(--r-xl);
+  background: linear-gradient(150deg, var(--navy-800) 0%, var(--navy-900) 72%);
+  box-shadow: var(--shadow-lg);
 }
-.goals-list li::before {
-  content: ""; position: absolute; inset-inline-start: 0; top: 9px;
-  width: 7px; height: 7px; border-radius: 50%; background: var(--green);
+.goals-band::after {
+  content: ""; position: absolute; inset-inline-end: -90px; bottom: -110px;
+  width: 320px; height: 320px; pointer-events: none;
+  background: url("sscrs-seal.png") center/contain no-repeat; opacity: .07;
+}
+.goals-head { position: relative; z-index: 1; margin-bottom: 30px; }
+.goals-head h3 { color: #fff; font-size: 1.45rem; }
+
+.goals-grid {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;
+  counter-reset: goal;
+}
+.goal {
+  display: flex; flex-direction: column; gap: 12px;
+  padding-top: 18px; border-top: 2px solid rgba(255,255,255,.16);
+  font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,.78);
+  transition: border-color .22s ease, color .22s ease;
+}
+.goal:hover { border-top-color: var(--green); color: #fff; }
+.goal-num {
+  font-size: 13px; font-weight: 700; letter-spacing: .04em;
+  color: var(--green-600);
+}
+
+@media (max-width: 1080px) {
+  .goals-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 860px) {
+  .vmg-pair { grid-template-columns: 1fr; }
+  .goals-grid { grid-template-columns: repeat(2, 1fr); }
+  .goals-band { padding: 34px 28px; }
+}
+@media (max-width: 560px) {
+  .goals-grid { grid-template-columns: 1fr; gap: 16px; }
+  .vmg-card { padding: 32px 26px; }
 }
 
 /* Board / member cards --------------------------------------
@@ -1324,6 +1395,8 @@ a.tier-btn:hover { border-color: var(--navy); background: var(--tint-navy); }
   --ic-members: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.9"/><path d="M16 3.1a4 4 0 010 7.8"/></svg>');
   --ic-guide: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>');
   --ic-mail: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg>');
+  --ic-eye: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3.2"/></svg>');
+  --ic-target: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg>');
 }
 
 /* ============================================================
@@ -1341,8 +1414,6 @@ a.tier-btn:hover { border-color: var(--navy); background: var(--tint-navy); }
   .about-plate { max-width: 460px; }
   .news-layout { grid-template-columns: 1fr; }
   .footer-cols { grid-template-columns: 1fr 1fr; gap: 40px; }
-  .vmg-layout { grid-template-columns: 1fr 1fr; }
-  .vmg-card:last-child { grid-column: span 2; }
   .glance-grid { grid-template-columns: 1fr 1fr; }
   .numbers-panel { padding: 60px 40px; }
 }
@@ -1375,8 +1446,6 @@ a.tier-btn:hover { border-color: var(--navy); background: var(--tint-navy); }
   .member-grid, .partners-row, .partners-row-sm { grid-template-columns: 1fr; }
   .member-creds li { font-size: 12px; }
   .tier-card { padding: 30px 24px; }
-  .vmg-layout { grid-template-columns: 1fr; }
-  .vmg-card:last-child { grid-column: span 1; }
   .about-pillars { grid-template-columns: 1fr; }
   .about-plate { padding: 40px 24px; }
   .footer-cols { grid-template-columns: 1fr; gap: 32px; }
