@@ -405,11 +405,40 @@
         if (nextBtn) nextBtn.disabled = pos >= max - 2;
       }
 
+      /* Two things to be careful of here:
+         - "auto" does NOT mean instant: it defers to the element's CSS
+           scroll-behavior, which is smooth, so it was never actually
+           instant under reduced motion.
+         - if an engine does not honour smooth scrolling at all, a
+           carousel driven only by it sits there looking broken. So the
+           position is checked shortly after and the move is redone
+           outright if nothing happened. */
+      function moveTo(opts) {
+        var before = track.scrollLeft;
+        var instant = Object.assign({}, opts, { behavior: "instant" });
+        if (reduce) { track.scrollBy(instant); return; }
+        track.scrollBy(Object.assign({}, opts, { behavior: "smooth" }));
+        setTimeout(function () {
+          if (Math.abs(track.scrollLeft - before) < 1) track.scrollBy(instant);
+        }, 500);
+      }
+
       function scrollStep(dir) {
         // one "page" of slides, minus a sliver so context carries over
         var amount = Math.max(240, track.clientWidth * 0.8);
         var delta = dir * amount * (root.dir === "rtl" ? -1 : 1);
-        track.scrollBy({ left: delta, behavior: reduce ? "auto" : "smooth" });
+        moveTo({ left: delta });
+      }
+
+      function scrollToStart() {
+        var before = track.scrollLeft;
+        if (reduce) { track.scrollTo({ left: 0, behavior: "instant" }); return; }
+        track.scrollTo({ left: 0, behavior: "smooth" });
+        setTimeout(function () {
+          if (Math.abs(track.scrollLeft - before) < 1) {
+            track.scrollTo({ left: 0, behavior: "instant" });
+          }
+        }, 500);
       }
 
       if (prevBtn) prevBtn.addEventListener("click", function () { scrollStep(-1); });
@@ -433,7 +462,7 @@
          runs under prefers-reduced-motion.
          ---------------------------------------------------- */
       var autoTimer = null;
-      var AUTO_MS = 4200;
+      var AUTO_MS = 3600;
 
       function autoAdvance() {
         var max = maxScroll();
@@ -441,7 +470,7 @@
         var pos = Math.abs(track.scrollLeft);
         // at the end, wrap back round to the start
         if (pos >= max - 2) {
-          track.scrollTo({ left: 0, behavior: reduce ? "auto" : "smooth" });
+          scrollToStart();
         } else {
           scrollStep(1);
         }
