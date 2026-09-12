@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=14" />
+    <link rel="stylesheet" href="styles.css?v=16" />
 
     <script>
       // Applied before first paint so the chosen language never flashes.
@@ -211,26 +211,39 @@
       <!-- AT A GLANCE -->
       <div class="glance">
         <div class="page-wrap glance-grid">
-          <div class="glance-item">
-            <strong data-i18n="glance.forum.t">Annual Forum 2026</strong>
-            <span data-i18n="glance.forum.d">Riyadh &middot; 15&ndash;17 April</span>
-            <a href="#news" data-i18n="glance.forum.a">Registration open</a>
-          </div>
-          <div class="glance-item">
-            <strong data-i18n="glance.mem.t">Membership</strong>
-            <span data-i18n="glance.mem.d">Four categories for physicians, trainees, and partners</span>
-            <a href="#membership" data-i18n="glance.mem.a">View categories</a>
-          </div>
-          <div class="glance-item">
-            <strong data-i18n="glance.guide.t">Screening Guidelines</strong>
-            <span data-i18n="glance.guide.d">National guidance with the Ministry of Health</span>
-            <a href="#news" data-i18n="glance.guide.a">Read the update</a>
-          </div>
-          <div class="glance-item">
-            <strong data-i18n="glance.contact.t">Contact</strong>
-            <span data-i18n="glance.contact.d">Riyadh, Kingdom of Saudi Arabia</span>
-            <a href="mailto:info@sscrs.org">info@sscrs.org</a>
-          </div>
+          <a class="glance-item" href="index.html#news">
+            <span class="glance-icon glance-forum" aria-hidden="true"></span>
+            <span class="glance-head">
+              <strong data-i18n="glance.forum.t">Annual Forum 2026</strong>
+              <span class="glance-live" data-i18n="glance.open">Open now</span>
+            </span>
+            <span class="glance-desc" data-i18n="glance.forum.d">Riyadh &middot; 15&ndash;17 April</span>
+            <span class="glance-cta" data-i18n="glance.forum.a">Registration details</span>
+          </a>
+          <a class="glance-item" href="index.html#membership">
+            <span class="glance-icon glance-members" aria-hidden="true"></span>
+            <span class="glance-head">
+              <strong data-i18n="glance.mem.t">Membership</strong>
+            </span>
+            <span class="glance-desc" data-i18n="glance.mem.d">Three categories: affiliate, regular and honorary</span>
+            <span class="glance-cta" data-i18n="glance.mem.a">View categories</span>
+          </a>
+          <a class="glance-item" href="index.html#news">
+            <span class="glance-icon glance-guide" aria-hidden="true"></span>
+            <span class="glance-head">
+              <strong data-i18n="glance.guide.t">Screening Guidelines</strong>
+            </span>
+            <span class="glance-desc" data-i18n="glance.guide.d">National guidance with the Ministry of Health</span>
+            <span class="glance-cta" data-i18n="glance.guide.a">Read the update</span>
+          </a>
+          <a class="glance-item" href="mailto:info@sscrs.org">
+            <span class="glance-icon glance-mail" aria-hidden="true"></span>
+            <span class="glance-head">
+              <strong data-i18n="glance.contact.t">Contact</strong>
+            </span>
+            <span class="glance-desc" data-i18n="glance.contact.d">Riyadh, Kingdom of Saudi Arabia</span>
+            <span class="glance-cta">info@sscrs.org</span>
+          </a>
         </div>
       </div>
 
@@ -874,8 +887,8 @@
       <p class="chat-note" data-i18n="chat.note">Preview assistant &middot; general information only, not medical advice.</p>
     </section>
 
-    <script src="translations.js?v=14"></script>
-    <script src="script.js?v=14"></script>
-    <script src="chatbot.js?v=14"></script>
+    <script src="translations.js?v=16"></script>
+    <script src="script.js?v=16"></script>
+    <script src="chatbot.js?v=16"></script>
   </body>
 </html>
