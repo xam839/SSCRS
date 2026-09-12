@@ -269,6 +269,11 @@
           }
         });
         if (galEmpty) galEmpty.hidden = visible.length > 0;
+        // The track contents changed, so rewind and recompute the arrows.
+        if (typeof syncCarousel === "function") {
+          galGrid.scrollLeft = 0;
+          setTimeout(syncCarousel, 400);
+        }
       }
 
       document.querySelectorAll(".gal-filter").forEach(function (btn) {
@@ -368,7 +373,59 @@
         }, { passive: true });
       }
 
+
+      /* --- Carousel controls -------------------------------
+         In RTL, scrollLeft starts at 0 at the right edge and goes
+         negative moving left, so the step direction and the
+         progress maths both work off its absolute value.
+         ---------------------------------------------------- */
+      var track = galGrid;
+      var prevBtn = document.querySelector("[data-gal-prev]");
+      var nextBtn = document.querySelector("[data-gal-next]");
+      var bar = document.querySelector("[data-gal-bar]");
+
+      function maxScroll() { return Math.max(0, track.scrollWidth - track.clientWidth); }
+
+      function syncCarousel() {
+        var max = maxScroll();
+        var pos = Math.abs(track.scrollLeft);
+        if (bar) {
+          var ratio = max > 0 ? track.clientWidth / track.scrollWidth : 1;
+          var travel = max > 0 ? pos / max : 0;
+          bar.style.width = Math.max(12, ratio * 100) + "%";
+          bar.style.transform = "translateX(" +
+            (root.dir === "rtl" ? -1 : 1) * travel * ((1 / Math.max(ratio, 0.12)) - 1) * 100 + "%)";
+        }
+        if (prevBtn) prevBtn.disabled = pos <= 2;
+        if (nextBtn) nextBtn.disabled = pos >= max - 2;
+      }
+
+      function scrollStep(dir) {
+        // one "page" of slides, minus a sliver so context carries over
+        var amount = Math.max(240, track.clientWidth * 0.8);
+        var delta = dir * amount * (root.dir === "rtl" ? -1 : 1);
+        track.scrollBy({ left: delta, behavior: reduce ? "auto" : "smooth" });
+      }
+
+      if (prevBtn) prevBtn.addEventListener("click", function () { scrollStep(-1); });
+      if (nextBtn) nextBtn.addEventListener("click", function () { scrollStep(1); });
+      track.addEventListener("scroll", syncCarousel, { passive: true });
+      window.addEventListener("resize", syncCarousel);
+      document.addEventListener("sscrs:languagechange", function () {
+        track.scrollLeft = 0;
+        syncCarousel();
+      });
+
+      // Arrow keys move the track when it has focus.
+      track.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight") { e.preventDefault(); scrollStep(root.dir === "rtl" ? -1 : 1); }
+        else if (e.key === "ArrowLeft") { e.preventDefault(); scrollStep(root.dir === "rtl" ? 1 : -1); }
+      });
+
+      syncCarousel();
+
       applyFilter("all");
+      syncCarousel();
     }
 
     /* --- Scroll reveal --------------------------------------

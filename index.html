@@ -518,8 +518,14 @@
             <button class="gal-filter" type="button" data-filter="awareness" data-i18n="gal.f.awareness">Awareness</button>
           </div>
 
-          <div class="gal-grid reveal" data-gallery>
-          <figure class="gal-item gal-wide" data-category="forum">
+          <div class="gal-viewport reveal">
+            <button class="gal-arrow gal-prev" type="button" data-gal-prev
+                    aria-label="Previous images" data-i18n-aria="a11y.galPrev"></button>
+            <button class="gal-arrow gal-next" type="button" data-gal-next
+                    aria-label="Next images" data-i18n-aria="a11y.galNext"></button>
+            <div class="gal-track" data-gallery tabindex="0"
+                 aria-label="Gallery" data-i18n-aria="a11y.galTrack">
+          <figure class="gal-item" data-category="forum">
             <button class="gal-open" type="button" data-gal-open="0"
                     aria-label="Open image" data-i18n-aria="a11y.openImage">
               <img src="gallery/forum-01.jpg" alt="" width="1000" height="667" loading="lazy" decoding="async" />
@@ -530,7 +536,7 @@
               <span class="gal-cap" data-i18n="gal.c1">Opening session of the Annual Forum, Riyadh</span>
             </figcaption>
           </figure>
-          <figure class="gal-item gal-tall" data-category="forum">
+          <figure class="gal-item" data-category="forum">
             <button class="gal-open" type="button" data-gal-open="1"
                     aria-label="Open image" data-i18n-aria="a11y.openImage">
               <img src="gallery/forum-02.jpg" alt="" width="760" height="1010" loading="lazy" decoding="async" />
@@ -552,7 +558,7 @@
               <span class="gal-cap" data-i18n="gal.c3">Laparoscopic skills workshop</span>
             </figcaption>
           </figure>
-          <figure class="gal-item gal-wide" data-category="awareness">
+          <figure class="gal-item" data-category="awareness">
             <button class="gal-open" type="button" data-gal-open="3"
                     aria-label="Open image" data-i18n-aria="a11y.openImage">
               <img src="gallery/awareness-01.jpg" alt="" width="1000" height="667" loading="lazy" decoding="async" />
@@ -596,7 +602,7 @@
               <span class="gal-cap" data-i18n="gal.c7">Panel discussion on national guidelines</span>
             </figcaption>
           </figure>
-          <figure class="gal-item gal-tall" data-category="workshop">
+          <figure class="gal-item" data-category="workshop">
             <button class="gal-open" type="button" data-gal-open="7"
                     aria-label="Open image" data-i18n-aria="a11y.openImage">
               <img src="gallery/workshop-03.jpg" alt="" width="760" height="1010" loading="lazy" decoding="async" />
@@ -607,7 +613,7 @@
               <span class="gal-cap" data-i18n="gal.c8">Fellowship programme session</span>
             </figcaption>
           </figure>
-          <figure class="gal-item gal-wide" data-category="awareness">
+          <figure class="gal-item" data-category="awareness">
             <button class="gal-open" type="button" data-gal-open="8"
                     aria-label="Open image" data-i18n-aria="a11y.openImage">
               <img src="gallery/awareness-03.jpg" alt="" width="1000" height="667" loading="lazy" decoding="async" />
@@ -618,7 +624,9 @@
               <span class="gal-cap" data-i18n="gal.c9">Community outreach across the Kingdom</span>
             </figcaption>
           </figure>
+            </div>
           </div>
+          <div class="gal-progress" aria-hidden="true"><span data-gal-bar></span></div>
           <p class="gal-empty" data-gal-empty hidden data-i18n="gal.empty">No images in this category yet.</p>
         </div>
       </section>
