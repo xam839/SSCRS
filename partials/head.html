@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" dir="ltr"{{HTML_ATTRS}}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{TITLE}}</title>
+    <meta name="description" content="{{DESC}}" />
+    <meta name="theme-color" content="#0C2549" />
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="apple-touch-icon" href="sscrs-seal.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Saudi Society of Colon &amp; Rectal Surgery" />
+    <meta property="og:title" content="{{TITLE}}" />
+    <meta property="og:description" content="{{DESC}}" />
+    <meta property="og:image" content="sscrs-seal.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v={{V}}" />
+
+    <script>
+      // Applied before first paint so the chosen language never flashes.
+      document.documentElement.classList.add("js");
+      (function () {
+        try {
+          var q = new URLSearchParams(location.search).get("lang");
+          var saved = q || localStorage.getItem("sscrs-lang");
+          if (saved === "ar") {
+            document.documentElement.lang = "ar";
+            document.documentElement.dir = "rtl";
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+
+    <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to main content</a>

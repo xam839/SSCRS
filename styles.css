@@ -243,7 +243,19 @@ html[lang="ar"] .site-header .lockup-en { display: none; }
 .site-header.nav-collapsed .nav-shell,
 .site-header.nav-collapsed .lang-switch,
 .site-header.nav-collapsed .header-actions .btn { display: none; }
-.site-header.nav-collapsed .menu-toggle { display: flex; }
+.site-header.nav-collapsed /* Member portal entry. While the portal URL is unknown the button is
+   rendered inert and marked pending (see MAAKOM_URL in build.py). */
+.btn-login { background: var(--paper); color: var(--navy); border-color: #D3DEEC; }
+.btn-login:hover { border-color: var(--navy); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.btn-login[data-portal-pending] { opacity: .55; cursor: not-allowed; }
+.btn-login[data-portal-pending]:hover { transform: none; box-shadow: none; border-color: #D3DEEC; }
+.mobile-login-btn {
+  margin-top: 18px; border: 1.5px solid #D3DEEC !important; border-radius: var(--r-pill) !important;
+  text-align: center; padding: 15px !important; color: var(--navy) !important;
+}
+.mobile-login-btn[data-portal-pending] { opacity: .55; }
+
+.menu-toggle { display: flex; }
 
 .header-actions { display: flex; align-items: center; gap: 8px; flex: none; }
 .header-actions .btn { padding: 12px 18px; font-size: 14.5px; white-space: nowrap; }

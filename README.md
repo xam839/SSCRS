@@ -210,23 +210,50 @@ the block as letters broke every question that ended in one.
 If you extend the knowledge base, add inflected forms rather than relying on
 substrings, and re-check that ordinary questions are not caught by the clinical guard.
 
-## Pages
+## Pages and the build step
 
-| File | |
+The site is now multi-page. Shared blocks live in exactly one place and the
+root HTML files are **generated** — do not edit them by hand.
+
+```
+partials/        header, footer, seal, assistant, head, scripts  ← shared, edit here
+pages/           one file per page: the page's own content       ← content, edit here
+build.py         stitches partials + pages into the root *.html
+index.html …     GENERATED — overwritten on every build
+```
+
+After editing anything in `partials/` or `pages/`:
+
+```bash
+python build.py
+```
+
+Each page starts with a small front-matter comment (title, description, the
+translation keys for its Arabic title, which nav item is active, and whether it
+needs the gallery lightbox). `build.py` marks the active nav link with
+`aria-current`, fills the Maakom link, and stamps the asset version.
+
+| Page | Content |
 |---|---|
-| `index.html` | The single-page site |
-| `regulations.html` | Special Regulations — the society's published PDFs |
+| `index.html` | Home |
+| `about.html` | About, numbers, vision / mission / goals |
+| `board.html` | Board of Directors |
+| `membership.html` | Membership categories |
+| `awareness.html` | Public awareness |
+| `regulations.html` | Published regulations (public for now, per the client) |
 
-The header, mobile nav, footer, seal and assistant are **duplicated** between
-the two pages, each marked with a keep-in-sync comment. The site has no build
-step, so a second page means a second copy; a JS include was rejected because it
-keeps the header out of the HTML source, which costs SEO and breaks without
-JavaScript. If a third page is added, that is the point to move to a generator
-or server-side includes rather than copying again.
+Two constants at the top of `build.py`:
 
-Sub-pages set their own `<title>` and description for the language switch via
-`data-title-key` / `data-desc-key` on `<html>`; without them a page inherits the
-home page's title when switched to Arabic.
+- **`VERSION`** — appended to CSS/JS URLs. GitHub Pages caches hard; bump this
+  on every release or visitors stay on stale assets.
+- **`MAAKOM_URL`** — the member portal. **Currently empty.** While empty, the
+  Member Login button renders inert and marked pending rather than pointing
+  somewhere invented. Set it and rebuild once the society confirms the URL.
+
+Why a build step rather than a JS include: an include keeps the header out of
+the HTML source, which costs SEO and breaks without JavaScript. A generator was
+the alternative, but this one is 100 lines of Python with no dependencies, and
+Python is already what the project uses for images.
 
 ## Replacing the placeholder content
 
@@ -243,14 +270,6 @@ home page's title when switched to Arabic.
 > Everything above is placeholder content written for layout review. None of it
 > has been approved by the society, and the awareness copy in particular is
 > general health information, not clinical guidance.
-
-## Cache busting
-
-Local CSS and JS are referenced with a `?v=N` query. GitHub Pages caches these
-hard enough that a deploy can otherwise leave visitors on stale assets — this
-bit repeatedly during development, with edited files not taking effect until the
-cache was bypassed. **Bump the number in `index.html` and `regulations.html`
-whenever you release.**
 
 ## Run Locally
 
@@ -277,8 +296,15 @@ Then open `http://localhost:8000`.
 
 ```
 .
-├── index.html       # Single-page site, incl. the inline SVG seal
-├── regulations.html # Special Regulations page (shared blocks duplicated)
+├── build.py         # Assembles the site — run after editing partials/ or pages/
+├── partials/        # Shared blocks: header, footer, seal, assistant, head
+├── pages/           # Per-page content with front matter
+├── index.html       # GENERATED
+├── about.html       # GENERATED
+├── board.html       # GENERATED
+├── membership.html  # GENERATED
+├── awareness.html   # GENERATED
+├── regulations.html # GENERATED
 ├── styles.css       # Design system, tints, RTL-ready layout
 ├── translations.js  # All Arabic copy — the only file a translator needs
 ├── chatbot.js       # Help assistant + its knowledge base (placeholder)
