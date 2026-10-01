@@ -18,9 +18,8 @@ and the emblem read as one identity rather than two.
 
 Principles the stylesheet holds to:
 
-- **The seal leads.** It appears at six sizes across the page: the header lockup (60px),
-  the hero (196px), the about plate (168px), the news lead (132px), the footer (100px), and
-  the mobile menu — plus a low-opacity watermark behind the hero and the statistics panel.
+- **The seal leads.** Hero at 320px, header lockup, about plate, news lead, footer and the
+  mobile menu — and no watermarks.
 - **Generous radii and soft elevation.** Cards sit at 24px, panels at 32px, and every button,
   chip and tag is a pill. Depth comes from wide, very low-contrast shadows that deepen on
   hover, not from borders doing all the work.
@@ -28,9 +27,11 @@ Principles the stylesheet holds to:
   case at 14.5px. There is no letter-spaced micro-type anywhere.
 - **A confident type scale.** 17px body, section headings up to 2.85rem, the hero name at
   3.5rem in weight 800, set in Plus Jakarta Sans.
-- **Brand-tinted neutrals.** No surface is pure grey. Every tinted section carries a wash
-  drawn from the two logo colours — `--tint-navy` and `--tint-green` — kept pale so the colour
-  registers as warmth rather than decoration.
+- **Extended palette.** Beyond the two seal colours there is now a scale of blues, a teal,
+  greens, slates and true greys (`--blue-*`, `--teal-*`, `--green-*`, `--slate-*`,
+  `--grey-*`). The four home boxes each take their own hue from it.
+- **The logo appears once, large.** Every background seal watermark was removed at the
+  client's request; the seal is in the hero (320px) and the header, nowhere else.
 - **Restrained motion.** A single fade-and-rise on scroll plus small hover lifts, and nothing
   at all under `prefers-reduced-motion`.
 
@@ -235,7 +236,7 @@ needs the gallery lightbox). `build.py` marks the active nav link with
 
 | Page | Content |
 |---|---|
-| `index.html` | Home |
+| `index.html` | Home: About-the-Society hero, events strip, four section boxes, news, gallery, partners |
 | `about.html` | About, numbers, vision / mission / goals |
 | `board.html` | Board of Directors |
 | `membership.html` | Membership categories |
@@ -263,6 +264,9 @@ Python is already what the project uses for images.
 | Member photos | `members/bm-01…05.jpg` | Real portraits, cropped to 4:5. `bm-03` is only 405px wide — ask for a larger original. |
 | ~~Membership conditions~~ | — | **Done.** Taken from the society's Basic Bylaw, Articles 8–12. |
 | Gallery photographs | `gallery/` | See the Gallery section above. |
+| Event posters | `events/` + entries in `events.js` | Portrait 3:4. Each event is one entry (title/date in both languages, poster, link). **All five are invented.** |
+| High-quality logo | the inline seal in `partials/seal.html` | The client's SVG has not arrived; the vector-ring seal stands in. Swap the symbol's contents when it does. |
+| Maakom portal | `MAAKOM_URL` in `build.py` | Empty → Login renders inert. Set and rebuild. |
 | Regulation PDFs | `regulations/` | Replace the four placeholder files, then update titles and dates. |
 | Cooperation agreements | `coop.a1…a3` in `translations.js` | Entity, scope and date per row. |
 | Awareness tips | `awr.*` in `translations.js` | Keep the "not medical advice" note. |

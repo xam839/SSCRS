@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=18" />
+    <link rel="stylesheet" href="styles.css?v=19" />
 
     <script>
       // Applied before first paint so the chosen language never flashes.
@@ -172,65 +172,80 @@
 
 
     <main id="main">
-<!-- HERO — identity statement -->
+<!-- HERO — About the Society. The logo is the subject; nothing
+           decorative sits behind it. -->
       <section class="hero" id="top">
-        <div class="page-wrap hero-inner">
-          <svg class="hero-seal" viewBox="0 0 512 512" role="img"
-               aria-label="Seal of the Saudi Society of Colon and Rectal Surgery"
-               data-i18n-aria="a11y.seal"><use href="#sscrs-seal" /></svg>
-          <p class="hero-ar" lang="ar">الجمعية السعودية لجراحة القولون والمستقيم</p>
-          <h1 class="hero-en">Saudi Society of Colon &amp; Rectal Surgery</h1>
-          <p class="hero-est" data-i18n="brand.est">Established 2009 &middot; 1430H</p>
-          <p class="hero-lead" data-i18n="hero.lead">
-            A national professional society uniting colorectal surgeons, trainees, and
-            researchers across the Kingdom — advancing surgical standards, education,
-            and public awareness of colorectal health.
-          </p>
-          <div class="hero-ctas">
-            <a class="btn btn-primary" href="membership.html" data-i18n="cta.become">Become a Member</a>
-            <a class="btn btn-outline" href="about.html" data-i18n="cta.about">About the Society</a>
+        <div class="page-wrap hero-grid">
+          <div class="hero-seal-wrap reveal">
+            <svg class="hero-seal" viewBox="0 0 512 512" role="img"
+                 aria-label="Seal of the Saudi Society of Colon and Rectal Surgery"
+                 data-i18n-aria="a11y.seal"><use href="#sscrs-seal" /></svg>
+          </div>
+          <div class="hero-body reveal">
+            <p class="eyebrow eyebrow-navy" data-i18n="hero.eyebrow">About the Society</p>
+            <h1 class="hero-en">Saudi Society of Colon &amp; Rectal Surgery <span class="hero-abbr">(SSCRS)</span></h1>
+            <p class="hero-ar" lang="ar">الجمعية السعودية لجراحة القولون والمستقيم</p>
+            <p class="hero-est" data-i18n="brand.est">Established 2009 &middot; 1430H</p>
+            <p class="hero-lead" data-i18n="hero.mission">Founded by decree of the Saudi Commission for Health Specialties, the society unites colorectal surgeons, trainees and researchers across the Kingdom — to organise scientific work, strengthen professional fellowship, and raise public awareness of colorectal health.</p>
+            <div class="hero-ctas">
+              <a class="btn btn-primary" href="membership.html" data-i18n="cta.become">Become a Member</a>
+              <a class="btn btn-outline" href="about.html" data-i18n="cta.about">About the Society</a>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- AT A GLANCE -->
-      <div class="glance">
-        <div class="page-wrap glance-grid">
-          <a class="glance-item" href="index.html#news">
-            <span class="glance-icon glance-forum" aria-hidden="true"></span>
-            <span class="glance-head">
-              <strong data-i18n="glance.forum.t">Annual Forum 2026</strong>
-              <span class="glance-live" data-i18n="glance.open">Open now</span>
-            </span>
-            <span class="glance-desc" data-i18n="glance.forum.d">Riyadh &middot; 15&ndash;17 April</span>
-            <span class="glance-cta" data-i18n="glance.forum.a">Registration details</span>
+      <!-- EVENTS STRIP — rendered from events.js so posters can be
+           swapped without touching markup. -->
+      <section class="events" id="events" aria-labelledby="events-h">
+        <div class="page-wrap">
+          <div class="events-head reveal">
+            <div>
+              <p class="eyebrow" data-i18n="ev.eyebrow">Events &amp; webinars</p>
+              <h2 id="events-h" data-i18n="ev.h">Coming up</h2>
+            </div>
+            <a class="view-all" href="index.html#news" data-i18n="ev.all">All news &rarr;</a>
+          </div>
+          <div class="ev-viewport reveal">
+            <button class="ev-arrow ev-prev" type="button" data-ev-prev
+                    aria-label="Previous events" data-i18n-aria="a11y.evPrev"></button>
+            <button class="ev-arrow ev-next" type="button" data-ev-next
+                    aria-label="Next events" data-i18n-aria="a11y.evNext"></button>
+            <div class="ev-track" data-events tabindex="0"
+                 aria-label="Upcoming events" data-i18n-aria="a11y.evTrack"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOUR SECTIONS — each with its own colour and icon -->
+      <section class="quads" aria-label="Main sections">
+        <div class="page-wrap quad-grid">
+          <a class="quad quad-forum reveal" href="index.html#events">
+            <span class="quad-icon" aria-hidden="true"></span>
+            <strong data-i18n="quad.forum.t">Annual SSCRS Forum</strong>
+            <span class="quad-desc" data-i18n="quad.forum.d">The Kingdom's premier colorectal surgery gathering — lectures, live surgery and workshops.</span>
+            <span class="quad-cta" data-i18n="quad.forum.a">Forum details</span>
           </a>
-          <a class="glance-item" href="membership.html">
-            <span class="glance-icon glance-members" aria-hidden="true"></span>
-            <span class="glance-head">
-              <strong data-i18n="glance.mem.t">Membership</strong>
-            </span>
-            <span class="glance-desc" data-i18n="glance.mem.d">Three categories: affiliate, regular and honorary</span>
-            <span class="glance-cta" data-i18n="glance.mem.a">View categories</span>
+          <a class="quad quad-members reveal" href="membership.html">
+            <span class="quad-icon" aria-hidden="true"></span>
+            <strong data-i18n="quad.mem.t">Membership</strong>
+            <span class="quad-desc" data-i18n="quad.mem.d">Three categories under the Basic Bylaw: affiliate, regular and honorary.</span>
+            <span class="quad-cta" data-i18n="quad.mem.a">View categories</span>
           </a>
-          <a class="glance-item" href="index.html#news">
-            <span class="glance-icon glance-guide" aria-hidden="true"></span>
-            <span class="glance-head">
-              <strong data-i18n="glance.guide.t">Screening Guidelines</strong>
-            </span>
-            <span class="glance-desc" data-i18n="glance.guide.d">National guidance with the Ministry of Health</span>
-            <span class="glance-cta" data-i18n="glance.guide.a">Read the update</span>
+          <a class="quad quad-edu reveal" href="index.html#news">
+            <span class="quad-icon" aria-hidden="true"></span>
+            <strong data-i18n="quad.edu.t">Educational Activities</strong>
+            <span class="quad-desc" data-i18n="quad.edu.d">Accredited CME, hands-on workshops and the advanced fellowship programme.</span>
+            <span class="quad-cta" data-i18n="quad.edu.a">See activities</span>
           </a>
-          <a class="glance-item" href="mailto:info@sscrs.org">
-            <span class="glance-icon glance-mail" aria-hidden="true"></span>
-            <span class="glance-head">
-              <strong data-i18n="glance.contact.t">Contact</strong>
-            </span>
-            <span class="glance-desc" data-i18n="glance.contact.d">Riyadh, Kingdom of Saudi Arabia</span>
-            <span class="glance-cta">info@sscrs.org</span>
+          <a class="quad quad-awr reveal" href="awareness.html">
+            <span class="quad-icon" aria-hidden="true"></span>
+            <strong data-i18n="quad.awr.t">Awareness</strong>
+            <span class="quad-desc" data-i18n="quad.awr.d">What every adult should know about colorectal health and early screening.</span>
+            <span class="quad-cta" data-i18n="quad.awr.a">Read the guidance</span>
           </a>
         </div>
-      </div>
+      </section>
 
       <!-- NEWS -->
       <section class="section" id="news">
@@ -412,27 +427,37 @@
         <div class="page-wrap">
           <div class="section-head reveal">
             <p class="eyebrow" data-i18n="part.eyebrow">Our Network</p>
-            <h2 data-i18n="part.h">Partners &amp; supporting companies</h2>
-            <p class="section-sub" data-i18n="part.sub">We collaborate with leading healthcare institutions, government bodies, and industry partners to advance colorectal surgical care.</p>
+            <h2 data-i18n="part.h">Affiliations &amp; partners</h2>
+            <p class="section-sub" data-i18n="part.sub">The international societies we are affiliated with, and the institutions and sponsors who support our work.</p>
           </div>
+
           <div class="partners-band reveal">
-            <p class="partners-label" data-i18n="part.strategic">Strategic Partners</p>
+            <p class="partners-label" data-i18n="part.affiliated">Affiliated Societies</p>
+            <div class="partners-row partners-row-soc">
+              <div class="partner-tile">
+                <span class="partner-abbr">ASCRS</span>
+                <span class="partner-name" data-i18n="part.ascrs">American Society of Colon &amp; Rectal Surgeons</span>
+              </div>
+              <div class="partner-tile">
+                <span class="partner-abbr">ACPGBI</span>
+                <span class="partner-name" data-i18n="part.acpgbi">Association of Coloproctology of Great Britain &amp; Ireland</span>
+              </div>
+              <div class="partner-tile">
+                <span class="partner-abbr">ESCP</span>
+                <span class="partner-name" data-i18n="part.escp">European Society of Coloproctology</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="partners-band reveal">
+            <p class="partners-label" data-i18n="part.strategic">Strategic Partners &amp; Sponsors</p>
             <div class="partners-row">
               <div class="partner-tile" data-i18n="part.moh">Ministry of Health</div>
               <div class="partner-tile" data-i18n="part.scfhs">Saudi Commission for Health Specialties</div>
               <div class="partner-tile" data-i18n="part.kfshrc">King Faisal Specialist Hospital &amp; Research Centre</div>
             </div>
           </div>
-          <div class="partners-band reveal">
-            <p class="partners-label" data-i18n="part.supporting">Supporting Partners</p>
-            <div class="partners-row partners-row-sm">
-              <div class="partner-tile partner-tile-sm" data-i18n="part.placeholder">Partner</div>
-              <div class="partner-tile partner-tile-sm" data-i18n="part.placeholder">Partner</div>
-              <div class="partner-tile partner-tile-sm" data-i18n="part.placeholder">Partner</div>
-              <div class="partner-tile partner-tile-sm" data-i18n="part.placeholder">Partner</div>
-              <div class="partner-tile partner-tile-sm" data-i18n="part.placeholder">Partner</div>
-            </div>
-          </div>
+
           <div class="coop reveal" id="agreements">
             <div class="coop-head">
               <h3 data-i18n="coop.h">Cooperation Agreements</h3>
@@ -583,8 +608,9 @@
     </section>
 
 
-    <script src="translations.js?v=18"></script>
-    <script src="script.js?v=18"></script>
-    <script src="chatbot.js?v=18"></script>
+    <script src="translations.js?v=19"></script>
+    <script src="script.js?v=19"></script>
+    <script src="events.js?v=19"></script>
+    <script src="chatbot.js?v=19"></script>
   </body>
 </html>

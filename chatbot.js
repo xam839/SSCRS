@@ -40,8 +40,8 @@
       k: { en: ["member", "join", "membership", "apply", "subscribe", "fee", "category"],
            ar: ["عضوية", "انضمام", "انضم", "اشتراك", "تقديم", "رسوم", "فئة", "عضو"] },
       a: {
-        en: "There are three categories. Affiliate, for licensed practitioners and medical students, gives access to the society's scientific activities. Regular, for surgeons classified in colorectal surgery, adds full General Assembly rights including the vote. Honorary is the society's highest distinction, granted by decision of the Board rather than applied for. Conditions are in the Membership section; applications go to info@sscrs.org.",
-        ar: "للجمعية ثلاث فئات للعضوية. عضوية الانتساب للممارسين الصحيين المرخصين وطلبة الطب، وتتيح حضور الأنشطة العلمية والاستفادة من مزايا الجمعية. والعضوية العادية للمصنفين في جراحة القولون والمستقيم، وتضيف حقوقًا كاملة في الجمعية العمومية ومنها التصويت. أما العضوية الفخرية فهي أرفع تكريم تمنحه الجمعية، وتُمنح بقرار من مجلس الإدارة ولا يُتقدَّم إليها بطلب. وتجد الشروط في قسم العضوية، والتقديم عبر info@sscrs.org."
+        en: "There are three categories. Affiliate, for licensed practitioners and medical students, gives access to the society's scientific activities. Regular, for surgeons classified in colorectal surgery, adds full General Assembly rights including the vote. Honorary is the society's highest distinction, granted by decision of the Board rather than applied for. Conditions are on the Membership page; applications go to info@sscrs.org.",
+        ar: "للجمعية ثلاث فئات للعضوية. عضوية الانتساب للممارسين الصحيين المرخصين وطلبة الطب، وتتيح حضور الأنشطة العلمية والاستفادة من مزايا الجمعية. والعضوية العادية للمصنفين في جراحة القولون والمستقيم، وتضيف حقوقًا كاملة في الجمعية العمومية ومنها التصويت. أما العضوية الفخرية فهي أرفع تكريم تمنحه الجمعية، وتُمنح بقرار من مجلس الإدارة ولا يُتقدَّم إليها بطلب. وتجد الشروط في صفحة العضوية، والتقديم عبر info@sscrs.org."
       }
     },
     {
@@ -74,8 +74,8 @@
            ar: ["رؤية", "رؤيت", "رسالة", "رسالت", "هدف",
                 "أهداف", "استراتيجية"] },
       a: {
-        en: "Our vision is to be the trusted national reference for colorectal surgical excellence in Saudi Arabia. Our mission is to support surgical education, promote public awareness, facilitate research exchange and foster professional collaboration. The Vision section lists our five commitments in full.",
-        ar: "رؤيتنا أن نكون المرجع الوطني الموثوق للتميز في جراحة القولون والمستقيم في المملكة. ورسالتنا دعم التعليم الجراحي، وتعزيز الوعي المجتمعي، وتيسير تبادل البحوث، وتنمية التعاون المهني. وتجد التزاماتنا الخمسة كاملة في قسم الرؤية."
+        en: "Our vision is to be the trusted national reference for colorectal surgical excellence in Saudi Arabia. Our mission is to support surgical education, promote public awareness, facilitate research exchange and foster professional collaboration. The About page lists our five commitments in full.",
+        ar: "رؤيتنا أن نكون المرجع الوطني الموثوق للتميز في جراحة القولون والمستقيم في المملكة. ورسالتنا دعم التعليم الجراحي، وتعزيز الوعي المجتمعي، وتيسير تبادل البحوث، وتنمية التعاون المهني. وتجد التزاماتنا الخمسة كاملة في صفحة عن الجمعية."
       }
     },
     {
@@ -83,8 +83,8 @@
       k: { en: ["board", "leadership", "president", "chair", "committee", "who runs"],
            ar: ["مجلس", "إدارة", "رئيس", "قيادة", "أعضاء المجلس"] },
       a: {
-        en: "The society is guided by a board of distinguished surgeons and healthcare leaders from across the Kingdom, chaired by Prof. Samar Alhomoud. You can see the members in the Board section; the remaining roles and biographies are still being published.",
-        ar: "تقود الجمعية نخبة من الجراحين وقادة القطاع الصحي من مختلف مناطق المملكة، برئاسة البروفيسورة سمر الحمود. ويمكنك الاطلاع على الأعضاء في قسم مجلس الإدارة، وما زالت بقية المناصب والسير الذاتية قيد النشر."
+        en: "The society is guided by a board of distinguished surgeons and healthcare leaders from across the Kingdom, chaired by Prof. Samar Alhomoud. You can see the members on the Board page; the remaining roles and biographies are still being published.",
+        ar: "تقود الجمعية نخبة من الجراحين وقادة القطاع الصحي من مختلف مناطق المملكة، برئاسة البروفيسورة سمر الحمود. ويمكنك الاطلاع على الأعضاء في صفحة مجلس الإدارة، وما زالت بقية المناصب والسير الذاتية قيد النشر."
       }
     },
     {
@@ -132,8 +132,8 @@
       k: { en: ["awareness", "tips", "advice", "signs", "warning", "risk", "prevent"],
            ar: ["توعية", "نصائح", "نصيحة", "علامات", "إرشاد", "مخاطر", "الوقاية"] },
       a: {
-        en: "The Awareness section covers what the society most wants the public to know: screening from age 45, not waiting out bleeding, reporting lasting changes in bowel habit, how family history moves the screening date, and the daily habits that lower risk. It is general awareness only — anything about your own health belongs with a physician.",
-        ar: "يغطي قسم التوعية أبرز ما تحرص الجمعية على إيصاله للمجتمع: الفحص المبكر من سن ٤٥، وعدم تجاهل النزيف، ومراجعة الطبيب عند تغير عادات الإخراج لفترة، وأثر التاريخ العائلي في تقديم موعد الفحص، والعادات اليومية التي تقلل الخطر. وهو للتوعية العامة فقط — أما ما يخص صحتك الشخصية فمرجعه الطبيب المختص."
+        en: "The Awareness page covers what the society most wants the public to know: screening from age 45, not waiting out bleeding, reporting lasting changes in bowel habit, how family history moves the screening date, and the daily habits that lower risk. It is general awareness only — anything about your own health belongs with a physician.",
+        ar: "يغطي صفحة التوعية أبرز ما تحرص الجمعية على إيصاله للمجتمع: الفحص المبكر من سن ٤٥، وعدم تجاهل النزيف، ومراجعة الطبيب عند تغير عادات الإخراج لفترة، وأثر التاريخ العائلي في تقديم موعد الفحص، والعادات اليومية التي تقلل الخطر. وهو للتوعية العامة فقط — أما ما يخص صحتك الشخصية فمرجعه الطبيب المختص."
       }
     },
     {
@@ -141,8 +141,8 @@
       k: { en: ["agreement", "agreements", "memorandum", "mou", "cooperation", "signed"],
            ar: ["اتفاقية", "اتفاقيات", "مذكرة", "تعاون", "وقعت", "شراكات"] },
       a: {
-        en: "The Cooperation Agreements list sits inside the Partners section — formal agreements with the Ministry of Health, the Saudi Commission for Health Specialties and King Faisal Specialist Hospital & Research Centre, covering screening, accredited education and shared research.",
-        ar: "تجد قائمة اتفاقيات التعاون ضمن قسم الشركاء — اتفاقيات رسمية مع وزارة الصحة والهيئة السعودية للتخصصات الصحية ومستشفى الملك فيصل التخصصي ومركز الأبحاث، تشمل الفحص المبكر والتعليم المعتمد والبحوث المشتركة."
+        en: "The Cooperation Agreements list sits under Partners on the home page — formal agreements with the Ministry of Health, the Saudi Commission for Health Specialties and King Faisal Specialist Hospital & Research Centre, covering screening, accredited education and shared research.",
+        ar: "تجد قائمة اتفاقيات التعاون ضمن الشركاء في الصفحة الرئيسية — اتفاقيات رسمية مع وزارة الصحة والهيئة السعودية للتخصصات الصحية ومستشفى الملك فيصل التخصصي ومركز الأبحاث، تشمل الفحص المبكر والتعليم المعتمد والبحوث المشتركة."
       }
     },
     {
