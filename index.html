@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Kufi+Arabic:wght@400;600;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=19" />
+    <link rel="stylesheet" href="styles.css?v=21" />
 
     <script>
       // Applied before first paint so the chosen language never flashes.
@@ -172,47 +172,34 @@
 
 
     <main id="main">
-<!-- HERO — About the Society. The logo is the subject; nothing
-           decorative sits behind it. -->
+<!-- HERO — identity on one side, a rotating news/events slider on
+           the other. The slider is rendered from events.js. The long
+           mission text lives on about.html, not here. -->
       <section class="hero" id="top">
         <div class="page-wrap hero-grid">
-          <div class="hero-seal-wrap reveal">
+          <div class="hero-id reveal">
             <svg class="hero-seal" viewBox="0 0 512 512" role="img"
-                 aria-label="Seal of the Saudi Society of Colon and Rectal Surgery"
+                 aria-label="Seal of the Saudi Society of Colorectal Surgery"
                  data-i18n-aria="a11y.seal"><use href="#sscrs-seal" /></svg>
-          </div>
-          <div class="hero-body reveal">
-            <p class="eyebrow eyebrow-navy" data-i18n="hero.eyebrow">About the Society</p>
-            <h1 class="hero-en">Saudi Society of Colon &amp; Rectal Surgery <span class="hero-abbr">(SSCRS)</span></h1>
+            <h1 class="hero-en">Saudi Society of Colorectal Surgery <span class="hero-abbr">(SSCRS)</span></h1>
             <p class="hero-ar" lang="ar">الجمعية السعودية لجراحة القولون والمستقيم</p>
             <p class="hero-est" data-i18n="brand.est">Established 2009 &middot; 1430H</p>
-            <p class="hero-lead" data-i18n="hero.mission">Founded by decree of the Saudi Commission for Health Specialties, the society unites colorectal surgeons, trainees and researchers across the Kingdom — to organise scientific work, strengthen professional fellowship, and raise public awareness of colorectal health.</p>
+            <p class="hero-tag" data-i18n="hero.tag">The national home for colorectal surgical excellence.</p>
             <div class="hero-ctas">
               <a class="btn btn-primary" href="membership.html" data-i18n="cta.become">Become a Member</a>
               <a class="btn btn-outline" href="about.html" data-i18n="cta.about">About the Society</a>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- EVENTS STRIP — rendered from events.js so posters can be
-           swapped without touching markup. -->
-      <section class="events" id="events" aria-labelledby="events-h">
-        <div class="page-wrap">
-          <div class="events-head reveal">
-            <div>
-              <p class="eyebrow" data-i18n="ev.eyebrow">Events &amp; webinars</p>
-              <h2 id="events-h" data-i18n="ev.h">Coming up</h2>
-            </div>
-            <a class="view-all" href="index.html#news" data-i18n="ev.all">All news &rarr;</a>
-          </div>
-          <div class="ev-viewport reveal">
-            <button class="ev-arrow ev-prev" type="button" data-ev-prev
-                    aria-label="Previous events" data-i18n-aria="a11y.evPrev"></button>
-            <button class="ev-arrow ev-next" type="button" data-ev-next
-                    aria-label="Next events" data-i18n-aria="a11y.evNext"></button>
-            <div class="ev-track" data-events tabindex="0"
-                 aria-label="Upcoming events" data-i18n-aria="a11y.evTrack"></div>
+          <div class="hero-slider reveal" id="events" data-hero-slider
+               aria-roledescription="carousel" aria-label="Latest news and events"
+               data-i18n-aria="a11y.slider">
+            <div class="hs-slides" data-hs-slides aria-live="polite"></div>
+            <button class="hs-arrow hs-prev" type="button" data-hs-prev
+                    aria-label="Previous" data-i18n-aria="a11y.evPrev"></button>
+            <button class="hs-arrow hs-next" type="button" data-hs-next
+                    aria-label="Next" data-i18n-aria="a11y.evNext"></button>
+            <div class="hs-dots" data-hs-dots role="tablist" aria-label="Slides"></div>
           </div>
         </div>
       </section>
@@ -608,9 +595,9 @@
     </section>
 
 
-    <script src="translations.js?v=19"></script>
-    <script src="script.js?v=19"></script>
-    <script src="events.js?v=19"></script>
-    <script src="chatbot.js?v=19"></script>
+    <script src="translations.js?v=21"></script>
+    <script src="script.js?v=21"></script>
+    <script src="events.js?v=21"></script>
+    <script src="chatbot.js?v=21"></script>
   </body>
 </html>

@@ -236,7 +236,7 @@ needs the gallery lightbox). `build.py` marks the active nav link with
 
 | Page | Content |
 |---|---|
-| `index.html` | Home: About-the-Society hero, events strip, four section boxes, news, gallery, partners |
+| `index.html` | Home: identity + rotating news slider, four section tiles, news, gallery, partners |
 | `about.html` | About, numbers, vision / mission / goals |
 | `board.html` | Board of Directors |
 | `membership.html` | Membership categories |
@@ -264,7 +264,7 @@ Python is already what the project uses for images.
 | Member photos | `members/bm-01…05.jpg` | Real portraits, cropped to 4:5. `bm-03` is only 405px wide — ask for a larger original. |
 | ~~Membership conditions~~ | — | **Done.** Taken from the society's Basic Bylaw, Articles 8–12. |
 | Gallery photographs | `gallery/` | See the Gallery section above. |
-| Event posters | `events/` + entries in `events.js` | Portrait 3:4. Each event is one entry (title/date in both languages, poster, link). **All five are invented.** |
+| Hero slides | `events/` + entries in `events.js` | Each announcement is one entry (kind, title, date in both languages, image, link). Images sit behind a dark overlay, so pick ones that read that way. **All five are invented.** |
 | High-quality logo | the inline seal in `partials/seal.html` | The client's SVG has not arrived; the vector-ring seal stands in. Swap the symbol's contents when it does. |
 | Maakom portal | `MAAKOM_URL` in `build.py` | Empty → Login renders inert. Set and rebuild. |
 | Regulation PDFs | `regulations/` | Replace the four placeholder files, then update titles and dates. |
