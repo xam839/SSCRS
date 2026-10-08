@@ -86,194 +86,24 @@ Arabic lives in `translations.js` and is applied on demand.
 
 ## The Seal
 
-The seal is drawn as an **inline SVG symbol**, defined once at the top of `index.html` and
-referenced with `<use>` everywhere it appears.
+The seal is the society's official artwork, supplied as `SSCRS Logo.pdf`. The PDF
+is a wrapper around a single **697×637 JPEG on white** — there is no vector inside it
+(the only other object is a stray embedded font from the export). It was extracted at
+native resolution, masked to the ring's circle for transparency, and saved as
+`sscrs-seal.png`; the favicon is cut from the same file.
 
-- The ring, its rules, the curved Arabic and English lettering and the two dates are **true
-  vector**, so they stay sharp at every size — this is what was visibly soft before.
-- The emblem in the middle — the colon, palm and swords — is the artwork from the supplied
-  file, extracted and clipped into the inner circle (`seal-core.png`). It is the one raster
-  part left.
-- It is inline rather than an external `.svg` because an SVG loaded through `<img>` or CSS
-  cannot use the page's webfonts, and the ring lettering needs them.
+Every placement goes through one inline `<symbol id="sscrs-seal">` in
+`partials/seal.html`, so replacing the artwork again is a one-line change there.
 
 | File | Purpose |
 |---|---|
-| `Layer-0.png` | Original seal supplied by the client, 185×186 |
-| `seal-core.png` | Inner emblem extracted from it, used inside the vector ring |
-| `sscrs-seal.png` | Flat raster seal — favicon source, social preview, and the two watermarks |
-| `favicon.png` | 180×180 browser and touch icon |
+| `sscrs-seal.png` | The official seal, transparent, used everywhere |
+| `favicon.png` | 180×180 cut from it |
+| `Layer-0.png` | The original 185px file, kept for reference only |
 
-> **Two things worth knowing.** First, the ring lettering is now set in Noto Kufi Arabic and
-> Inter rather than the original seal's typefaces, so it reads as a cleaned-up version of the
-> mark rather than a pixel-exact reproduction — if the society's brand office needs the exact
-> original, point the six `<use href="#sscrs-seal">` references at `sscrs-seal.png` instead
-> and the page reverts. Second, the inner emblem still comes from a 185px source; supplying a
-> vector or high-resolution original of the artwork is the last step to a fully crisp seal.
-
-## Gallery
-
-A filterable grid of society photographs; clicking any tile opens a full-screen
-lightbox carousel.
-
-- **Filters** — All / Annual Forum / Workshops / Awareness. Slides fade and the
-  track rewinds when a filter changes.
-- **Autoplay** — advances every 4.2s, pauses on hover, focus, touch or a hidden
-  tab, wraps at the end, and never runs under `prefers-reduced-motion`.
-- **Lightbox** — arrows, keyboard (←/→, Esc), swipe on touch, a running counter, and
-  neighbour preloading so stepping through feels instant. Arrow keys reverse under RTL.
-  It navigates the *currently filtered* set, so arrowing inside "Workshops" stays in
-  Workshops.
-- **Accessibility** — each tile is a real button, focus moves into the dialog on open
-  and returns to the tile on close, focus is trapped while open, and the page behind is
-  scroll-locked. Under `prefers-reduced-motion` the zoom and fade are dropped.
-
-### Replacing the placeholder photographs
-
-`gallery/` currently holds nine generated placeholders — brand gradients with a faint
-seal, no text baked in. To use real photographs:
-
-1. Drop your images into `gallery/`, keeping roughly the same aspect ratios
-   (landscape ~3:2, portrait ~3:4, square).
-2. In `index.html`, update the `src`, `width` and `height` on each
-   `.gal-item img`. The `width`/`height` attributes matter — they reserve space and
-   stop the page jumping while images load.
-3. Edit the caption in the same `<figure>`, and its Arabic twin under the matching
-   `gal.c1` … `gal.c9` key in `translations.js`.
-
-Nothing else needs to change: the grid, filters and lightbox all read from the DOM.
-To add a tenth photo, copy a `<figure>` block, give it a `data-category`, and bump the
-`data-gal-open` index.
-
-> The captions are invented for the placeholders and describe events that have not
-> happened. Replace them along with the images.
-
-## Help Assistant
-
-A floating button in the bottom corner opens a small assistant panel that answers
-questions about the society. **This is a placeholder implementation, meant to be
-replaced.**
-
-It is offline: there is no model and no network call. `chatbot.js` scores a question
-against a small keyword knowledge base built from the content already on this page —
-membership, the annual forum, training, partnerships, the board, the gallery, contact
-details — and falls back to pointing at info@sscrs.org.
-
-### Clinical questions are refused, deliberately
-
-This is a surgical society's website, and visitors will ask personal medical
-questions. Anything that reads as one gets a referral instead of an answer:
-
-> I can't help with medical or personal health questions, and nothing here is medical
-> advice. Please speak with a qualified colorectal surgeon or your own physician — and
-> if this is urgent, seek medical care now.
-
-The panel also carries a permanent "general information only, not medical advice"
-note. **Keep both when you replace the backend.** A real model must be given the same
-instruction in its system prompt, and the refusal should stay server-side rather than
-relying on the browser.
-
-### Replacing it with a real backend
-
-Everything behind the UI is reached through one function:
-
-```js
-SSCRS_CHAT.setResponder(async function (text, lang) {
-  const r = await fetch("/api/chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: text, lang: lang })
-  });
-  return (await r.json()).reply;      // a string
-});
-```
-
-The responder may return a string or a promise for one. The panel, typing indicator,
-language switching and the safety note all keep working unchanged.
-
-> **Never put an API key in `chatbot.js`.** It is served to every visitor. A paid model
-> has to be called from a small server endpoint that holds the key — which means this
-> site would no longer be purely static, and would need somewhere to run that endpoint.
-
-Other entry points: `SSCRS_CHAT.open()`, `.close()`, `.ask(text)`, and
-`.knowledgeBase` for the current entries.
-
-### A note on the Arabic matching
-
-Arabic morphology makes naive substring matching unsafe, and two cases bit during
-development: `ألم` ("pain") normalises to `الم`, which is the opening of `الملتقى`
-("the forum"), and `هل لدي` ("do I have") sits inside `هل لديكم` ("do you have"),
-which means the opposite. Arabic terms are therefore matched at word boundaries with
-the usual attached prefixes and up to two stacked suffixes. Arabic punctuation is
-excluded from the "letter" class — `؟` is U+061F, inside the Arabic block, so treating
-the block as letters broke every question that ended in one.
-
-If you extend the knowledge base, add inflected forms rather than relying on
-substrings, and re-check that ordinary questions are not caught by the clinical guard.
-
-## Pages and the build step
-
-The site is now multi-page. Shared blocks live in exactly one place and the
-root HTML files are **generated** — do not edit them by hand.
-
-```
-partials/        header, footer, seal, assistant, head, scripts  ← shared, edit here
-pages/           one file per page: the page's own content       ← content, edit here
-build.py         stitches partials + pages into the root *.html
-index.html …     GENERATED — overwritten on every build
-```
-
-After editing anything in `partials/` or `pages/`:
-
-```bash
-python build.py
-```
-
-Each page starts with a small front-matter comment (title, description, the
-translation keys for its Arabic title, which nav item is active, and whether it
-needs the gallery lightbox). `build.py` marks the active nav link with
-`aria-current`, fills the Maakom link, and stamps the asset version.
-
-| Page | Content |
-|---|---|
-| `index.html` | Home: identity + rotating news slider, four section tiles, news, gallery, partners |
-| `about.html` | About, numbers, vision / mission / goals |
-| `board.html` | Board of Directors |
-| `membership.html` | Membership categories |
-| `awareness.html` | Public awareness |
-| `regulations.html` | Published regulations (public for now, per the client) |
-
-Two constants at the top of `build.py`:
-
-- **`VERSION`** — appended to CSS/JS URLs. GitHub Pages caches hard; bump this
-  on every release or visitors stay on stale assets.
-- **`MAAKOM_URL`** — the member portal. **Currently empty.** While empty, the
-  Member Login button renders inert and marked pending rather than pointing
-  somewhere invented. Set it and rebuild once the society confirms the URL.
-
-Why a build step rather than a JS include: an include keeps the header out of
-the HTML source, which costs SEO and breaks without JavaScript. A generator was
-the alternative, but this one is 100 lines of Python with no dependencies, and
-Python is already what the project uses for images.
-
-## Replacing the placeholder content
-
-| What | Where | Notes |
-|---|---|---|
-| Board data | `data/board-members.txt` | Source of record. Fields marked `؟؟` are still missing — the page simply omits them rather than guessing. |
-| Member photos | `members/bm-01…05.jpg` | Real portraits, cropped to 4:5. `bm-03` is only 405px wide — ask for a larger original. |
-| ~~Membership conditions~~ | — | **Done.** Taken from the society's Basic Bylaw, Articles 8–12. |
-| Gallery photographs | `gallery/` | See the Gallery section above. |
-| Hero slides | `events/` + entries in `events.js` | Each announcement is one entry (kind, title, date in both languages, image, link). Images sit behind a dark overlay, so pick ones that read that way. **All five are invented.** |
-| High-quality logo | the inline seal in `partials/seal.html` | The client's SVG has not arrived; the vector-ring seal stands in. Swap the symbol's contents when it does. |
-| Maakom portal | `MAAKOM_URL` in `build.py` | Empty → Login renders inert. Set and rebuild. |
-| Regulation PDFs | `regulations/` | Replace the four placeholder files, then update titles and dates. |
-| Cooperation agreements | `coop.a1…a3` in `translations.js` | Entity, scope and date per row. |
-| Awareness tips | `awr.*` in `translations.js` | Keep the "not medical advice" note. |
-
-> Everything above is placeholder content written for layout review. None of it
-> has been approved by the society, and the awareness copy in particular is
-> general health information, not clinical guidance.
+> **Still worth asking the designer for the vector.** At 697px the seal is crisp at
+> every size on this site on 1× and 2× screens; the fine ring lettering will soften
+> slightly on 3× phones at the hero size. An SVG or EPS would remove that ceiling.
 
 ## Run Locally
 
@@ -317,7 +147,6 @@ Then open `http://localhost:8000`.
 ├── gallery/         # Gallery photographs (placeholders for now)
 ├── members/         # Board portraits (placeholders for now)
 ├── regulations/     # Regulation PDFs (placeholders for now)
-├── seal-core.png    # Inner emblem, used inside the vector ring
 ├── sscrs-seal.png   # Flat raster seal — favicon, social, watermarks
 ├── favicon.png      # Browser icon
 └── Layer-0.png      # Original seal source
