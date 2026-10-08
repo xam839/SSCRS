@@ -67,6 +67,7 @@ Arabic lives in `translations.js` and is applied on demand.
 | Vision / Mission / Goals | Three-column strategic direction |
 | Board Members | Eight member cards with photo and biography |
 | Membership | Affiliate / Regular / Honorary, per the Basic Bylaw |
+| Committees & Regulations | Six committee cards from Chapter 5 of the Basic Bylaw, then a document library with an in-page PDF viewer |
 | News | Lead story plus a dated list |
 | Awareness | Public-health tips, before Board of Directors |
 | Gallery | Filterable horizontal carousel with a lightbox |
@@ -138,7 +139,7 @@ Then open `http://localhost:8000`.
 ├── board.html       # GENERATED
 ├── membership.html  # GENERATED
 ├── awareness.html   # GENERATED
-├── regulations.html # GENERATED
+├── committees.html  # GENERATED — committees + regulations library
 ├── styles.css       # Design system, tints, RTL-ready layout
 ├── translations.js  # All Arabic copy — the only file a translator needs
 ├── chatbot.js       # Help assistant + its knowledge base (placeholder)
@@ -159,6 +160,11 @@ The following still carry placeholder copy and need real content before launch:
 - BM-05's name (Arabic surname missing, English spelling unverified) — their card is held out of the page until confirmed
 - Board roles for BM-02 to BM-05 (only the chair's is confirmed)
 - Remaining board members beyond the five supplied
+- Committee chairs (all "To be announced"), and confirmation of the three programme committees
+  (Scientific & Education, Awareness & Community, Executive) — only Audit, Nominations &
+  Remuneration and Elections are named in the bylaw
+- Real regulation PDFs in `regulations/` — the five files there are placeholders, and the
+  application form is a copy of one of them
 - Real cooperation agreements, replacing the three placeholder rows
 - Sign-off on the drafted Arabic copy in `translations.js`
 - News article links and the "View all news" destination

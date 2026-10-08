@@ -147,11 +147,11 @@
     },
     {
       id: "regulations",
-      k: { en: ["regulation", "regulations", "bylaw", "bylaws", "statute", "policy", "document", "pdf", "download"],
-           ar: ["لائحة", "اللوائح", "نظام", "أنظمة", "سياسة", "وثيقة", "وثائق", "تحميل"] },
+      k: { en: ["regulation", "regulations", "bylaw", "bylaws", "statute", "policy", "document", "pdf", "download", "form", "committee", "committees"],
+           ar: ["لائحة", "اللوائح", "نظام", "أنظمة", "سياسة", "وثيقة", "وثائق", "تحميل", "نموذج", "لجنة", "لجان", "اللجان"] },
       a: {
-        en: "The society's published regulations and bylaws are on the Regulations page, where each document can be viewed or downloaded as a PDF.",
-        ar: "لوائح الجمعية وأنظمتها المنشورة متاحة في صفحة اللوائح، ويمكن استعراض كل وثيقة أو تحميلها بصيغة PDF."
+        en: "Committees and regulations are on the Committees & Regulations page: the society's six committees with their mandates, and every bylaw, regulation and form, which you can read in the page's viewer or download as a PDF.",
+        ar: "تجد اللجان واللوائح في صفحة اللجان واللوائح: لجان الجمعية الست واختصاصاتها، وكل الأنظمة واللوائح والنماذج، ويمكن قراءة أي وثيقة في العارض داخل الصفحة أو تحميلها بصيغة PDF."
       }
     },
     {

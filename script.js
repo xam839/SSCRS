@@ -37,7 +37,7 @@
   }
 
   /* Sub-pages declare their own keys on <html>, so switching language
-     on regulations.html does not retitle it as the home page. */
+     on committees.html does not retitle it as the home page. */
   function titleKey() { return root.getAttribute("data-title-key") || "doc.title"; }
   function descKey()  { return root.getAttribute("data-desc-key")  || "doc.desc"; }
 
@@ -504,6 +504,82 @@
 
       applyFilter("all");
       syncCarousel();
+    }
+
+    /* --- Document library: pick a PDF, show it in the viewer ---
+       The viewer is display:none below 1080px, so the frame only
+       gets a src when it is actually visible; phones use the
+       Open / Download links on each item instead.
+       -------------------------------------------------------- */
+    var docs = document.querySelector("[data-docs]");
+    if (docs) {
+      var docItems = Array.prototype.slice.call(docs.querySelectorAll(".doc-item"));
+      var frame = docs.querySelector("[data-doc-frame]");
+      var vTitle = docs.querySelector("[data-doc-title]");
+      var vMeta = docs.querySelector("[data-doc-meta]");
+      var vOpen = docs.querySelectorAll("[data-doc-open]");
+      var vDownload = docs.querySelector("[data-doc-download]");
+      var emptyNote = docs.querySelector(".doc-empty");
+      var viewerVisible = function () {
+        var aside = docs.querySelector(".docs-viewer");
+        return aside && getComputedStyle(aside).display !== "none";
+      };
+
+      var showDoc = function (item) {
+        var src = item.getAttribute("data-doc");
+        docItems.forEach(function (li) {
+          var on = li === item;
+          li.classList.toggle("is-active", on);
+          li.querySelector(".doc-pick").setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        vTitle.textContent = item.querySelector(".doc-title").textContent;
+        vMeta.textContent = item.querySelector(".reg-meta").textContent;
+        vOpen.forEach(function (a) { a.href = src; });
+        vDownload.href = src;
+        frame.title = vTitle.textContent;
+        if (viewerVisible()) {
+          var want = src + "#toolbar=0&navpanes=0&view=FitH";
+          if (frame.getAttribute("src") !== want) frame.setAttribute("src", want);
+        }
+      };
+
+      docItems.forEach(function (li) {
+        li.querySelector(".doc-pick").addEventListener("click", function () {
+          showDoc(li);
+          if (!viewerVisible()) window.open(li.getAttribute("data-doc"), "_blank", "noopener");
+        });
+      });
+
+      docs.querySelectorAll("[data-doc-filter]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var cat = btn.getAttribute("data-doc-filter");
+          docs.querySelectorAll("[data-doc-filter]").forEach(function (b) {
+            b.classList.toggle("is-active", b === btn);
+          });
+          var firstVisible = null;
+          docItems.forEach(function (li) {
+            var show = cat === "all" || li.getAttribute("data-cat") === cat;
+            li.hidden = !show;
+            if (show && !firstVisible) firstVisible = li;
+          });
+          if (emptyNote) emptyNote.hidden = !!firstVisible;
+          var active = docItems.filter(function (li) { return li.classList.contains("is-active") && !li.hidden; })[0];
+          if (!active && firstVisible) showDoc(firstVisible);
+        });
+      });
+
+      // Keep the viewer header in the current language.
+      document.addEventListener("sscrs:languagechange", function () {
+        var active = docItems.filter(function (li) { return li.classList.contains("is-active"); })[0];
+        if (active) showDoc(active);
+      });
+
+      var initial = docItems.filter(function (li) { return li.classList.contains("is-active"); })[0] || docItems[0];
+      if (initial) showDoc(initial);
+      window.addEventListener("resize", function () {
+        var active = docItems.filter(function (li) { return li.classList.contains("is-active"); })[0];
+        if (active && viewerVisible() && !frame.getAttribute("src")) showDoc(active);
+      });
     }
 
     /* --- Scroll reveal --------------------------------------
