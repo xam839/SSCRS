@@ -25,8 +25,9 @@ Principles the stylesheet holds to:
   hover, not from borders doing all the work.
 - **Sentence case, never uppercase.** Section labels are pill chips, navigation is sentence
   case at 14.5px. There is no letter-spaced micro-type anywhere.
-- **A confident type scale.** 17px body, section headings up to 2.85rem, the hero name at
-  3.5rem in weight 800, set in Plus Jakarta Sans.
+- **Times New Roman throughout**, at the client's request, with Noto Naskh Arabic as its
+  Arabic companion (Times' own Arabic glyphs exist only on Windows). Body 17px, section
+  headings up to 2.85rem.
 - **Extended palette.** Beyond the two seal colours there is now a scale of blues, a teal,
   greens, slates and true greys (`--blue-*`, `--teal-*`, `--green-*`, `--slate-*`,
   `--grey-*`). The four home boxes each take their own hue from it.
@@ -45,7 +46,7 @@ Arabic lives in `translations.js` and is applied on demand.
   navigation, grids, list bullets, borders and the mobile menu all flip, because the
   stylesheet is written with CSS logical properties (`padding-inline-start`,
   `border-inline-end`, `inset-inline`) rather than left/right.
-- Arabic sets Noto Kufi Arabic throughout, drops the uppercase and letter-spacing treatments
+- Arabic sets Noto Naskh Arabic throughout, drops the uppercase and letter-spacing treatments
   that do not apply to Arabic script, and uses Arabic-Indic numerals (٢٠٠٩، ٥٠٠+).
 - The choice is remembered in `localStorage`, and `?lang=ar` forces it. It is applied by a
   small inline script in `<head>` so the language never flashes on load.
@@ -80,10 +81,10 @@ Arabic lives in `translations.js` and is applied on demand.
 - **HTML5** — semantic markup, Open Graph tags, skip link
 - **CSS3** — custom properties, Grid, Flexbox, logical properties, four breakpoints (1240 / 1080 / 640)
 - **Vanilla JS** — language switching, sticky nav, mobile nav, IntersectionObserver reveals
-- **Fonts** — Plus Jakarta Sans and Noto Kufi Arabic, loaded from Google Fonts. This is the only
-  external request; everything else is served from the repository. If you need the site
-  to be fully self-contained, drop the `<link>` tags in `index.html` and the
-  `--sans` / `--arabic` stacks fall back to system fonts.
+- **Fonts** — Times New Roman is a system font and needs no download. Noto Naskh Arabic is
+  loaded from Google Fonts for Arabic text; this is the only external request. Drop the
+  `<link>` in `partials/head.html` and Arabic falls back to the system's Times / Traditional
+  Arabic.
 
 ## The Seal
 
