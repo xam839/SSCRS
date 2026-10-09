@@ -48,7 +48,7 @@ window.SSCRS_EVENTS = [
              ar: "شهر التوعية بسرطان القولون والمستقيم" },
     when:  { en: "March · Kingdom-wide",     ar: "مارس · في أنحاء المملكة" },
     image: "events/awareness-march.jpg",
-    href:  "awareness.html"
+    href:  "education.html#education"
   },
   {
     id: "fellowship-2026",

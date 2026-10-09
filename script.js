@@ -582,6 +582,52 @@
       });
     }
 
+    /* --- 3D tilt for the home tiles and membership cards -----
+       Pointer-driven rotation plus a light spot that follows the
+       cursor. Only on fine pointers, never under reduced motion;
+       everywhere else the cards keep their static shadows.
+       -------------------------------------------------------- */
+    var tiltCards = document.querySelectorAll("[data-tilt], .quad");
+    var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    var noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (tiltCards.length && finePointer && !noMotion) {
+      tiltCards.forEach(function (card) {
+        var max = card.classList.contains("quad") ? 7 : 4.5;
+        card.addEventListener("pointermove", function (e) {
+          var r = card.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width - 0.5;
+          var py = (e.clientY - r.top) / r.height - 0.5;
+          card.classList.add("is-tilting");
+          card.style.transform = "perspective(1000px) rotateX(" + (-py * max * 2).toFixed(2) +
+            "deg) rotateY(" + (px * max * 2).toFixed(2) + "deg) translateY(-6px)";
+          card.style.setProperty("--mx", (px * 100 + 50).toFixed(1) + "%");
+          card.style.setProperty("--my", (py * 100 + 50).toFixed(1) + "%");
+        });
+        card.addEventListener("pointerleave", function () {
+          card.classList.remove("is-tilting");
+          card.style.transform = "";
+        });
+      });
+    }
+
+    /* --- Members directory: live text filter ----------------- */
+    var memSearch = document.querySelector("[data-members-search]");
+    var memTable = document.querySelector("[data-members-table]");
+    if (memSearch && memTable) {
+      var memRows = Array.prototype.slice.call(memTable.tBodies[0].rows);
+      var memEmpty = document.querySelector(".members-empty");
+      memSearch.addEventListener("input", function () {
+        var q = memSearch.value.trim().toLowerCase();
+        var shown = 0;
+        memRows.forEach(function (tr) {
+          var hit = !q || tr.textContent.toLowerCase().indexOf(q) !== -1;
+          tr.hidden = !hit;
+          if (hit) shown++;
+        });
+        if (memEmpty) memEmpty.hidden = shown > 0;
+      });
+    }
+
     /* --- Scroll reveal --------------------------------------
        The hidden state only applies while .js is on <html>, so if
        anything here fails the content is simply visible.

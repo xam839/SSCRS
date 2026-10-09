@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" width="360" height="120" role="img" aria-label="ESCP">
+  <!-- Placeholder logo. Replace this file with the organisation's official artwork. -->
+  <circle cx="52" cy="60" r="34" fill="none" stroke="#0F6E7A" stroke-width="5"/><circle cx="52" cy="60" r="20" fill="#0F6E7A" opacity=".18"/><circle cx="52" cy="60" r="9" fill="#0F6E7A"/>
+  <text x="104" y="58" font-family="'Times New Roman', Times, serif" font-size="30" font-weight="700" fill="#0F6E7A" letter-spacing="1">ESCP</text>
+  <text x="104" y="80" font-family="'Times New Roman', Times, serif" font-size="13.5" fill="#4B5565">European Society</text>
+  <text x="104" y="97" font-family="'Times New Roman', Times, serif" font-size="13.5" fill="#4B5565">of Coloproctology</text>
+</svg>

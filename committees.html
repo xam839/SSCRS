@@ -7,8 +7,8 @@
     <meta name="description" content="The committees of the Saudi Society of Colon &amp; Rectal Surgery, and its published regulations and bylaws, available to read online or download as PDF." />
     <meta name="theme-color" content="#0C2549" />
 
-    <link rel="icon" type="image/png" href="favicon.png?v=24" />
-    <link rel="apple-touch-icon" href="sscrs-seal.png?v=24" />
+    <link rel="icon" type="image/png" href="favicon.png?v=25" />
+    <link rel="apple-touch-icon" href="sscrs-seal.png?v=25" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Saudi Society of Colon &amp; Rectal Surgery" />
@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=24" />
+    <link rel="stylesheet" href="styles.css?v=25" />
 
     <script>
       // Applied before first paint so the chosen language never flashes.
@@ -68,7 +68,7 @@
              artwork again is a one-line change here.
              It is raster, not vector: the PDF contained a JPEG. -->
         <symbol id="sscrs-seal" viewBox="0 0 512 512">
-          <image href="sscrs-seal.png?v=24" x="0" y="0" width="512" height="512"
+          <image href="sscrs-seal.png?v=25" x="0" y="0" width="512" height="512"
                  preserveAspectRatio="xMidYMid meet" />
         </symbol>
       </defs>
@@ -88,11 +88,18 @@
         </a>
 
         <nav class="nav-shell" aria-label="Primary">
-          <a href="about.html"      data-nav="about"      data-i18n="nav.about">About</a>
+          <div class="nav-group" data-nav-group>
+            <button class="nav-trigger" type="button" data-nav-trigger
+                    aria-expanded="false" aria-haspopup="true" data-i18n="nav.about">About</button>
+            <div class="nav-menu" data-nav-menu hidden>
+              <a href="about.html"    data-nav="about"    data-i18n="nav.aboutSociety">About the Society</a>
+              <a href="founders.html" data-nav="founders" data-i18n="nav.founders">Founding Members</a>
+            </div>
+          </div>
           <a href="board.html"      data-nav="board"      data-i18n="nav.board">Board</a>
           <a href="membership.html" data-nav="membership" data-i18n="nav.membership">Membership</a>
-          <a href="awareness.html"  data-nav="awareness"  data-i18n="nav.awareness">Awareness</a>
           <a href="committees.html" data-nav="committees" data-i18n="nav.committeesShort" aria-current="page">Committees</a>
+          <a href="education.html"  data-nav="education"  data-i18n="nav.educationShort">Education</a>
           <a href="index.html#news" data-nav="news"       data-i18n="nav.news">News</a>
         </nav>
 
@@ -122,14 +129,15 @@
       </div>
       <nav aria-label="Mobile">
         <a href="index.html"          data-nav="home"       data-nav-link data-i18n="nav.home">Home</a>
-        <a href="about.html"          data-nav="about"      data-nav-link data-i18n="nav.about">About</a>
+        <a href="about.html"          data-nav="about"      data-nav-link data-i18n="nav.aboutSociety">About the Society</a>
+        <a href="founders.html"       data-nav="founders"   data-nav-link data-i18n="nav.founders">Founding Members</a>
         <a href="board.html"          data-nav="board"      data-nav-link data-i18n="nav.board">Board</a>
         <a href="membership.html"     data-nav="membership" data-nav-link data-i18n="nav.membership">Membership</a>
-        <a href="awareness.html"      data-nav="awareness"  data-nav-link data-i18n="nav.awareness">Awareness</a>
+        <a href="committees.html"     data-nav="committees" data-nav-link data-i18n="nav.committees" aria-current="page">Committees &amp; Regulations</a>
+        <a href="education.html"      data-nav="education"  data-nav-link data-i18n="nav.education">Education &amp; Conferences</a>
         <a href="index.html#news"     data-nav="news"       data-nav-link data-i18n="nav.news">News</a>
         <a href="index.html#gallery"  data-nav="gallery"    data-nav-link data-i18n="nav.gallery">Gallery</a>
         <a href="index.html#partners" data-nav="partners"   data-nav-link data-i18n="nav.partners">Partners</a>
-        <a href="committees.html"      data-nav="committees" data-nav-link data-i18n="nav.committees" aria-current="page">Committees &amp; Regulations</a>
 
         <a href="#" aria-disabled="true" data-portal-pending title="Member portal link pending" class="mobile-login-btn" data-nav-link data-i18n="cta.login">Member Login</a>
         <a href="membership.html" class="mobile-join-btn" data-nav-link data-i18n="cta.join">Join the Society</a>
@@ -408,27 +416,40 @@
         <div class="footer-cols">
           <div class="footer-about">
             <p data-i18n="footer.about">Advancing colorectal surgical excellence across the Kingdom of Saudi Arabia since 2009. Riyadh, Kingdom of Saudi Arabia.</p>
+            <p class="footer-follow" data-i18n="footer.follow">Follow the society</p>
+            <div class="footer-social">
+              <!-- Social profile URLs are pending from the society; swap the hrefs here. -->
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                 aria-label="SSCRS on LinkedIn" data-i18n-aria="a11y.linkedin" data-social-pending>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.13 2.07 2.07 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+              </a>
+              <a href="https://x.com/" target="_blank" rel="noopener"
+                 aria-label="SSCRS on X" data-i18n-aria="a11y.x" data-social-pending>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64z"/></svg>
+              </a>
+            </div>
           </div>
           <div class="footer-col">
             <h5 data-i18n="footer.society">Society</h5>
-            <a href="about.html" data-i18n="footer.aboutUs">About Us</a>
-            <a href="about.html#numbers" data-i18n="num.eyebrow">The Society in Numbers</a>
-            <a href="about.html#vision" data-i18n="nav.vision">Vision</a>
+            <a href="about.html" data-i18n="nav.aboutSociety">About the Society</a>
+            <a href="founders.html" data-i18n="nav.founders">Founding Members</a>
             <a href="board.html" data-i18n="board.h">Board Members</a>
+            <a href="about.html#numbers" data-i18n="num.eyebrow">The Society in Numbers</a>
           </div>
           <div class="footer-col">
             <h5 data-i18n="nav.membership">Membership</h5>
-            <a href="membership.html" data-i18n="footer.mem1">Active Members</a>
-            <a href="membership.html" data-i18n="footer.mem2">Associate Members</a>
-            <a href="membership.html" data-i18n="footer.mem3">Supporting Members</a>
-            <a href="membership.html" data-i18n="footer.mem4">Honorary Members</a>
+            <a href="membership.html" data-i18n="footer.mem1">Affiliate Membership</a>
+            <a href="membership.html" data-i18n="footer.mem2">Regular Membership</a>
+            <a href="membership.html" data-i18n="footer.mem3">Honorary Membership</a>
+            <a href="membership.html#members" data-i18n="footer.members">Current Members</a>
           </div>
           <div class="footer-col">
             <h5 data-i18n="footer.connect">Connect</h5>
             <a href="mailto:info@sscrs.org">info@sscrs.org</a>
+            <a href="education.html" data-i18n="nav.education">Education &amp; Conferences</a>
+            <a href="committees.html" data-i18n="nav.committees">Committees &amp; Regulations</a>
             <a href="index.html#news" data-i18n="news.h">News &amp; Announcements</a>
             <a href="index.html#partners" data-i18n="nav.partners">Partners</a>
-            <a href="committees.html" data-i18n="nav.committees">Committees &amp; Regulations</a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -480,9 +501,9 @@
     </section>
 
 
-    <script src="translations.js?v=24"></script>
-    <script src="script.js?v=24"></script>
-    <script src="events.js?v=24"></script>
-    <script src="chatbot.js?v=24"></script>
+    <script src="translations.js?v=25"></script>
+    <script src="script.js?v=25"></script>
+    <script src="events.js?v=25"></script>
+    <script src="chatbot.js?v=25"></script>
   </body>
 </html>

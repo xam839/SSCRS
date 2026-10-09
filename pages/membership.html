@@ -1,6 +1,6 @@
 <!--
 title: Membership | SSCRS
-desc: Membership categories of the Saudi Society of Colon &amp; Rectal Surgery, per the society's Basic Bylaw.
+desc: Membership categories of the Saudi Society of Colon &amp; Rectal Surgery, per the society's Basic Bylaw, and the society's current members.
 title_key: mem.docTitle
 desc_key: mem.docDesc
 active: membership
@@ -14,7 +14,7 @@ active: membership
             <p class="section-sub" data-i18n="mem.sub">Three categories, as set out in the society's Basic Bylaw.</p>
           </div>
           <div class="tier-grid reveal">
-            <article class="tier-card">
+            <article class="tier-card" data-tilt>
               <div class="tier-top">
                 <p class="tier-for" data-i18n="tier.aff.for">For licensed practitioners and medical students</p>
               </div>
@@ -27,7 +27,7 @@ active: membership
               </ul>
               <a href="mailto:info@sscrs.org" class="tier-btn" data-i18n="cta.apply">Apply Now</a>
             </article>
-            <article class="tier-card">
+            <article class="tier-card" data-tilt>
               <div class="tier-top">
                 <p class="tier-for" data-i18n="tier.reg.for">For classified colorectal surgeons</p>
               </div>
@@ -40,7 +40,7 @@ active: membership
               </ul>
               <a href="mailto:info@sscrs.org" class="tier-btn" data-i18n="cta.apply">Apply Now</a>
             </article>
-            <article class="tier-card is-honorary">
+            <article class="tier-card is-honorary" data-tilt>
               <div class="tier-top">
                 <p class="tier-for" data-i18n="tier.hon.for">By decision of the Board</p>
                 <span class="tier-badge" aria-hidden="true"></span>
@@ -56,5 +56,115 @@ active: membership
             </article>
           </div>
           <p class="tier-source reveal" data-i18n-html="mem.source">Conditions and subscriptions in full: <a href="committees.html#regulations">the society's Basic Bylaw</a>, Articles 8&ndash;12.</p>
+        </div>
+      </section>
+
+      <!-- CURRENT MEMBERS -->
+      <section class="section" id="members">
+        <div class="page-wrap">
+          <div class="members-head reveal">
+            <div class="section-head">
+              <span class="eyebrow eyebrow-navy" data-i18n="mem.m.eyebrow">Our members</span>
+              <h2 data-i18n="mem.m.h">Current members</h2>
+              <p class="section-sub" data-i18n="mem.m.sub">
+                Colorectal surgeons and affiliated practitioners across the Kingdom.
+                Search by name, specialty or workplace.
+              </p>
+            </div>
+            <label class="members-search">
+              <span class="visually-hidden" data-i18n="mem.m.search">Search members</span>
+              <input type="search" placeholder="Search members…" data-i18n-ph="mem.m.search" data-members-search autocomplete="off" />
+            </label>
+          </div>
+
+          <div class="members-table-wrap reveal">
+            <table class="members-table" data-members-table>
+              <thead>
+                <tr>
+                  <th scope="col" data-i18n="mem.m.name">Name</th>
+                  <th scope="col" data-i18n="mem.m.spec">Specialty</th>
+                  <th scope="col" data-i18n="mem.m.work">Workplace</th>
+                  <th scope="col" data-i18n="mem.m.city">City</th>
+                  <th scope="col" data-i18n="mem.m.type">Membership</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-i18n="mem.r1.n">Prof. Samar Alhomoud</td>
+                  <td data-i18n="mem.sp.crs">Colorectal Surgery</td>
+                  <td data-i18n="mem.r1.w">King Faisal Specialist Hospital &amp; Research Centre</td>
+                  <td data-i18n="city.riyadh">Riyadh</td>
+                  <td><span class="mem-type is-reg" data-i18n="tier.reg.short">Regular</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="mem.r2.n">Prof. Ahmad Zubaidi</td>
+                  <td data-i18n="mem.sp.crs">Colorectal Surgery</td>
+                  <td data-i18n="mem.r2.w">King Saud University Medical City</td>
+                  <td data-i18n="city.riyadh">Riyadh</td>
+                  <td><span class="mem-type is-reg" data-i18n="tier.reg.short">Regular</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="mem.r3.n">Dr. Reem Al-Saleh</td>
+                  <td data-i18n="mem.sp.onc">Colorectal Oncologic Surgery</td>
+                  <td data-i18n="mem.r3.w">King Fahad Medical City</td>
+                  <td data-i18n="city.riyadh">Riyadh</td>
+                  <td><span class="mem-type is-reg" data-i18n="tier.reg.short">Regular</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="mem.r4.n">Dr. Omar Bakhsh</td>
+                  <td data-i18n="mem.sp.lap">Minimally Invasive Colorectal Surgery</td>
+                  <td data-i18n="mem.r4.w">King Abdulaziz University Hospital</td>
+                  <td data-i18n="city.jeddah">Jeddah</td>
+                  <td><span class="mem-type is-reg" data-i18n="tier.reg.short">Regular</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="mem.r5.n">Dr. Lama Al-Dakheel</td>
+                  <td data-i18n="mem.sp.gs">General Surgery</td>
+                  <td data-i18n="mem.r5.w">King Fahad Specialist Hospital</td>
+                  <td data-i18n="city.dammam">Dammam</td>
+                  <td><span class="mem-type is-aff" data-i18n="tier.aff.short">Affiliate</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="mem.r6.n">Dr. Yousef Al-Amri</td>
+                  <td data-i18n="mem.sp.crs">Colorectal Surgery</td>
+                  <td data-i18n="mem.r6.w">Prince Sultan Military Medical City</td>
+                  <td data-i18n="city.riyadh">Riyadh</td>
+                  <td><span class="mem-type is-reg" data-i18n="tier.reg.short">Regular</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="mem.r7.n">Dr. Maha Al-Rashid</td>
+                  <td data-i18n="mem.sp.gi">Gastroenterology</td>
+                  <td data-i18n="mem.r7.w">Security Forces Hospital</td>
+                  <td data-i18n="city.riyadh">Riyadh</td>
+                  <td><span class="mem-type is-aff" data-i18n="tier.aff.short">Affiliate</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="mem.r8.n">Dr. Hassan Al-Yami</td>
+                  <td data-i18n="mem.sp.crs">Colorectal Surgery</td>
+                  <td data-i18n="mem.r8.w">Aseer Central Hospital</td>
+                  <td data-i18n="city.abha">Abha</td>
+                  <td><span class="mem-type is-reg" data-i18n="tier.reg.short">Regular</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="mem.r9.n">Dr. Nouf Al-Harthi</td>
+                  <td data-i18n="mem.sp.res">Surgical Resident</td>
+                  <td data-i18n="mem.r9.w">King Abdullah Medical City</td>
+                  <td data-i18n="city.makkah">Makkah</td>
+                  <td><span class="mem-type is-aff" data-i18n="tier.aff.short">Affiliate</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="mem.r10.n">Prof. Ibrahim Al-Sulaiman</td>
+                  <td data-i18n="mem.sp.crs">Colorectal Surgery</td>
+                  <td data-i18n="mem.r10.w">Retired &middot; formerly King Khalid University Hospital</td>
+                  <td data-i18n="city.riyadh">Riyadh</td>
+                  <td><span class="mem-type is-hon" data-i18n="tier.hon.short">Honorary</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="members-empty" hidden data-i18n="mem.m.empty">No members match that search.</p>
+          </div>
+          <p class="members-note reveal" data-i18n="mem.m.note">
+            Sample entries. The live directory will be published from the society's membership records.
+          </p>
         </div>
       </section>

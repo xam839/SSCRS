@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" width="360" height="120" role="img" aria-label="MOH">
+  <!-- Placeholder logo. Replace this file with the organisation's official artwork. -->
+  <path d="M52 24l32 10v26c0 20-14 33-32 40C34 93 20 80 20 60V34z" fill="#2F6321"/><path d="M52 36l20 6v18c0 13-9 22-20 27-11-5-20-14-20-27V42z" fill="#fff" opacity=".9"/><path d="M44 60h16M52 52v16" stroke="#2F6321" stroke-width="5" stroke-linecap="round"/>
+  <text x="104" y="58" font-family="'Times New Roman', Times, serif" font-size="30" font-weight="700" fill="#2F6321" letter-spacing="1">MOH</text>
+  <text x="104" y="80" font-family="'Times New Roman', Times, serif" font-size="13.5" fill="#4B5565">Ministry of Health</text>
+  <text x="104" y="97" font-family="'Times New Roman', Times, serif" font-size="13.5" fill="#4B5565">Kingdom of Saudi Arabia</text>
+</svg>

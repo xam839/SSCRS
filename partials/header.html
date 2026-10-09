@@ -11,11 +11,18 @@
         </a>
 
         <nav class="nav-shell" aria-label="Primary">
-          <a href="about.html"      data-nav="about"      data-i18n="nav.about">About</a>
+          <div class="nav-group" data-nav-group>
+            <button class="nav-trigger" type="button" data-nav-trigger
+                    aria-expanded="false" aria-haspopup="true" data-i18n="nav.about">About</button>
+            <div class="nav-menu" data-nav-menu hidden>
+              <a href="about.html"    data-nav="about"    data-i18n="nav.aboutSociety">About the Society</a>
+              <a href="founders.html" data-nav="founders" data-i18n="nav.founders">Founding Members</a>
+            </div>
+          </div>
           <a href="board.html"      data-nav="board"      data-i18n="nav.board">Board</a>
           <a href="membership.html" data-nav="membership" data-i18n="nav.membership">Membership</a>
-          <a href="awareness.html"  data-nav="awareness"  data-i18n="nav.awareness">Awareness</a>
           <a href="committees.html" data-nav="committees" data-i18n="nav.committeesShort">Committees</a>
+          <a href="education.html"  data-nav="education"  data-i18n="nav.educationShort">Education</a>
           <a href="index.html#news" data-nav="news"       data-i18n="nav.news">News</a>
         </nav>
 

@@ -7,8 +7,8 @@
     <meta name="description" content="The Saudi Society of Colon &amp; Rectal Surgery (SSCRS) — established 2009 / 1430H — advancing colorectal surgical practice, education, and research across the Kingdom of Saudi Arabia." />
     <meta name="theme-color" content="#0C2549" />
 
-    <link rel="icon" type="image/png" href="favicon.png?v=24" />
-    <link rel="apple-touch-icon" href="sscrs-seal.png?v=24" />
+    <link rel="icon" type="image/png" href="favicon.png?v=25" />
+    <link rel="apple-touch-icon" href="sscrs-seal.png?v=25" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Saudi Society of Colon &amp; Rectal Surgery" />
@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=24" />
+    <link rel="stylesheet" href="styles.css?v=25" />
 
     <script>
       // Applied before first paint so the chosen language never flashes.
@@ -68,7 +68,7 @@
              artwork again is a one-line change here.
              It is raster, not vector: the PDF contained a JPEG. -->
         <symbol id="sscrs-seal" viewBox="0 0 512 512">
-          <image href="sscrs-seal.png?v=24" x="0" y="0" width="512" height="512"
+          <image href="sscrs-seal.png?v=25" x="0" y="0" width="512" height="512"
                  preserveAspectRatio="xMidYMid meet" />
         </symbol>
       </defs>
@@ -88,11 +88,18 @@
         </a>
 
         <nav class="nav-shell" aria-label="Primary">
-          <a href="about.html"      data-nav="about"      data-i18n="nav.about">About</a>
+          <div class="nav-group" data-nav-group>
+            <button class="nav-trigger" type="button" data-nav-trigger
+                    aria-expanded="false" aria-haspopup="true" data-i18n="nav.about">About</button>
+            <div class="nav-menu" data-nav-menu hidden>
+              <a href="about.html"    data-nav="about"    data-i18n="nav.aboutSociety">About the Society</a>
+              <a href="founders.html" data-nav="founders" data-i18n="nav.founders">Founding Members</a>
+            </div>
+          </div>
           <a href="board.html"      data-nav="board"      data-i18n="nav.board">Board</a>
           <a href="membership.html" data-nav="membership" data-i18n="nav.membership">Membership</a>
-          <a href="awareness.html"  data-nav="awareness"  data-i18n="nav.awareness">Awareness</a>
           <a href="committees.html" data-nav="committees" data-i18n="nav.committeesShort">Committees</a>
+          <a href="education.html"  data-nav="education"  data-i18n="nav.educationShort">Education</a>
           <a href="index.html#news" data-nav="news"       data-i18n="nav.news">News</a>
         </nav>
 
@@ -122,14 +129,15 @@
       </div>
       <nav aria-label="Mobile">
         <a href="index.html"          data-nav="home"       data-nav-link data-i18n="nav.home" aria-current="page">Home</a>
-        <a href="about.html"          data-nav="about"      data-nav-link data-i18n="nav.about">About</a>
+        <a href="about.html"          data-nav="about"      data-nav-link data-i18n="nav.aboutSociety">About the Society</a>
+        <a href="founders.html"       data-nav="founders"   data-nav-link data-i18n="nav.founders">Founding Members</a>
         <a href="board.html"          data-nav="board"      data-nav-link data-i18n="nav.board">Board</a>
         <a href="membership.html"     data-nav="membership" data-nav-link data-i18n="nav.membership">Membership</a>
-        <a href="awareness.html"      data-nav="awareness"  data-nav-link data-i18n="nav.awareness">Awareness</a>
+        <a href="committees.html"     data-nav="committees" data-nav-link data-i18n="nav.committees">Committees &amp; Regulations</a>
+        <a href="education.html"      data-nav="education"  data-nav-link data-i18n="nav.education">Education &amp; Conferences</a>
         <a href="index.html#news"     data-nav="news"       data-nav-link data-i18n="nav.news">News</a>
         <a href="index.html#gallery"  data-nav="gallery"    data-nav-link data-i18n="nav.gallery">Gallery</a>
         <a href="index.html#partners" data-nav="partners"   data-nav-link data-i18n="nav.partners">Partners</a>
-        <a href="committees.html"      data-nav="committees" data-nav-link data-i18n="nav.committees">Committees &amp; Regulations</a>
 
         <a href="#" aria-disabled="true" data-portal-pending title="Member portal link pending" class="mobile-login-btn" data-nav-link data-i18n="cta.login">Member Login</a>
         <a href="membership.html" class="mobile-join-btn" data-nav-link data-i18n="cta.join">Join the Society</a>
@@ -176,7 +184,7 @@
       <!-- FOUR SECTIONS — each with its own colour and icon -->
       <section class="quads" aria-label="Main sections">
         <div class="page-wrap quad-grid">
-          <a class="quad quad-forum reveal" href="index.html#events">
+          <a class="quad quad-forum reveal" href="education.html#conferences">
             <span class="quad-icon" aria-hidden="true"></span>
             <strong data-i18n="quad.forum.t">Annual SSCRS Forum</strong>
             <span class="quad-desc" data-i18n="quad.forum.d">The Kingdom's premier colorectal surgery gathering — lectures, live surgery and workshops.</span>
@@ -188,17 +196,17 @@
             <span class="quad-desc" data-i18n="quad.mem.d">Three categories under the Basic Bylaw: affiliate, regular and honorary.</span>
             <span class="quad-cta" data-i18n="quad.mem.a">View categories</span>
           </a>
-          <a class="quad quad-edu reveal" href="index.html#news">
+          <a class="quad quad-edu reveal" href="education.html#education">
             <span class="quad-icon" aria-hidden="true"></span>
             <strong data-i18n="quad.edu.t">Educational Activities</strong>
             <span class="quad-desc" data-i18n="quad.edu.d">Accredited CME, hands-on workshops and the advanced fellowship programme.</span>
             <span class="quad-cta" data-i18n="quad.edu.a">See activities</span>
           </a>
-          <a class="quad quad-awr reveal" href="awareness.html">
+          <a class="quad quad-cmt reveal" href="committees.html">
             <span class="quad-icon" aria-hidden="true"></span>
-            <strong data-i18n="quad.awr.t">Awareness</strong>
-            <span class="quad-desc" data-i18n="quad.awr.d">What every adult should know about colorectal health and early screening.</span>
-            <span class="quad-cta" data-i18n="quad.awr.a">Read the guidance</span>
+            <strong data-i18n="quad.cmt.t">Committees &amp; Regulations</strong>
+            <span class="quad-desc" data-i18n="quad.cmt.d">The committees that carry the society's work, and its bylaws, regulations and forms.</span>
+            <span class="quad-cta" data-i18n="quad.cmt.a">Browse the documents</span>
           </a>
         </div>
       </section>
@@ -389,63 +397,39 @@
 
           <div class="partners-band reveal">
             <p class="partners-label" data-i18n="part.affiliated">Affiliated Societies</p>
-            <div class="partners-row partners-row-soc">
-              <div class="partner-tile">
-                <span class="partner-abbr">ASCRS</span>
-                <span class="partner-name" data-i18n="part.ascrs">American Society of Colon &amp; Rectal Surgeons</span>
-              </div>
-              <div class="partner-tile">
-                <span class="partner-abbr">ACPGBI</span>
-                <span class="partner-name" data-i18n="part.acpgbi">Association of Coloproctology of Great Britain &amp; Ireland</span>
-              </div>
-              <div class="partner-tile">
-                <span class="partner-abbr">ESCP</span>
-                <span class="partner-name" data-i18n="part.escp">European Society of Coloproctology</span>
-              </div>
+            <div class="logo-row">
+              <a class="logo-tile" href="https://fascrs.org" target="_blank" rel="noopener"
+                 aria-label="American Society of Colon &amp; Rectal Surgeons" data-i18n-aria="part.ascrs">
+                <img src="partners/ascrs.svg" alt="" width="360" height="120" />
+              </a>
+              <a class="logo-tile" href="https://www.acpgbi.org.uk" target="_blank" rel="noopener"
+                 aria-label="Association of Coloproctology of Great Britain &amp; Ireland" data-i18n-aria="part.acpgbi">
+                <img src="partners/acpgbi.svg" alt="" width="360" height="120" />
+              </a>
+              <a class="logo-tile" href="https://www.escp.eu.com" target="_blank" rel="noopener"
+                 aria-label="European Society of Coloproctology" data-i18n-aria="part.escp">
+                <img src="partners/escp.svg" alt="" width="360" height="120" />
+              </a>
             </div>
           </div>
 
           <div class="partners-band reveal">
             <p class="partners-label" data-i18n="part.strategic">Strategic Partners &amp; Sponsors</p>
-            <div class="partners-row">
-              <div class="partner-tile" data-i18n="part.moh">Ministry of Health</div>
-              <div class="partner-tile" data-i18n="part.scfhs">Saudi Commission for Health Specialties</div>
-              <div class="partner-tile" data-i18n="part.kfshrc">King Faisal Specialist Hospital &amp; Research Centre</div>
+            <div class="logo-row">
+              <a class="logo-tile" href="https://www.moh.gov.sa" target="_blank" rel="noopener"
+                 aria-label="Ministry of Health" data-i18n-aria="part.moh">
+                <img src="partners/moh.svg" alt="" width="360" height="120" />
+              </a>
+              <a class="logo-tile" href="https://scfhs.org.sa" target="_blank" rel="noopener"
+                 aria-label="Saudi Commission for Health Specialties" data-i18n-aria="part.scfhs">
+                <img src="partners/scfhs.svg" alt="" width="360" height="120" />
+              </a>
+              <a class="logo-tile" href="https://www.kfshrc.edu.sa" target="_blank" rel="noopener"
+                 aria-label="King Faisal Specialist Hospital &amp; Research Centre" data-i18n-aria="part.kfshrc">
+                <img src="partners/kfshrc.svg" alt="" width="360" height="120" />
+              </a>
             </div>
-          </div>
-
-          <div class="coop reveal" id="agreements">
-            <div class="coop-head">
-              <h3 data-i18n="coop.h">Cooperation Agreements</h3>
-              <p data-i18n="coop.sub">Formal agreements the society has signed to advance training, research and public health.</p>
-            </div>
-            <ul class="coop-list">
-              <li class="coop-item">
-                <span class="coop-icon" aria-hidden="true"></span>
-                <div class="coop-body">
-                  <h4 data-i18n="coop.a1.h">Ministry of Health</h4>
-                  <p data-i18n="coop.a1.p">Joint national colorectal cancer screening programme and public awareness campaigns.</p>
-                </div>
-                <span class="coop-meta" data-i18n="coop.a1.d">Signed 2025</span>
-              </li>
-              <li class="coop-item">
-                <span class="coop-icon" aria-hidden="true"></span>
-                <div class="coop-body">
-                  <h4 data-i18n="coop.a2.h">Saudi Commission for Health Specialties</h4>
-                  <p data-i18n="coop.a2.p">Accreditation of continuing medical education and the advanced fellowship pathway.</p>
-                </div>
-                <span class="coop-meta" data-i18n="coop.a2.d">Signed 2024</span>
-              </li>
-              <li class="coop-item">
-                <span class="coop-icon" aria-hidden="true"></span>
-                <div class="coop-body">
-                  <h4 data-i18n="coop.a3.h">King Faisal Specialist Hospital &amp; Research Centre</h4>
-                  <p data-i18n="coop.a3.p">Shared research protocols and surgical training placements.</p>
-                </div>
-                <span class="coop-meta" data-i18n="coop.a3.d">Signed 2024</span>
-              </li>
-            </ul>
-            <p class="coop-note" data-i18n="coop.note">Placeholder entries — replace with the society's signed agreements.</p>
+            <p class="logo-note" data-i18n="part.logoNote">Logos shown are placeholders until each organisation's official artwork is received.</p>
           </div>
 
           <div class="partners-cta reveal">
@@ -475,27 +459,40 @@
         <div class="footer-cols">
           <div class="footer-about">
             <p data-i18n="footer.about">Advancing colorectal surgical excellence across the Kingdom of Saudi Arabia since 2009. Riyadh, Kingdom of Saudi Arabia.</p>
+            <p class="footer-follow" data-i18n="footer.follow">Follow the society</p>
+            <div class="footer-social">
+              <!-- Social profile URLs are pending from the society; swap the hrefs here. -->
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener"
+                 aria-label="SSCRS on LinkedIn" data-i18n-aria="a11y.linkedin" data-social-pending>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 110-4.13 2.07 2.07 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+              </a>
+              <a href="https://x.com/" target="_blank" rel="noopener"
+                 aria-label="SSCRS on X" data-i18n-aria="a11y.x" data-social-pending>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64z"/></svg>
+              </a>
+            </div>
           </div>
           <div class="footer-col">
             <h5 data-i18n="footer.society">Society</h5>
-            <a href="about.html" data-i18n="footer.aboutUs">About Us</a>
-            <a href="about.html#numbers" data-i18n="num.eyebrow">The Society in Numbers</a>
-            <a href="about.html#vision" data-i18n="nav.vision">Vision</a>
+            <a href="about.html" data-i18n="nav.aboutSociety">About the Society</a>
+            <a href="founders.html" data-i18n="nav.founders">Founding Members</a>
             <a href="board.html" data-i18n="board.h">Board Members</a>
+            <a href="about.html#numbers" data-i18n="num.eyebrow">The Society in Numbers</a>
           </div>
           <div class="footer-col">
             <h5 data-i18n="nav.membership">Membership</h5>
-            <a href="membership.html" data-i18n="footer.mem1">Active Members</a>
-            <a href="membership.html" data-i18n="footer.mem2">Associate Members</a>
-            <a href="membership.html" data-i18n="footer.mem3">Supporting Members</a>
-            <a href="membership.html" data-i18n="footer.mem4">Honorary Members</a>
+            <a href="membership.html" data-i18n="footer.mem1">Affiliate Membership</a>
+            <a href="membership.html" data-i18n="footer.mem2">Regular Membership</a>
+            <a href="membership.html" data-i18n="footer.mem3">Honorary Membership</a>
+            <a href="membership.html#members" data-i18n="footer.members">Current Members</a>
           </div>
           <div class="footer-col">
             <h5 data-i18n="footer.connect">Connect</h5>
             <a href="mailto:info@sscrs.org">info@sscrs.org</a>
+            <a href="education.html" data-i18n="nav.education">Education &amp; Conferences</a>
+            <a href="committees.html" data-i18n="nav.committees">Committees &amp; Regulations</a>
             <a href="index.html#news" data-i18n="news.h">News &amp; Announcements</a>
             <a href="index.html#partners" data-i18n="nav.partners">Partners</a>
-            <a href="committees.html" data-i18n="nav.committees">Committees &amp; Regulations</a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -564,9 +561,9 @@
     </section>
 
 
-    <script src="translations.js?v=24"></script>
-    <script src="script.js?v=24"></script>
-    <script src="events.js?v=24"></script>
-    <script src="chatbot.js?v=24"></script>
+    <script src="translations.js?v=25"></script>
+    <script src="script.js?v=25"></script>
+    <script src="events.js?v=25"></script>
+    <script src="chatbot.js?v=25"></script>
   </body>
 </html>

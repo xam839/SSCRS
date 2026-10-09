@@ -66,15 +66,16 @@ Arabic lives in `translations.js` and is applied on demand.
 | About | Society history, seal plate, and four pillars |
 | The Society in Numbers | Statistics in a contained dark panel |
 | Vision / Mission / Goals | Three-column strategic direction |
-| Board Members | Eight member cards with photo and biography |
-| Membership | Affiliate / Regular / Honorary, per the Basic Bylaw |
+| Founding Members | Eight founder cards (placeholders) under About |
+| Board Members | Member cards with photo and biography |
+| Membership | Affiliate / Regular / Honorary 3D cards, then a searchable directory of current members (sample rows) |
 | Committees & Regulations | Six committee cards from Chapter 5 of the Basic Bylaw, then a document library with an in-page PDF viewer |
+| Education & Conferences | Webinars and workshops, the next Annual Forum announcement and a brief on the last one (placeholders) |
 | News | Lead story plus a dated list |
-| Awareness | Public-health tips, before Board of Directors |
 | Gallery | Filterable horizontal carousel with a lightbox |
 | Help assistant | Floating button and answer panel (placeholder) |
-| Partners | Partner tiles + Cooperation Agreements |
-| Footer | Bilingual identity block, navigation, legal |
+| Partners | Affiliated societies and strategic partners as logo tiles (placeholder SVGs in `partners/`) |
+| Footer | Bilingual identity block, LinkedIn and X, navigation, legal |
 
 ## Tech Stack
 
@@ -139,7 +140,8 @@ Then open `http://localhost:8000`.
 ├── about.html       # GENERATED
 ├── board.html       # GENERATED
 ├── membership.html  # GENERATED
-├── awareness.html   # GENERATED
+├── founders.html    # GENERATED
+├── education.html   # GENERATED
 ├── committees.html  # GENERATED — committees + regulations library
 ├── styles.css       # Design system, tints, RTL-ready layout
 ├── translations.js  # All Arabic copy — the only file a translator needs
@@ -149,6 +151,7 @@ Then open `http://localhost:8000`.
 ├── gallery/         # Gallery photographs (placeholders for now)
 ├── members/         # Board portraits (placeholders for now)
 ├── regulations/     # Regulation PDFs (placeholders for now)
+├── partners/        # Partner logos (placeholder SVGs; replace with the same filenames)
 ├── sscrs-seal.png   # Flat raster seal — favicon, social, watermarks
 ├── favicon.png      # Browser icon
 └── Layer-0.png      # Original seal source
@@ -161,6 +164,11 @@ The following still carry placeholder copy and need real content before launch:
 - BM-05's name (Arabic surname missing, English spelling unverified) — their card is held out of the page until confirmed
 - Board roles for BM-02 to BM-05 (only the chair's is confirmed)
 - Remaining board members beyond the five supplied
+- Founding members: the eight names, specialties and institutions on `founders.html` are invented placeholders
+- Current members directory on `membership.html`: ten sample rows
+- Education & Conferences: all dates, speakers, venues and 2025 figures are placeholders
+- Partner logos: the six SVGs in `partners/` are placeholders drawn for layout
+- LinkedIn and X profile URLs for the footer (currently the platforms' home pages)
 - Committee chairs (all "To be announced"), and confirmation of the three programme committees
   (Scientific & Education, Awareness & Community, Executive) — only Audit, Nominations &
   Remuneration and Elections are named in the bylaw

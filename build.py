@@ -15,7 +15,7 @@ ROOT = pathlib.Path(__file__).resolve().parent
 
 # Bump on every release. It is appended to the CSS/JS URLs so visitors
 # are not left on cached assets after a deploy.
-VERSION = 24
+VERSION = 25
 
 # Member portal. Leave empty until the real URL is known; the Login
 # button then renders inert and marked pending rather than pointing
@@ -87,7 +87,7 @@ def build():
             maakom(mark_active(header, active)), "",
             maakom(mark_active(mobile, active)), "",
             '    <main id="main">',
-            body.rstrip(),
+            maakom(body).rstrip(),
             "    </main>", "",
             footer, "",
             (lightbox if meta.get("lightbox") == "yes" else "").rstrip(),

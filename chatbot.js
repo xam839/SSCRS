@@ -69,6 +69,15 @@
       }
     },
     {
+      id: "founders",
+      k: { en: ["founder", "founders", "founding", "established", "who started"],
+           ar: ["مؤسس", "مؤسسين", "المؤسسون", "المؤسسين", "تأسيس", "أسس"] },
+      a: {
+        en: "The society was established in 2009 (1430H) by a group of consultant colorectal surgeons. Their profiles are on the Founding Members page, under About.",
+        ar: "تأسست الجمعية عام ٢٠٠٩ (١٤٣٠هـ) على يد مجموعة من استشاريي جراحة القولون والمستقيم. تجد تعريفًا بهم في صفحة الأعضاء المؤسسين ضمن قائمة عن الجمعية."
+      }
+    },
+    {
       id: "vision",
       k: { en: ["vision", "mission", "goal", "objective", "aim", "strategy"],
            ar: ["رؤية", "رؤيت", "رسالة", "رسالت", "هدف",
@@ -107,11 +116,11 @@
     },
     {
       id: "training",
-      k: { en: ["training", "fellowship", "cme", "workshop", "course", "education", "trainee"],
-           ar: ["تدريب", "زمالة", "ورشة", "دورة", "تعليم", "متدرب"] },
+      k: { en: ["training", "fellowship", "cme", "workshop", "workshops", "course", "education", "trainee", "webinar", "webinars", "conference"],
+           ar: ["تدريب", "زمالة", "ورشة", "ورش", "دورة", "تعليم", "متدرب", "ويبينار", "ندوة", "مؤتمر"] },
       a: {
-        en: "The society runs continuing medical education, workshops and an advanced laparoscopic fellowship programme; applications for the 2026 cycle are open. Associate membership is designed for trainees and includes mentorship and training resources.",
-        ar: "تقدم الجمعية برامج التعليم الطبي المستمر وورش العمل وبرنامج زمالة الجراحة بالمنظار المتقدمة، وقد فُتح باب التقديم لدورة ٢٠٢٦. وفئة العضو المنتسب مخصصة للمتدربين وتشمل الإرشاد المهني والموارد التدريبية."
+        en: "Webinars, hands-on workshops and the Annual Forum are listed on the Education & Conferences page, with dates, CME hours and registration. The society also runs an advanced laparoscopic fellowship programme; applications for the 2026 cycle are open.",
+        ar: "تجد الويبينارات وورش العمل والملتقى السنوي في صفحة التعليم والمؤتمرات مع المواعيد وساعات التعليم الطبي المستمر وطريقة التسجيل. كما تقدم الجمعية برنامج زمالة الجراحة بالمنظار المتقدمة، وباب التقديم لدورة ٢٠٢٦ مفتوح."
       }
     },
     {
@@ -122,27 +131,6 @@
       a: {
         en: "We work with the Ministry of Health, the Saudi Commission for Health Specialties and King Faisal Specialist Hospital & Research Centre, among others. Companies can join as Supporting Members, which includes forum exhibition space and sponsorship access — write to info@sscrs.org.",
         ar: "نتعاون مع وزارة الصحة والهيئة السعودية للتخصصات الصحية ومستشفى الملك فيصل التخصصي ومركز الأبحاث وغيرها. ويمكن للشركات الانضمام كأعضاء داعمين، بما يشمل مساحة عرض في الملتقى وفرص الرعاية — راسلنا على info@sscrs.org."
-      }
-    },
-    {
-      id: "awareness",
-      /* Points at the Awareness section. Note the clinical guard runs
-         first, so a personal symptom question still gets the referral
-         rather than this. */
-      k: { en: ["awareness", "tips", "advice", "signs", "warning", "risk", "prevent"],
-           ar: ["توعية", "نصائح", "نصيحة", "علامات", "إرشاد", "مخاطر", "الوقاية"] },
-      a: {
-        en: "The Awareness page covers what the society most wants the public to know: screening from age 45, not waiting out bleeding, reporting lasting changes in bowel habit, how family history moves the screening date, and the daily habits that lower risk. It is general awareness only — anything about your own health belongs with a physician.",
-        ar: "يغطي صفحة التوعية أبرز ما تحرص الجمعية على إيصاله للمجتمع: الفحص المبكر من سن ٤٥، وعدم تجاهل النزيف، ومراجعة الطبيب عند تغير عادات الإخراج لفترة، وأثر التاريخ العائلي في تقديم موعد الفحص، والعادات اليومية التي تقلل الخطر. وهو للتوعية العامة فقط — أما ما يخص صحتك الشخصية فمرجعه الطبيب المختص."
-      }
-    },
-    {
-      id: "agreements",
-      k: { en: ["agreement", "agreements", "memorandum", "mou", "cooperation", "signed"],
-           ar: ["اتفاقية", "اتفاقيات", "مذكرة", "تعاون", "وقعت", "شراكات"] },
-      a: {
-        en: "The Cooperation Agreements list sits under Partners on the home page — formal agreements with the Ministry of Health, the Saudi Commission for Health Specialties and King Faisal Specialist Hospital & Research Centre, covering screening, accredited education and shared research.",
-        ar: "تجد قائمة اتفاقيات التعاون ضمن الشركاء في الصفحة الرئيسية — اتفاقيات رسمية مع وزارة الصحة والهيئة السعودية للتخصصات الصحية ومستشفى الملك فيصل التخصصي ومركز الأبحاث، تشمل الفحص المبكر والتعليم المعتمد والبحوث المشتركة."
       }
     },
     {
