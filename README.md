@@ -74,7 +74,7 @@ Arabic lives in `translations.js` and is applied on demand.
 | News | Lead story plus a dated list |
 | Gallery | Filterable horizontal carousel with a lightbox |
 | Help assistant | Floating button and answer panel (placeholder) |
-| Partners | Affiliated societies and strategic partners as logo tiles (placeholder SVGs in `partners/`) |
+| Partners | Affiliated societies and strategic partners as logo tiles, each linking to the organisation's site |
 | Footer | Bilingual identity block, LinkedIn and X, navigation, legal |
 
 ## Tech Stack
@@ -151,7 +151,7 @@ Then open `http://localhost:8000`.
 ├── gallery/         # Gallery photographs (placeholders for now)
 ├── members/         # Board portraits (placeholders for now)
 ├── regulations/     # Regulation PDFs (placeholders for now)
-├── partners/        # Partner logos (placeholder SVGs; replace with the same filenames)
+├── partners/        # Partner logos, taken from each organisation's own website
 ├── sscrs-seal.png   # Flat raster seal — favicon, social, watermarks
 ├── favicon.png      # Browser icon
 └── Layer-0.png      # Original seal source
@@ -167,7 +167,9 @@ The following still carry placeholder copy and need real content before launch:
 - Founding members: the eight names, specialties and institutions on `founders.html` are invented placeholders
 - Current members directory on `membership.html`: ten sample rows
 - Education & Conferences: all dates, speakers, venues and 2025 figures are placeholders
-- Partner logos: the six SVGs in `partners/` are placeholders drawn for layout
+- Partner logos: ASCRS, ACPGBI, ESCP and MOH are the PNGs their websites serve (fine at 1x, soft on
+  Retina); ask each for vector artwork. SCFHS and KFSH&RC are already SVG. Confirm each partner is
+  happy to be shown.
 - LinkedIn and X profile URLs for the footer (currently the platforms' home pages)
 - Committee chairs (all "To be announced"), and confirmation of the three programme committees
   (Scientific & Education, Awareness & Community, Executive) — only Audit, Nominations &

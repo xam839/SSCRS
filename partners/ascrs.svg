@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 120" width="360" height="120" role="img" aria-label="ASCRS">
-  <!-- Placeholder logo. Replace this file with the organisation's official artwork. -->
-  <circle cx="52" cy="60" r="34" fill="none" stroke="#1B4C93" stroke-width="5"/><circle cx="52" cy="60" r="20" fill="#1B4C93" opacity=".18"/><circle cx="52" cy="60" r="9" fill="#1B4C93"/>
-  <text x="104" y="58" font-family="'Times New Roman', Times, serif" font-size="30" font-weight="700" fill="#1B4C93" letter-spacing="1">ASCRS</text>
-  <text x="104" y="80" font-family="'Times New Roman', Times, serif" font-size="13.5" fill="#4B5565">American Society of</text>
-  <text x="104" y="97" font-family="'Times New Roman', Times, serif" font-size="13.5" fill="#4B5565">Colon &amp; Rectal Surgeons</text>
-</svg>

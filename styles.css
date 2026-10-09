@@ -1688,12 +1688,11 @@ a.tier-btn:hover { border-color: var(--navy); background: var(--tint-navy); }
   transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
 .logo-tile img {
-  display: block; width: 100%; max-width: 300px; height: auto; max-height: 80px; object-fit: contain;
-  filter: grayscale(1) opacity(.7); transition: filter .25s ease, transform .25s ease;
+  display: block; width: auto; max-width: 100%; height: auto; max-height: 64px; object-fit: contain;
+  transition: transform .25s ease;
 }
 .logo-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: #C9D7EA; }
-.logo-tile:hover img { filter: none; transform: scale(1.03); }
-.logo-note { margin-top: 16px; font-size: 13px; color: var(--muted); font-style: italic; }
+.logo-tile:hover img { transform: scale(1.04); }
 
 /* --- Footer social ------------------------------------------- */
 .footer-follow { margin-top: 24px; margin-bottom: 10px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.5); }

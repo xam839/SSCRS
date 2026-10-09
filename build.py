@@ -15,7 +15,7 @@ ROOT = pathlib.Path(__file__).resolve().parent
 
 # Bump on every release. It is appended to the CSS/JS URLs so visitors
 # are not left on cached assets after a deploy.
-VERSION = 25
+VERSION = 26
 
 # Member portal. Leave empty until the real URL is known; the Login
 # button then renders inert and marked pending rather than pointing
