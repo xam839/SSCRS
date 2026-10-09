@@ -1335,10 +1335,6 @@ a.tier-btn:hover { border-color: var(--navy); background: var(--tint-navy); }
   background: var(--paper); border: 1px solid var(--line); box-shadow: var(--shadow-sm);
   transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
 }
-.cmt-card::before {    /* colour keel along the top edge */
-  content: ""; position: absolute; inset-inline: 28px; top: -1px; height: 3px;
-  border-radius: 0 0 3px 3px; background: var(--c);
-}
 .cmt-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: #D3DEEC; }
 .cmt-card.is-green { --c: var(--green-600); --c-wash: var(--wash-green); }
 .cmt-card.is-teal  { --c: var(--teal-500);  --c-wash: var(--teal-100); }
@@ -1633,51 +1629,6 @@ a.tier-btn:hover { border-color: var(--navy); background: var(--tint-navy); }
 .nav-group:has(a[aria-current="page"]) .nav-trigger { background: var(--wash-navy); color: var(--navy); }
 .nav-menu a[aria-current="page"] { background: var(--wash-navy); color: var(--navy); font-weight: 600; }
 
-/* --- 3D tiles ------------------------------------------------ */
-.quad-grid, .tier-grid { perspective: 1100px; }
-.quad, .tier-card {
-  transition: transform .55s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;
-}
-.quad.is-tilting, .tier-card.is-tilting { transition: transform .08s linear, box-shadow .35s ease; }
-.quad {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.26), inset 0 -3px 0 rgba(0,0,0,.2),
-    0 16px 30px -12px rgba(11,36,68,.45), 0 2px 6px rgba(11,36,68,.12);
-}
-.quad::before {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
-  background:
-    radial-gradient(circle at var(--mx, 30%) var(--my, 20%), rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 55%),
-    linear-gradient(115deg, rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 40%);
-}
-.quad:hover, .js .quad.reveal.is-visible:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.3), inset 0 -3px 0 rgba(0,0,0,.2),
-    0 30px 48px -16px rgba(11,36,68,.5), 0 4px 10px rgba(11,36,68,.14);
-}
-.quad-icon {
-  background: rgba(255,255,255,.95); color: var(--q-deep); border: 0;
-  box-shadow: 0 8px 16px -8px rgba(0,0,0,.45), inset 0 -2px 0 rgba(0,0,0,.08);
-}
-
-.tier-card {
-  box-shadow: inset 0 1px 0 #fff, 0 20px 36px -20px rgba(11,36,68,.3), 0 2px 6px rgba(11,36,68,.06);
-}
-.tier-card::before {
-  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
-  background: radial-gradient(circle at var(--mx, 30%) var(--my, 20%), rgba(27,76,147,.07) 0%, rgba(27,76,147,0) 60%);
-}
-.tier-card.is-honorary::before {
-  background: radial-gradient(circle at var(--mx, 30%) var(--my, 20%), rgba(255,255,255,.14) 0%, rgba(255,255,255,0) 60%);
-}
-.tier-card:hover, .js .tier-card.reveal.is-visible:hover {
-  transform: translateY(-6px);
-  box-shadow: inset 0 1px 0 #fff, 0 34px 52px -22px rgba(11,36,68,.38), 0 4px 10px rgba(11,36,68,.08);
-}
-.tier-card > * { position: relative; z-index: 1; }
-.tier-card.is-honorary { box-shadow: 0 24px 44px -20px rgba(11,36,68,.6), 0 2px 8px rgba(11,36,68,.2); }
-
 /* --- Partner logos ------------------------------------------- */
 .logo-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .logo-tile {
@@ -1881,4 +1832,150 @@ a.tier-btn:hover { border-color: var(--navy); background: var(--tint-navy); }
   .members-table-wrap { overflow-x: auto; }
   .members-table { min-width: 640px; font-size: 14px; }
   .members-table th, .members-table td { padding: 13px 16px; }
+}
+
+/* ============================================================
+   ROUND 5 — true 3D cards and a tinted canvas
+   ============================================================ */
+
+/* --- Shared 3D card: layered edge, cursor sheen, lifted parts ---
+   [data-tilt] cards and the home tiles. The JS tilts the card and
+   moves --mx/--my; everything else is CSS so it degrades cleanly. */
+[data-tilt], .quad {
+  position: relative; overflow: visible; transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .45s ease;
+}
+[data-tilt].is-tilting, .quad.is-tilting { transition: transform .08s linear, box-shadow .45s ease; }
+[data-tilt] > *, .quad > * { transform: translateZ(18px); }
+
+/* light cards: a stacked paper edge in soft blue-greys */
+.tier-card, .cmt-card, .fnd-card, .edu-card, .member-card {
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 2px 0 #E2E9F3, 0 4px 0 #D6DFEC, 0 6px 0 #CBD6E6,
+    0 22px 40px -18px rgba(11,36,68,.35), 0 2px 6px rgba(11,36,68,.05);
+}
+.tier-card::before, .cmt-card::before, .fnd-card::before, .edu-card::before, .member-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle at var(--mx, 25%) var(--my, 15%), rgba(27,76,147,.09) 0%, rgba(27,76,147,0) 58%);
+  transform: translateZ(1px);
+}
+.tier-card:hover, .cmt-card:hover, .fnd-card:hover, .edu-card:hover, .member-card:hover,
+.js .reveal.is-visible:is(.tier-card, .cmt-card, .fnd-card, .edu-card, .member-card):hover {
+  transform: translateY(-8px);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 2px 0 #E2E9F3, 0 4px 0 #D6DFEC, 0 6px 0 #CBD6E6,
+    0 40px 60px -22px rgba(11,36,68,.45), 0 4px 10px rgba(11,36,68,.06);
+}
+.cmt-card { border-top: 3px solid var(--c); }
+
+/* parts that float above the card */
+.tier-card h3, .cmt-card h3, .fnd-card h3, .edu-card h4, .member-card h3 { transform: translateZ(34px); }
+.cmt-icon, .fnd-avatar, .edu-date, .tier-badge { transform: translateZ(44px); transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s ease; }
+.cmt-icon { box-shadow: 0 10px 18px -10px rgba(11,36,68,.45); }
+.fnd-avatar { box-shadow: 0 16px 28px -12px rgba(11,36,68,.5); }
+.edu-date { box-shadow: 0 8px 16px -8px rgba(11,36,68,.4); }
+[data-tilt]:hover .cmt-icon, [data-tilt]:hover .fnd-avatar, [data-tilt]:hover .edu-date { transform: translateZ(64px) scale(1.04); }
+
+/* honorary stays dark; its edge is deeper navy */
+.tier-card.is-honorary {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 2px 0 #0E2C52, 0 4px 0 #0B2444, 0 6px 0 #081B33,
+    0 26px 48px -18px rgba(11,36,68,.7), 0 2px 8px rgba(11,36,68,.25);
+}
+.tier-card.is-honorary::before {
+  background: radial-gradient(circle at var(--mx, 25%) var(--my, 15%), rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 58%);
+}
+.tier-card.is-honorary:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.18),
+    0 2px 0 #0E2C52, 0 4px 0 #0B2444, 0 6px 0 #081B33,
+    0 44px 70px -22px rgba(11,36,68,.8), 0 4px 10px rgba(11,36,68,.25);
+}
+
+/* home tiles: dark edge in the tile's own hue, floating white icon */
+.quad {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.3), inset 0 -1px 0 rgba(0,0,0,.15),
+    0 2px 0 var(--q-deep), 0 4px 0 color-mix(in srgb, var(--q-deep) 80%, #000), 0 6px 0 color-mix(in srgb, var(--q-deep) 65%, #000),
+    0 24px 44px -16px rgba(11,36,68,.55), 0 2px 6px rgba(11,36,68,.15);
+}
+.quad::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(circle at var(--mx, 30%) var(--my, 20%), rgba(255,255,255,.26) 0%, rgba(255,255,255,0) 55%),
+    linear-gradient(115deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 42%);
+  transform: translateZ(1px);
+}
+.quad::after { transform: translateZ(2px); }
+.quad:hover, .js .quad.reveal.is-visible:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.34), inset 0 -1px 0 rgba(0,0,0,.15),
+    0 2px 0 var(--q-deep), 0 4px 0 color-mix(in srgb, var(--q-deep) 80%, #000), 0 6px 0 color-mix(in srgb, var(--q-deep) 65%, #000),
+    0 44px 64px -20px rgba(11,36,68,.6), 0 4px 10px rgba(11,36,68,.18);
+}
+.quad-icon {
+  background: rgba(255,255,255,.96); color: var(--q-deep); border: 0;
+  box-shadow: 0 12px 22px -10px rgba(0,0,0,.55), inset 0 -2px 0 rgba(0,0,0,.08);
+  transform: translateZ(46px); transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s ease;
+}
+.quad:hover .quad-icon { transform: translateZ(68px) scale(1.06); box-shadow: 0 22px 30px -12px rgba(0,0,0,.6), inset 0 -2px 0 rgba(0,0,0,.08); }
+.quad strong { transform: translateZ(30px); }
+.quad-desc, .quad-cta { transform: translateZ(18px); }
+.quad-grid, .tier-grid, .cmt-grid, .fnd-grid, .edu-grid, .member-grid { perspective: 1200px; }
+
+/* --- A tinted canvas: colour on every white stretch ------------- */
+.site-header::before {
+  content: ""; position: absolute; inset-inline: 0; top: 0; height: 4px; z-index: 2;
+  background: linear-gradient(90deg, var(--navy) 0%, var(--teal-500) 50%, var(--green-600) 100%);
+}
+.section:not(.section-tint):not(.section-green) {
+  background:
+    radial-gradient(900px 520px at 100% 0%, var(--blue-100) 0%, rgba(227,236,248,0) 62%),
+    radial-gradient(760px 460px at 0% 100%, var(--green-100) 0%, rgba(227,242,221,0) 62%),
+    linear-gradient(180deg, #FBFCFE 0%, #FFFFFF 100%);
+}
+.section-tint {
+  background:
+    radial-gradient(820px 500px at 0% 0%, var(--teal-100) 0%, rgba(220,239,241,0) 60%),
+    radial-gradient(700px 440px at 100% 100%, var(--blue-200) 0%, rgba(199,217,240,0) 65%),
+    linear-gradient(180deg, #EEF4FB 0%, #F4F7FC 100%);
+}
+.section-green {
+  background:
+    radial-gradient(820px 500px at 100% 0%, var(--green-200) 0%, rgba(198,228,186,0) 62%),
+    radial-gradient(640px 420px at 0% 100%, var(--teal-100) 0%, rgba(220,239,241,0) 62%),
+    linear-gradient(180deg, #EEF7EA 0%, #F4FAF2 100%);
+}
+.quads {
+  background: linear-gradient(180deg, #EEF4FB 0%, #F7FAFE 100%);
+  border-bottom: 1px solid var(--line);
+  padding: 56px 0 64px;
+}
+.hero { border-bottom: 0; }
+.page-hero {
+  background:
+    radial-gradient(900px 520px at 100% 0%, var(--blue-200) 0%, rgba(199,217,240,0) 60%),
+    radial-gradient(700px 460px at 0% 100%, var(--green-200) 0%, rgba(198,228,186,0) 60%),
+    linear-gradient(120deg, #E7EFFA 0%, #F3F7FC 55%, #EAF5E6 100%);
+}
+.members-table th { background: var(--wash-navy); color: var(--navy); }
+.members-table-wrap { box-shadow: var(--shadow-md); }
+.edu-card { border-inline-start: 4px solid var(--ec, var(--navy)); }
+.edu-card:has(.is-live) { --ec: var(--green-600); }
+.edu-card:has(.is-rec)  { --ec: var(--slate-500); }
+.fnd-card { border-top: 3px solid var(--blue-200); }
+.fnd-card.is-lead { border-top-color: var(--navy); }
+.news-item { border-inline-start: 3px solid var(--green-200); }
+.news-item:hover { border-inline-start-color: var(--green-600); }
+.member-card { border-top: 3px solid var(--blue-200); }
+
+@media (max-width: 640px) {
+  .quads { padding: 40px 0 48px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-tilt], .quad, [data-tilt] > *, .quad > *, .quad-icon, .cmt-icon, .fnd-avatar, .edu-date { transform: none !important; transition: none !important; }
 }

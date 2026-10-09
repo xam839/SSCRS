@@ -592,7 +592,7 @@
     var noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (tiltCards.length && finePointer && !noMotion) {
       tiltCards.forEach(function (card) {
-        var max = card.classList.contains("quad") ? 7 : 4.5;
+        var max = card.classList.contains("quad") ? 8 : (card.classList.contains("tier-card") ? 5.5 : 4);
         card.addEventListener("pointermove", function (e) {
           var r = card.getBoundingClientRect();
           var px = (e.clientX - r.left) / r.width - 0.5;
